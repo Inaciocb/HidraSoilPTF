@@ -1,7 +1,8 @@
-import { Empty, InputsT, MeasurementUnitT, StatesT } from "./utils";
-import { EqResult } from "./eq-result";
+import { Empty, InputsT, StatesT } from "./utils";
+import { EqFunction } from "./eq-result";
 
-export type EqFunction = (...inputs: number[]) => EqResult;
+export type EqType = 'fieldCapacity' | 'permanentWiltingPoint';
+
 export class Equation {
   eq: EqFunction;
   //FIXME: criar um type com todas estas classes
@@ -11,6 +12,8 @@ export class Equation {
   texturalClass: string | Empty;
   //FIXME: verificar se existem formulas que não recebem nenhum input
   inputsAccepted: InputsT[];
+  rmse: number;
+  type: EqType;
 
   constructor(
     _texturalClass: string | Empty,
@@ -18,6 +21,8 @@ export class Equation {
     _eq: EqFunction,
     _class: string | Empty,
     _states: StatesT[],
+    _rmse: number,
+    _type: EqType
   ) {
 
     this.class = _class;
@@ -25,5 +30,7 @@ export class Equation {
     this.texturalClass = _texturalClass;
     this.eq = _eq;
     this.inputsAccepted = _inputsAccepted;
+    this.rmse = _rmse;
+    this.type = _type;
   }
 }

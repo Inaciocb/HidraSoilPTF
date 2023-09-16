@@ -1,5 +1,7 @@
+import { InputsT } from './../model/utils';
 import { Injectable } from "@angular/core";
 import { EQUATIONS } from "src/data/static-data";
+import { EqInputData } from 'src/model/eq-user-data';
 import { Empty, InputsT, StatesT } from "src/model/utils";
 
 
@@ -7,13 +9,15 @@ import { Empty, InputsT, StatesT } from "src/model/utils";
 export class EquationService {
 
   //TODO: adicionar classes e outras variaveis que se aplicam no filtro
-  findUsableEquations(inputs: InputsT[], states: StatesT[]) {
+  // Estados (sempre um) -> Classe textural e classe de solo é apenas uma
+  findUsableEquations(inputs: InputsT[], state: StatesT) {
     return Array.from(EQUATIONS).filter(eq => {
-      let inputsState = false;
-      let statesState = false;
+      let inputsIsAccepted = false;
+      let stateIsAccepted = false;
       let inputsMatchCounter = 0;
       let statesMatchCounter = 0;
-      // Filter Inputs
+
+      // Filter Inputs ** Precisa revisar a lógica **
       eq.inputsAccepted.forEach(inputsAccepted => {
         inputs.forEach(i => {
           if (inputsAccepted == i) {
@@ -21,20 +25,24 @@ export class EquationService {
           }
         })
       });
+      inputsIsAccepted = eq.inputsAccepted.length <= inputsMatchCounter;
 
-      // Filter States
+      // Filter State ** Aceita se existe pelo menos 1 estado igual ao informado **
+      if (!state) {
+        stateIsAccepted = true;
+      } else {
+
       eq.statesAppliesTo.forEach(statesAppliesTo => {
-        states.forEach(state => {
-          if (statesAppliesTo == state) {
+        if (statesAppliesTo == state) {
             statesMatchCounter++;
           }
         })
-      })
-      //FIXME: revisar se a formula deve aplicar equações que usem menos variaveis do que as informadas!
-      inputsState = eq.inputsAccepted.length <= inputsMatchCounter;
-      //FIXME: revisar logica
-      statesState = eq.statesAppliesTo.length >= statesMatchCounter;
-      return inputsState;
+        stateIsAccepted = statesMatchCounter > 0;
+      }
+
+      return inputsIsAccepted && stateIsAccepted;
     });
   }
+
+
 }

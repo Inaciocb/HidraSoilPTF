@@ -17,7 +17,7 @@ export const EQUATIONS: Set<Equation> = new Set([
       },
       '',                                                    // Class
       ['BA'],                                                // States
-
+      0
   ),
 
   new Equation(
@@ -30,6 +30,7 @@ export const EQUATIONS: Set<Equation> = new Set([
     },
     '',                                                         // Class
     ['RS', 'SC'],                                               // States
+    0
   ),
 
   new Equation(
@@ -42,6 +43,7 @@ export const EQUATIONS: Set<Equation> = new Set([
     },
     '',                                                         // Class
     ['RS', 'SC'],                                               // States
+    0
   ),
 
 ]);
