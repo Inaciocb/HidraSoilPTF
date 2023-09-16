@@ -6,18 +6,18 @@ export class Equation {
   eq: EqFunction;
   //FIXME: criar um type com todas estas classes
   class: string | Empty;
-  statesAppliesTo: StatesT[] | Empty;
+  statesAppliesTo: StatesT[];
   //FIXME: criar um type com todas estas classes
   texturalClass: string | Empty;
   //FIXME: verificar se existem formulas que não recebem nenhum input
-  inputsAccepted: InputsT[] | Empty;
+  inputsAccepted: InputsT[];
 
   constructor(
     _texturalClass: string | Empty,
     _inputsAccepted: InputsT[],
     _eq: EqFunction,
     _class: string | Empty,
-    _states: StatesT[] | Empty,
+    _states: StatesT[],
   ) {
 
     this.class = _class;
