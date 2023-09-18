@@ -6,6 +6,7 @@ import { FormGroup, FormControl } from '@angular/forms';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
 export class AppComponent {
   clay: number | undefined;
   silt: number | undefined;
@@ -73,12 +74,50 @@ export class AppComponent {
 
   ngOnInit(): void {
   }
-  
-
-
 
 
 }
+
+class estado {
+   
+}
+
+
+class Vars {
+   
+}
+
+class S_T_class {
+    
+}
+
+export class equacaoFC {
+    rmse: number;
+    estado: estado;
+    vars: Vars;
+    kpa: number;
+    S_T_class: S_T_class;
+    autor: string;
+
+    constructor(
+        rmse: number,
+        estado: estado,
+        vars: Vars,
+        kpa: number,
+        S_T_class: S_T_class,
+        autor: string
+    ) {
+        this.rmse = rmse;
+        this.estado = estado;
+        this.vars = vars;
+        this.kpa = kpa;
+        this.S_T_class = S_T_class;
+        this.autor = autor;
+    }
+}
+
+
+
 
 
 // "Clay (%) *", "Silt (%)*", "Sand (%)*","Bulk density (g/cm³)*", "Organic matter (%)", "total porosity (cm³/cm³)",

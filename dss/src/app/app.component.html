@@ -2,33 +2,66 @@
 <div class="formulario">
     <form [formGroup]="form">    
     
+
+         <label for="estados">Selecione o estado *:</label>
+
+        <select name="estados" id="estados">
+            <option value="RS">RS</option>
+            <option value="SC">SC</option>
+            <option value="PR">PR</option>
+            <option value="SP">SP</option>
+            <option value="RJ">RJ</option>
+            <option value="MG">MG</option>
+            <option value="ES">ES</option>
+            <option value="MS">MS</option>
+            <option value="MT">MT</option>
+            <option value="GO">GO</option>
+            <option value="DF">DF</option>
+            <option value="BA">BA</option>
+            <option value="SE">SE</option>
+            <option value="AL">AL</option>
+            <option value="PE">PE</option>
+            <option value="PB">PB</option>
+            <option value="RN">RN</option>
+            <option value="CE">CE</option>
+            <option value="PI">PI</option>
+            <option value="MA">MA</option>
+            <option value="TO">TO</option>
+            <option value="PA">PA</option>
+            <option value="AP">AP</option>
+            <option value="RR">RR</option>
+            <option value="AM">AM</option>
+            <option value="AC">AC</option>
+
+           
+        </select> 
+
         <ul class="lista">
             <div class="container1">
                 <li>
 
-                    <label for="siltForm">silt</label>
-                    <input type="text" placeholder="silt" formControlName="siltForm"> 
+                    <label for="siltForm">silt *</label>
+                    <input type="text" placeholder="silt *" formControlName="siltForm"> 
+                
+                </li>
+                
+                <li>
+                    <label for ="sandForm">sand *</label>
+                    <input type="text" placeholder="sand *" formControlName="sandForm"> 
                 
                 </li>
                 
                 <li>
 
-                    <label for ="sandForm">sand</label>
-                    <input type="text" placeholder="sand" formControlName="sandForm"> 
+                    <label for="clayForm">clay *</label>
+                    <input type="text" placeholder="clay *" formControlName="clayForm">
                 
                 </li>
                 
                 <li>
 
-                    <label for="clayForm">clay</label>
-                    <input type="text" placeholder="clay" formControlName="clayForm">
-                
-                </li>
-                
-                <li>
-
-                    <label for="bulkDensityForm">bulkDensity</label>
-                    <input type="text" placeholder="bulkDensity" formControlName="bulkDensityForm">
+                    <label for="bulkDensityForm">bulkDensity *</label>
+                    <input type="text" placeholder="bulkDensity *" formControlName="bulkDensityForm">
                 
                 </li>
                 
