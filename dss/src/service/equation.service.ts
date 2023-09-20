@@ -1,8 +1,7 @@
-import { InputsT } from './../model/utils';
 import { Injectable } from "@angular/core";
 import { EQUATIONS } from "src/data/static-data";
-import { EqInputData } from 'src/model/eq-user-data';
-import { Empty, InputsT, StatesT } from "src/model/utils";
+import { Equation } from "src/model/equation";
+import { InputsT, StatesT } from "src/model/utils";
 
 
 @Injectable({providedIn: 'root'})
@@ -10,7 +9,8 @@ export class EquationService {
 
   //TODO: adicionar classes e outras variaveis que se aplicam no filtro
   // Estados (sempre um) -> Classe textural e classe de solo é apenas uma
-  findUsableEquations(inputs: InputsT[], state: StatesT) {
+  findUsableEquations(inputs: InputsT[], state: StatesT): Equation[] {
+    // console.log("Procurando Equações compativeis, inputs: ", inputs, " state: ", state);
     return Array.from(EQUATIONS).filter(eq => {
       let inputsIsAccepted = false;
       let stateIsAccepted = false;

@@ -1,5 +1,6 @@
 import { MeasurementUnitT } from "./utils";
 
+export type EqFunction = (...inputs: number[]) => EqResult;
 export class EqResult {
   result: number;
   measurementUnit: MeasurementUnitT;

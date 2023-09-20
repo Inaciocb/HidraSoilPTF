@@ -1,4 +1,4 @@
-import { InputsT } from "./utils";
+import { InputsT, StatesT } from "./utils";
 
 // Usado pelo front (pode adiconar mais atributos)
 export class EqInputData {

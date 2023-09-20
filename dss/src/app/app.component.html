@@ -1,12 +1,11 @@
 
 <div class="formulario">
-<<<<<<< HEAD
-    <form [formGroup]="form">    
-    
+    <form [formGroup]="form">
+
 
          <label for="estados">Selecione o estado *:</label>
 
-        <select name="estados" id="estados">
+        <select name="estados" id="estados" formControlName="state">
             <option value="RS">RS</option>
             <option value="SC">SC</option>
             <option value="PR">PR</option>
@@ -34,252 +33,214 @@
             <option value="AM">AM</option>
             <option value="AC">AC</option>
 
-           
-        </select> 
 
-=======
-    <form [formGroup]="form">        
->>>>>>> 042dcdfb9d3814836fffacbe84e39ac27369598c
+        </select>
+
         <ul class="lista">
             <div class="container1">
                 <li>
+                    <label for="silt">silt *</label>
+                    <input type="number" placeholder="silt *" formControlName="silt">
+                </li>
 
-                    <label for="siltForm">silt *</label>
-                    <input type="text" placeholder="silt *" formControlName="siltForm"> 
-                
-                </li>
-                
                 <li>
-                    <label for ="sandForm">sand *</label>
-                    <input type="text" placeholder="sand *" formControlName="sandForm"> 
-                
-                </li>
-                
-                <li>
+                    <label for ="sand">sand *</label>
+                    <input type="number" placeholder="sand *" formControlName="sand">
 
-                    <label for="clayForm">clay *</label>
-                    <input type="text" placeholder="clay *" formControlName="clayForm">
-                
                 </li>
-                
+
+                <li>
+                    <label for="clay">clay *</label>
+                    <input type="number" placeholder="clay *" formControlName="clay">
+                </li>
+
                 <li>
 
-                    <label for="bulkDensityForm">bulkDensity *</label>
-                    <input type="text" placeholder="bulkDensity *" formControlName="bulkDensityForm">
-                
+                    <label for="bulkDensity">bulkDensity *</label>
+                    <input type="number" placeholder="bulkDensity *" formControlName="bulkDensity">
+
                 </li>
-                
+
                 <li>
 
-                    <label for="organicMatterForm">organicMatter</label>
-                    <input type="text" placeholder="organicMatter" formControlName="organicMatterForm">
-                
+                    <label for="organicMatter">organicMatter</label>
+                    <input type="number" placeholder="organicMatter" formControlName="organicMatter">
                 </li>
-                
+
                 <li>
 
-                    <label for="totalPorosityForm">totalPorosity</label>
-                    <input type="text" placeholder="totalPorosity" formControlName="totalPorosityForm">
-                
+                    <label for="totalPorosity">totalPorosity</label>
+                    <input type="number" placeholder="totalPorosity" formControlName="totalPorosity">
+
                 </li>
-                
+
                 <li>
 
-                    <label for="coarseSandForm">coarseSand</label>
-                    <input type="text" placeholder="coarseSand" formControlName="coarseSandForm">
-                
+                    <label for="coarseSand">coarseSand</label>
+                    <input type="number" placeholder="coarseSand" formControlName="coarseSand">
+
                 </li>
-                
+
                 <li>
 
-                    <label for="fineSandForm">fineSand</label>
-                    <input type="text" placeholder="fineSand" formControlName="fineSandForm">
-                
+                    <label for="fineSand">fineSand</label>
+                    <input type="number" placeholder="fineSand" formControlName="fineSand">
+
                 </li>
-                
+
                 <li>
 
-                    <label for="microporosityForm">microporosity</label>
-                    <input type="text" placeholder="microporosity" formControlName="microporosityForm">
-                
+                    <label for="microporosity">microporosity</label>
+                    <input type="number" placeholder="microporosity" formControlName="microporosity">
+
                 </li>
-                
+
                 <li>
 
-                    <label for="densityOfParticleForm">densityOfParticle</label>
-                    <input type="text" placeholder="densityOfParticle" formControlName="densityOfParticleForm">
-                
+                    <label for="densityOfParticle">densityOfParticle</label>
+                    <input type="number" placeholder="densityOfParticle" formControlName="densityOfParticle">
+
                 </li>
-                
+
                 <li>
 
-                    <label for="soilOrganicCarbonForm">soilOrganicCarbon</label>
-                    <input type="text" placeholder="soilOrganicCarbon" formControlName="soilOrganicCarbonForm">
-                
+                    <label for="soilOrganicCarbon">soilOrganicCarbon</label>
+                    <input type="number" placeholder="soilOrganicCarbon" formControlName="soilOrganicCarbon">
+
                 </li>
-                
+
                 <li>
 
-                    <label for="flexPointOfSwrcForm">flexPointOfSwrc</label>
-                    <input type="text" placeholder="flexPointOfSwrc" formControlName="flexPointOfSwrcForm">
-                
+                    <label for="flexPointOfSwrc">flexPointOfSwrc</label>
+                    <input type="number" placeholder="flexPointOfSwrc" formControlName="flexPointOfSwrc">
+
                 </li>
-                
+
                 <li>
 
-                    <label for="macroporosityForm">macroporosity</label>
-                    <input type="text" placeholder="macroporosity" formControlName="macroporosityForm">
-                
+                    <label for="macroporosity">macroporosity</label>
+                    <input type="number" placeholder="macroporosity" formControlName="macroporosity">
+
                 </li>
-                
+
                 <li>
 
-                    <label for="claySiltForm">claySilt</label>
-                    <input type="text" placeholder="claySilt" formControlName="claySiltForm">
-                
+                    <label for="claySilt">claySilt</label>
+                    <input type="number" placeholder="claySilt" formControlName="claySilt">
+
                 </li>
-                
+
                 <li>
 
-                    <label for="theta6Form">theta6</label>
-                    <input type="text" placeholder="theta6" formControlName="theta6Form">
-                
+                    <label for="theta6">theta6</label>
+                    <input type="number" placeholder="theta6" formControlName="theta6">
+
                 </li>
-                
+
                 <li>
 
-                    <label for="liquidLimitsForm">liquidLimits</label>
-                    <input type="text" placeholder="liquidLimits" formControlName="liquidLimitsForm">
-                
+                    <label for="liquidLimits">liquidLimits</label>
+                    <input type="number" placeholder="liquidLimits" formControlName="liquidLimits">
+
                 </li>
-            
+
             </div>
-            
+
            <div class="container2">
                  <li>
 
-                <label for="sandClayForm">sandClay</label>
-                <input type="text" placeholder="sandClay" formControlName="sandClayForm">
-            
+                <label for="sandClay">sandClay</label>
+                <input type="number" placeholder="sandClay" formControlName="sandClay">
+
             </li>
-            
+
             <li>
 
-                <label for="sIndexForm">sIndex</label>
-                <input type="text" placeholder="sIndex" formControlName="sIndexForm">
-            
+                <label for="sIndex">sIndex</label>
+                <input type="number" placeholder="sIndex" formControlName="sIndex">
+
             </li>
-            
+
             <li>
 
-                <label for="phosphorForm">phosphor</label>
-                <input type="text" placeholder="phosphor" formControlName="phosphorForm">
-            
+                <label for="phosphor">phosphor</label>
+                <input type="number" placeholder="phosphor" formControlName="phosphor">
+
             </li>
-            
+
             <li>
 
-                <label for="soilPorosityForm">soilPorosity</label>
-                <input type="text" placeholder="soilPorosity" formControlName="soilPorosityForm">
-            
+                <label for="soilPorosity">soilPorosity</label>
+                <input type="number" placeholder="soilPorosity" formControlName="soilPorosity">
+
             </li>
-            
+
             <li>
 
-                <label for="plasticLimitsForm">plasticLimits</label>
-                <input type="text" placeholder="plasticLimits" formControlName="plasticLimitsForm">
-            
+                <label for="plasticLimits">plasticLimits</label>
+                <input type="number" placeholder="plasticLimits" formControlName="plasticLimits">
+
             </li>
-            
+
             <li>
 
-                <label for="sumOfBasesForm">sumOfBases</label>
-                <input type="text" placeholder="sumOfBases" formControlName="sumOfBasesForm">
-            
+                <label for="sumOfBases">sumOfBases</label>
+                <input type="number" placeholder="sumOfBases" formControlName="sumOfBases">
+
             </li>
-            
+
             <li>
 
-                <label for="cecForm">cec</label>
-                <input type="text" placeholder="cec" formControlName="cecForm">
-            
+                <label for="cec">cec</label>
+                <input type="number" placeholder="cec" formControlName="cec">
+
             </li>
-            
+
             <li>
 
-                <label for="ssForm">ss</label>
-                <input type="text" placeholder="ss" formControlName="ssForm">
-            
+                <label for="ss">ss</label>
+                <input type="number" placeholder="ss" formControlName="ss">
+
             </li>
-            
+
             <li>
 
-                <label for="mediumSandForm">mediumSand</label>
-                <input type="text" placeholder="mediumSand" formControlName="mediumSandForm">
-            
+                <label for="mediumSand">mediumSand</label>
+                <input type="number" placeholder="mediumSand" formControlName="mediumSand">
+
             </li>
-            
+
             <li>
 
-                <label for="veryFineSandForm">veryFineSand</label>
-                <input type="text" placeholder="veryFineSand" formControlName="veryFineSandForm">
-            
+                <label for="veryFineSand">veryFineSand</label>
+                <input type="number" placeholder="veryFineSand" formControlName="veryFineSand">
+
             </li>
-            
+
             <li>
 
-                <label for="theta33Form">theta33</label>
-                <input type="text" placeholder="theta33" formControlName="theta33Form">
-            
+                <label for="theta33">theta33</label>
+                <input type="number" placeholder="theta33" formControlName="theta33">
+
             </li>
-            
+
             <li>
 
-                <label for="mesoporosityForm">mesoporosity</label>
-                <input type="text" placeholder="mesoporosity" formControlName="mesoporosityForm">
-            
+                <label for="mesoporosity">mesoporosity</label>
+                <input type="number" placeholder="mesoporosity" formControlName="mesoporosity">
+
             </li>
-            
+
             <li>
 
-                <label for="phForm">ph</label>
-                <input type="text" placeholder="ph" formControlName="phForm">
-            
+                <label for="ph">ph</label>
+                <input type="number" placeholder="ph" formControlName="ph">
+
             </li>
            </div>
         </ul>
-        
-        <button>Enviar</button>
 
-    </form>
-<!-- 
-        siltForm : new FormControl(''),
-    sandForm : new FormControl(''),
-    clayForm : new FormControl(''),
-    bulkDensityForm : new FormControl(''),
-    organicMatterForm : new FormControl(''),
-    totalPorosityForm : new FormControl(''),
-    coarseSandForm : new FormControl(''),
-    fineSandForm : new FormControl(''),
-    microporosityForm : new FormControl(''),
-    densityOfParticleForm : new FormControl(''),
-    soilOrganicCarbonForm : new FormControl(''),
-    flexPointOfSwrcForm : new FormControl(''),
-    macroporosityForm : new FormControl(''),
-    claySiltForm : new FormControl(''),
-    theta6Form : new FormControl(''),
-    liquidLimitsForm : new FormControl(''),
-    sandClayForm : new FormControl(''),
-    sIndexForm : new FormControl(''),
-    phosphorForm : new FormControl(''),
-    soilPorosityForm : new FormControl(''),
-    plasticLimitsForm : new FormControl(''),
-    sumOfBasesForm : new FormControl(''),
-    cecForm : new FormControl(''),
-    ssForm : new FormControl(''),
-    mediumSandForm : new FormControl(''),
-    veryFineSandForm : new FormControl(''),
-    theta33Form : new FormControl(''),
-    mesoporosityForm : new FormControl(''),
-    phForm : new FormControl(''), -->
-        
+        <button type="submit" (click)="onSubmit()">Enviar</button>
+
+      </form>
+
