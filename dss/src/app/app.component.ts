@@ -83,6 +83,7 @@ export class AppComponent {
 
   }
 
+  // Revisar como enviar os inputs na ordem correta
   calcEquations(equations: Equation[]) {
     this.inputDataList.forEach(input => {
       equations.forEach(e => {
