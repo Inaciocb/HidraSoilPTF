@@ -85,11 +85,13 @@ export class AppComponent {
 
   // Revisar como enviar os inputs na ordem correta
   calcEquations(equations: Equation[]) {
-    this.inputDataList.forEach(input => {
-      equations.forEach(e => {
-        const result: EqResult = e.eq(input.value);
-        console.log("Result: ", result.result, result.measurementUnit);
-      })
+    let orderedInputs = this.inputDataList.filter(i => i.value != 0).sort((a: EqInputData, b: EqInputData) => a.inputType < b.inputType ? -1 : 1);
+    let inputs = orderedInputs.map(i => i.value);
+    console.log("ordererd inputs: ", orderedInputs);
+
+    equations.forEach(e => {
+      const result: EqResult = e.eq(...inputs);
+      console.log("Result: ", result.result, result.measurementUnit);
     });
 
   }
