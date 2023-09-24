@@ -69,7 +69,13 @@ export class AppComponent {
 
       this.setInputData();
       let state: StatesT = StatesT[this.form.get('state')?.value as keyof typeof StatesT];
-      let filteredEquations =  this.equationService.findUsableEquations(this.inputTypes,  state); // aplica o filtro
+      // aplica o filtro
+      let filteredEquations =  this.equationService.findUsableEquations(
+        this.inputTypes,
+        state,
+        this.form.get('selectSoilClass')?.value,
+        this.form.get('selectTexturalClass')?.value
+      );
       this.calcEquations(filteredEquations); // realiza o calculo
     } else {
       Swal.fire('Atenção', 'Insira pelo menos 1 valor', 'warning')
@@ -106,7 +112,13 @@ export class AppComponent {
       results.push(new EqResult(result.result, result.measurementUnit));
       console.log("Result: ", result.result, result.measurementUnit);
     });
-    Swal.fire('Resultado(s)', results.map(r => r.toString()).toString(), 'success' );
+
+    if (results && results.length > 0) {
+      Swal.fire('Resultado(s)', results.map(r => r.toString()).toString(), 'success' );
+    } else {
+      Swal.fire('Atenção', 'Nenhuma equação foi encontrada, tente modificar os filtros', 'warning');
+    }
+
   }
 
   validate(): boolean {

@@ -1,21 +1,45 @@
 import { Injectable } from "@angular/core";
 import { EQUATIONS } from "src/data/static-data";
 import { Equation } from "src/model/equation";
-import { InputsT, StatesT } from "src/model/utils";
+import { InputsT, SoilClassT, StatesT, TexturalClassT } from "src/model/utils";
 
+type NullableString = string | null | undefined
 
 @Injectable({providedIn: 'root'})
 export class EquationService {
 
   //TODO: adicionar classes e outras variaveis que se aplicam no filtro
   // Estados (sempre um) -> Classe textural e classe de solo é apenas uma
-  findUsableEquations(inputs: InputsT[], state: StatesT): Equation[] {
+  findUsableEquations(inputs: InputsT[], state: StatesT, soilClass: NullableString, texturalClass: NullableString): Equation[] {
     // console.log("Procurando Equações compativeis, inputs: ", inputs, " state: ", state);
     return Array.from(EQUATIONS).filter(eq => {
       let inputsIsAccepted = false;
       let stateIsAccepted = false;
+      let soilClassIsAccepted = false;
+      let texturalClassIsAccepted = false;
       let inputsMatchCounter = 0;
       let statesMatchCounter = 0;
+
+      if (soilClass === '') soilClass = null;
+      if (texturalClass === '') texturalClass = null;
+
+      // Filter soilClass & texturalClass
+      if (!soilClass && !texturalClass) {
+        soilClassIsAccepted = true;
+        texturalClassIsAccepted = true;
+      } else {
+        if (soilClass == null) {
+          soilClassIsAccepted = false;
+        } else {
+          soilClassIsAccepted = eq.soilClass.toLocaleLowerCase() == soilClass?.toLocaleLowerCase();
+        }
+
+        if (texturalClass == null) {
+          texturalClassIsAccepted = false;
+        } else {
+          texturalClassIsAccepted = eq.texturalClass.toLocaleLowerCase() == texturalClass?.toLocaleLowerCase();
+        }
+      }
 
       // Filter Inputs ** Precisa revisar a lógica **
       eq.inputsAccepted.forEach(inputsAccepted => {
@@ -40,7 +64,7 @@ export class EquationService {
         stateIsAccepted = statesMatchCounter > 0;
       }
 
-      return inputsIsAccepted && stateIsAccepted;
+      return inputsIsAccepted && stateIsAccepted && (soilClassIsAccepted || texturalClassIsAccepted);
     });
   }
 
