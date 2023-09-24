@@ -5,6 +5,7 @@ import { EqInputData } from 'src/model/eq-input-data';
 import { EqResult } from 'src/model/eq-result';
 import { Equation } from 'src/model/equation';
 import { EquationService } from 'src/service/equation.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-root',
@@ -56,14 +57,17 @@ export class AppComponent {
   }
 
   onSubmit() {
-    // reseta as listas
-    this.inputDataList = [];
-    this.inputTypes = [];
+    if (this.validate()) {
+      // reseta as listas
+      this.inputDataList = [];
+      this.inputTypes = [];
 
-    this.setInputData();
-    let state: StatesT = StatesT[this.form.get('state')?.value as keyof typeof StatesT];
-    let filteredEquations =  this.equationService.findUsableEquations(this.inputTypes,  state); // aplica o filtro
-    this.calcEquations(filteredEquations); // realiza o calculo
+      this.setInputData();
+      let state: StatesT = StatesT[this.form.get('state')?.value as keyof typeof StatesT];
+      let filteredEquations =  this.equationService.findUsableEquations(this.inputTypes,  state); // aplica o filtro
+      this.calcEquations(filteredEquations); // realiza o calculo
+    }
+
   }
 
   // popula as variaveis inputDataList e usedInputTypes
@@ -94,6 +98,15 @@ export class AppComponent {
       console.log("Result: ", result.result, result.measurementUnit);
     });
 
+  }
+
+  validate(): boolean {
+    let valid = false;
+    Object.entries(this.form.controls).forEach(e => {
+      console.log(e[1].value);
+    });
+
+    return valid;
   }
 
 
