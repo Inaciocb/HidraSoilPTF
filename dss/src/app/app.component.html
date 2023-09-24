@@ -36,6 +36,25 @@
 
         </select>
 
+        <div class="p-5" style="margin-top: 10px;">
+          <label for="state_raw">Classe do solo: </label>
+          <select name="state_raw" formControlName="selectSoilClass" id="soilSelect">
+            <option [value]="" selected></option>
+            <option [value]="sc" *ngFor="let sc of soilClasses">{{ sc }}</option>
+          </select>
+        </div>
+
+
+        <div class="p-5" style="margin-top: 10px;">
+          <label for="textural">Classe Textural: </label>
+          <select name="textural" formControlName="selectTexturalClass">
+            <option [value]="" selected></option>
+            <option [value]="tc" *ngFor="let tc of texturalClasses">{{ tc }}</option>
+          </select>
+        </div>
+
+
+
         <ul class="lista">
             <div class="container1">
                 <li>

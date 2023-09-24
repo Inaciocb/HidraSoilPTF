@@ -9,26 +9,31 @@ export enum StatesT {
 
 };
 
-export enum ClassT {
+// FIXME: esta errado qual é textural e qual é de solo
+export enum TexturalClassT {
   Argiloso = 'Argiloso',
-  Francoargiloso = 'Francoargiloso',
-  Latossolo_Amarelo = 'Latossolo Amarelo',
-  Franco_Arenoso = 'Franco Arenoso',
-  Francosiltoso = 'Francosiltoso',
   Muito_Argiloso = 'Muito Argiloso',
-  Latossolo = 'Latossolo',
-  Argissolo = 'Argissolo',
-  Francoargiloar = 'Francoargiloar',
-  Neossolo_Quartzarnico = 'Neossolo Quartzarnico',
-  Neossolo = 'Neossolo',
-  Cambissolo = 'Cambissolo',
-  Planossolo = 'Planossolo',
-  Francoargiloarenoso = 'Francoargiloarenoso',
   Argilo_Siltoso = 'Argilo Siltoso',
   Argilo_Arenoso = 'Argilo Arenoso',
-  Plintossolo = 'Plintossolo',
+  Francoargiloso = 'Francoargiloso',
+  Franco_Arenoso = 'Franco Arenoso',
+  Francosiltoso = 'Francosiltoso',
+  Francoargiloarenoso = 'Francoargiloarenoso',
   Francoarenoso = 'Francoarenoso',
   Arenoso_Franco = 'Arenoso Franco',
+  Francoargiloar = 'Francoargiloar',
+
+}
+
+export enum SoilClassT {
+  Argissolo = 'Argissolo',
+  Cambissolo = 'Cambissolo',
+  Planossolo = 'Planossolo',
+  Plintossolo = 'Plintossolo',
+  Latossolo = 'Latossolo',
+  Latossolo_Amarelo = 'Latossolo Amarelo',
+  Neossolo = 'Neossolo',
+  Neossolo_Quartzarnico = 'Neossolo Quartzarnico',
 }
 
 export enum InputsT {

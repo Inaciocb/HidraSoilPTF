@@ -1,4 +1,4 @@
-import { InputsT, StatesT } from './../model/utils';
+import { InputsT, SoilClassT, StatesT, TexturalClassT } from './../model/utils';
 import { Component } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { EqInputData } from 'src/model/eq-input-data';
@@ -18,8 +18,13 @@ export class AppComponent {
   inputDataList: EqInputData[] = []; // Lista com os inputs para aplicar as equações
   inputTypes: InputsT[] = []; // Util para aplicar no filtro
 
+  soilClasses = Object.values(SoilClassT);
+  texturalClasses = Object.values(TexturalClassT);
+
   form = new FormGroup({
     state: new FormControl('RS'),
+    selectSoilClass: new FormControl(''),
+    selectTexturalClass: new FormControl(''),
     clay: new FormControl(''),
     silt: new FormControl(''),
     sand: new FormControl(''),
@@ -76,7 +81,8 @@ export class AppComponent {
   setInputData(): void {
     Object.entries(this.form.controls).forEach(k => {
       let inputData = new EqInputData();
-      if (k[1].value != "" && k[0] !== 'state') {
+      const isInputNumber = k[0] !== 'state' && k[0] !== 'selectTexturalClass' && k[0] !== 'selectSoilClass';
+      if (k[1].value != "" && isInputNumber) {
         let inputType: InputsT = (InputsT[k[0] as keyof typeof InputsT]);
         inputData.inputType = inputType;
         inputData.value = Number(k[1].value);
@@ -100,15 +106,15 @@ export class AppComponent {
       results.push(new EqResult(result.result, result.measurementUnit));
       console.log("Result: ", result.result, result.measurementUnit);
     });
-    Swal.fire('Resultados', results.map(r => r.toString()).toString(), 'success' );
+    Swal.fire('Resultado(s)', results.map(r => r.toString()).toString(), 'success' );
   }
 
   validate(): boolean {
     let valid = false;
     Object.entries(this.form.controls).forEach(e => {
-      if (e[0] !== 'state' && (e[1].value && e[1].value != '0')) {
-        valid = true;
-      }
+      const isInputNumber = e[0] !== 'state' && e[0] !== 'selectTexturalClass' && e[0] !== 'selectSoilClass';
+      const isValidValue = e[1].value && e[1].value != '0';
+      (isInputNumber && isValidValue) ? valid = true : '';
     });
     return valid;
   }
