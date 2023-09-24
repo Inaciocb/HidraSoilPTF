@@ -9,6 +9,28 @@ export enum StatesT {
 
 };
 
+export enum ClassT {
+  Argiloso = 'Argiloso',
+  Francoargiloso = 'Francoargiloso',
+  Latossolo_Amarelo = 'Latossolo Amarelo',
+  Franco_Arenoso = 'Franco Arenoso',
+  Francosiltoso = 'Francosiltoso',
+  Muito_Argiloso = 'Muito Argiloso',
+  Latossolo = 'Latossolo',
+  Argissolo = 'Argissolo',
+  Francoargiloar = 'Francoargiloar',
+  Neossolo_Quartzarnico = 'Neossolo Quartzarnico',
+  Neossolo = 'Neossolo',
+  Cambissolo = 'Cambissolo',
+  Planossolo = 'Planossolo',
+  Francoargiloarenoso = 'Francoargiloarenoso',
+  Argilo_Siltoso = 'Argilo Siltoso',
+  Argilo_Arenoso = 'Argilo Arenoso',
+  Plintossolo = 'Plintossolo',
+  Francoarenoso = 'Francoarenoso',
+  Arenoso_Franco = 'Arenoso Franco',
+}
+
 export enum InputsT {
   clay = 'clay',
   silt = 'silt' ,

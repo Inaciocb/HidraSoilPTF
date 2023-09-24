@@ -66,6 +66,8 @@ export class AppComponent {
       let state: StatesT = StatesT[this.form.get('state')?.value as keyof typeof StatesT];
       let filteredEquations =  this.equationService.findUsableEquations(this.inputTypes,  state); // aplica o filtro
       this.calcEquations(filteredEquations); // realiza o calculo
+    } else {
+      Swal.fire('Atenção', 'Insira pelo menos 1 valor', 'warning')
     }
 
   }
@@ -91,21 +93,23 @@ export class AppComponent {
   calcEquations(equations: Equation[]) {
     let orderedInputs = this.inputDataList.filter(i => i.value != 0).sort((a: EqInputData, b: EqInputData) => a.inputType < b.inputType ? -1 : 1);
     let inputs = orderedInputs.map(i => i.value);
-    console.log("ordererd inputs: ", orderedInputs);
+    let results: EqResult[] = [];
 
     equations.forEach(e => {
       const result: EqResult = e.eq(...inputs);
+      results.push(new EqResult(result.result, result.measurementUnit));
       console.log("Result: ", result.result, result.measurementUnit);
     });
-
+    Swal.fire('Resultados', results.map(r => r.toString()).toString(), 'success' );
   }
 
   validate(): boolean {
     let valid = false;
     Object.entries(this.form.controls).forEach(e => {
-      console.log(e[1].value);
+      if (e[0] !== 'state' && (e[1].value && e[1].value != '0')) {
+        valid = true;
+      }
     });
-
     return valid;
   }
 

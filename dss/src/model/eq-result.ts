@@ -9,4 +9,8 @@ export class EqResult {
     this.result = _result;
     this.measurementUnit = _measurementUnit;
   }
+
+  toString(): string {
+    return this.result.toString() + ' ' + this.measurementUnit.toString() + "\n";
+  }
 }
