@@ -52,17 +52,18 @@ export class EquationService {
       inputsIsAccepted = eq.inputsAccepted.length <= inputsMatchCounter;
 
       // Filter State ** Aceita se existe pelo menos 1 estado igual ao informado **
-      if (!state) {
-        stateIsAccepted = true;
-      } else {
-
+      // if (!state) {
+      //   stateIsAccepted = true;
+      // } else {
       eq.statesAppliesTo.forEach(statesAppliesTo => {
         if (statesAppliesTo == state) {
+          console.log(statesAppliesTo)
+          console.log(state)
             statesMatchCounter++;
           }
         })
         stateIsAccepted = statesMatchCounter > 0;
-      }
+      //}
 
       return inputsIsAccepted && stateIsAccepted && (soilClassIsAccepted || texturalClassIsAccepted);
     });

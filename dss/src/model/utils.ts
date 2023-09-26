@@ -1,3 +1,5 @@
+import { EqResult } from "./eq-result";
+
 export type Empty = '';
 
 export type MeasurementUnitT = '%' | '(g/g)*100' | 'cm/100cm' | 'cm/cm' | 'g/g'
@@ -88,3 +90,13 @@ export const STATES: Set<string> = new Set(
   'SC',
   'SP',
   'Tab. Costeiros']);
+
+
+
+  export function resultsToString(results: EqResult[]): string {
+    let str = "<p>"
+    results.forEach(r => {
+      str = str.concat(r.toString(), "</br>")
+    })
+    return str + "<p>";
+  }

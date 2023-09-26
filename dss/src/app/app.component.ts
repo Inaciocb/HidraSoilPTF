@@ -1,4 +1,4 @@
-import { InputsT, SoilClassT, StatesT, TexturalClassT } from './../model/utils';
+import { InputsT, SoilClassT, StatesT, TexturalClassT, resultsToString } from './../model/utils';
 import { Component } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { EqInputData } from 'src/model/eq-input-data';
@@ -20,6 +20,7 @@ export class AppComponent {
 
   soilClasses = Object.values(SoilClassT);
   texturalClasses = Object.values(TexturalClassT);
+  filteredEquations: Equation[] = [];
 
   form = new FormGroup({
     state: new FormControl('RS'),
@@ -62,21 +63,21 @@ export class AppComponent {
   }
 
   onSubmit() {
+    // reseta as listas
+    this.inputDataList = [];
+    this.inputTypes = [];
+    this.filteredEquations = [];
     if (this.validate()) {
-      // reseta as listas
-      this.inputDataList = [];
-      this.inputTypes = [];
-
       this.setInputData();
       let state: StatesT = StatesT[this.form.get('state')?.value as keyof typeof StatesT];
       // aplica o filtro
-      let filteredEquations =  this.equationService.findUsableEquations(
+      this.filteredEquations =  this.equationService.findUsableEquations(
         this.inputTypes,
         state,
         this.form.get('selectSoilClass')?.value,
         this.form.get('selectTexturalClass')?.value
       );
-      this.calcEquations(filteredEquations); // realiza o calculo
+      this.calcEquations(this.filteredEquations); // realiza o calculo
     } else {
       Swal.fire('Atenção', 'Insira pelo menos 1 valor', 'warning')
     }
@@ -114,7 +115,7 @@ export class AppComponent {
     });
 
     if (results && results.length > 0) {
-      Swal.fire('Resultado(s)', results.map(r => r.toString()).toString(), 'success' );
+      Swal.fire({title:'Resultado(s)', html: resultsToString(results), icon: 'success' });
     } else {
       Swal.fire('Atenção', 'Nenhuma equação foi encontrada, tente modificar os filtros', 'warning');
     }

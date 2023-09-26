@@ -11,6 +11,6 @@ export class EqResult {
   }
 
   toString(): string {
-    return this.result.toString() + ' ' + this.measurementUnit.toString() + "\n";
+    return this.result + ' ' + this.measurementUnit;
   }
 }
