@@ -6,8 +6,35 @@ export type MeasurementUnitT = '%' | '(g/g)*100' | 'cm/100cm' | 'cm/cm' | 'g/g'
   | 'g/kg' | 'kg/kg' | 'm.m/10' | 'm/m' | 'm/m.10' | 'm3/m';
 
 export enum StatesT {
-  Agreste = 'Agreste' , BA = 'BA' , BR = 'BR', CE = 'CE' , Cerrado ='Cerrado' , ES = 'ES' ,
-  GO = 'GO' , MG = 'MG' , MT = 'MT' , PB = 'PB' , PE = 'PE' , PI = 'PI' , RS = 'RS' , SC = 'SC' , SP = 'SP' , Tab_Costeiros = 'Tab. Costeiros'
+  Agreste = 'Agreste',
+  BA = 'BA',
+  BR = 'BR',
+  CE = 'CE',
+  Cerrado = 'Cerrado',
+  ES = 'ES',
+  GO = 'GO',
+  MG = 'MG',
+  MT = 'MT',
+  PB = 'PB',
+  PE = 'PE',
+  PI = 'PI',
+  RS = 'RS',
+  SC = 'SC',
+  SP = 'SP',
+  Tab_Costeiros = 'Tab. Costeiros',
+  MS = 'MS',
+  PR = 'PR',
+  RJ = 'RJ',  
+  RN = 'RN', 
+  AM = 'AM', 
+  AP = 'AP', 
+  AC = 'AC', 
+  RO = 'RO', 
+  RR = 'RR', 
+  TO = 'TO', 
+  AL = 'AL', 
+  MA = 'MA',
+  SE = 'SE',
 
 };
 
