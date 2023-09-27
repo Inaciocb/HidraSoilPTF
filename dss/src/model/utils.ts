@@ -24,15 +24,15 @@ export enum StatesT {
   Tab_Costeiros = 'Tab. Costeiros',
   MS = 'MS',
   PR = 'PR',
-  RJ = 'RJ',  
-  RN = 'RN', 
-  AM = 'AM', 
-  AP = 'AP', 
-  AC = 'AC', 
-  RO = 'RO', 
-  RR = 'RR', 
-  TO = 'TO', 
-  AL = 'AL', 
+  RJ = 'RJ',
+  RN = 'RN',
+  AM = 'AM',
+  AP = 'AP',
+  AC = 'AC',
+  RO = 'RO',
+  RR = 'RR',
+  TO = 'TO',
+  AL = 'AL',
   MA = 'MA',
   SE = 'SE',
 
@@ -120,8 +120,15 @@ export const STATES: Set<string> = new Set(
 
 
 
-  export function resultsToString(results: EqResult[]): string {
+  export function resultsToString(results: EqResult[], warnings: string[]): string {
     let str = "<p>"
+    if (warnings && warnings.length > 0) {
+      warnings.forEach(w => {
+        str = str.concat(w, "</br>")
+      })
+      str = str.concat("</br> </br>")
+    }
+
     results.forEach(r => {
       str = str.concat(r.toString(), "</br>")
     })

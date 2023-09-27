@@ -2,39 +2,12 @@
 <div class="formulario">
     <form [formGroup]="form">
 
-
-         <label for="estados">Selecione o estado *:</label>
-
-        <select name="estados" id="estados" formControlName="state">
-            <option value="RS">RS</option>
-            <option value="SC">SC</option>
-            <option value="PR">PR</option>
-            <option value="SP">SP</option>
-            <option value="RJ">RJ</option>
-            <option value="MG">MG</option>
-            <option value="ES">ES</option>
-            <option value="MS">MS</option>
-            <option value="MT">MT</option>
-            <option value="GO">GO</option>
-            <option value="DF">DF</option>
-            <option value="BA">BA</option>
-            <option value="SE">SE</option>
-            <option value="AL">AL</option>
-            <option value="PE">PE</option>
-            <option value="PB">PB</option>
-            <option value="RN">RN</option>
-            <option value="CE">CE</option>
-            <option value="PI">PI</option>
-            <option value="MA">MA</option>
-            <option value="TO">TO</option>
-            <option value="PA">PA</option>
-            <option value="AP">AP</option>
-            <option value="RR">RR</option>
-            <option value="AM">AM</option>
-            <option value="AC">AC</option>
-
-
-        </select>
+        <div class="p-5" style="margin-top: 10px;">
+          <label for="states">Selecione o estado/bioma *: </label>
+          <select name="states" formControlName="state" id="states">
+            <option [value]="state" *ngFor="let state of states">{{ state }}</option>
+          </select>
+        </div>
 
         <div class="p-5" style="margin-top: 10px;">
           <label for="state_raw">Classe do solo: </label>

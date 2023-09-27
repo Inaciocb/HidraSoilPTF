@@ -7,6 +7,8 @@ import { Equation } from 'src/model/equation';
 import { EquationService } from 'src/service/equation.service';
 import Swal from 'sweetalert2';
 
+type NullableString = string | null | undefined;
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -20,7 +22,9 @@ export class AppComponent {
 
   soilClasses = Object.values(SoilClassT);
   texturalClasses = Object.values(TexturalClassT);
+  states = Object.values(StatesT);
   filteredEquations: Equation[] = [];
+  warnings: string[] = [];
 
   form = new FormGroup({
     state: new FormControl('RS'),
@@ -67,6 +71,7 @@ export class AppComponent {
     this.inputDataList = [];
     this.inputTypes = [];
     this.filteredEquations = [];
+    this.warnings = [];
     if (this.validate()) {
       this.handleEquations();
     } else {
@@ -88,6 +93,7 @@ export class AppComponent {
       );
 
       if (!this.filteredEquations || this.filteredEquations.length <= 0) {
+        this.warnings.push("Aviso: Não foram encontradas equações para o estado " + this.form.get('state')?.value?.toString() )
         this.filteredEquations = this.equationService.findUsableEquations(
           this.inputTypes,
           state,
@@ -96,7 +102,7 @@ export class AppComponent {
           true
         );
       }
-      this.calcEquations(this.filteredEquations); // realiza o calculo
+      this.calcEquations(this.filteredEquations);
   }
 
   // popula as variaveis inputDataList e usedInputTypes
@@ -117,6 +123,7 @@ export class AppComponent {
 
   }
 
+  // Realiza o calculo e mostra resultados
   calcEquations(equations: Equation[]) {
     let orderedInputs = this.inputDataList.filter(i => i.value != 0).sort((a: EqInputData, b: EqInputData) => a.inputType < b.inputType ? -1 : 1);
     let inputs = orderedInputs.map(i => i.value);
@@ -125,12 +132,16 @@ export class AppComponent {
 
     finalEquations.forEach(e => {
       const result: EqResult = e.eq(...inputs);
-      results.push(new EqResult(result.result, result.measurementUnit));
+      let r = new EqResult(result.result, result.measurementUnit);
+      r.eqType = e.type;
+      results.push(r);
       console.log("Equação: ", e, "\nResultado: ", result.result, result.measurementUnit);
     });
 
+    // results = results.filter(r => !isNaN(r.result)); // remove NaN
+
     if (results && results.length > 0) {
-      Swal.fire({title:'Resultado(s)', html: resultsToString(results), icon: 'success' });
+      Swal.fire({title:'Resultado(s)', html: resultsToString(results, this.warnings), icon: 'success' });
     } else {
       Swal.fire('Atenção', 'Nenhuma equação foi encontrada, tente modificar os filtros', 'warning');
     }
