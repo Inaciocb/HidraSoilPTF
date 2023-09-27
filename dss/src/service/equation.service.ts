@@ -10,7 +10,8 @@ export class EquationService {
 
   //TODO: adicionar classes e outras variaveis que se aplicam no filtro
   // Estados (sempre um) -> Classe textural e classe de solo é apenas uma
-  findUsableEquations(inputs: InputsT[], state: StatesT, soilClass: NullableString, texturalClass: NullableString): Equation[] {
+  findUsableEquations(inputs: InputsT[], state: StatesT, soilClass: NullableString,
+    texturalClass: NullableString, applyToAllStates: boolean): Equation[] {
     // console.log("Procurando Equações compativeis, inputs: ", inputs, " state: ", state);
     return Array.from(EQUATIONS).filter(eq => {
       let inputsIsAccepted = false;
@@ -52,18 +53,16 @@ export class EquationService {
       inputsIsAccepted = eq.inputsAccepted.length <= inputsMatchCounter;
 
       // Filter State ** Aceita se existe pelo menos 1 estado igual ao informado **
-      // if (!state) {
-      //   stateIsAccepted = true;
-      // } else {
+      if (applyToAllStates) {
+        stateIsAccepted = true;
+      } else {
       eq.statesAppliesTo.forEach(statesAppliesTo => {
         if (statesAppliesTo == state) {
-          console.log(statesAppliesTo)
-          console.log(state)
             statesMatchCounter++;
           }
         })
         stateIsAccepted = statesMatchCounter > 0;
-      //}
+      }
 
       return inputsIsAccepted && stateIsAccepted && (soilClassIsAccepted || texturalClassIsAccepted);
     });

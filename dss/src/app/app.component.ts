@@ -68,20 +68,35 @@ export class AppComponent {
     this.inputTypes = [];
     this.filteredEquations = [];
     if (this.validate()) {
-      this.setInputData();
+      this.handleEquations();
+    } else {
+      Swal.fire('Atenção', 'Insira pelo menos 1 valor', 'warning')
+    }
+
+  }
+
+  handleEquations(): void {
+    this.setInputData();
       let state: StatesT = StatesT[this.form.get('state')?.value as keyof typeof StatesT];
       // aplica o filtro
       this.filteredEquations =  this.equationService.findUsableEquations(
         this.inputTypes,
         state,
         this.form.get('selectSoilClass')?.value,
-        this.form.get('selectTexturalClass')?.value
+        this.form.get('selectTexturalClass')?.value,
+        false
       );
-      this.calcEquations(this.filteredEquations); // realiza o calculo
-    } else {
-      Swal.fire('Atenção', 'Insira pelo menos 1 valor', 'warning')
-    }
 
+      if (!this.filteredEquations || this.filteredEquations.length <= 0) {
+        this.filteredEquations = this.equationService.findUsableEquations(
+          this.inputTypes,
+          state,
+          this.form.get('selectSoilClass')?.value,
+          this.form.get('selectTexturalClass')?.value,
+          true
+        );
+      }
+      this.calcEquations(this.filteredEquations); // realiza o calculo
   }
 
   // popula as variaveis inputDataList e usedInputTypes
@@ -102,16 +117,16 @@ export class AppComponent {
 
   }
 
-  // Revisar como enviar os inputs na ordem correta
   calcEquations(equations: Equation[]) {
     let orderedInputs = this.inputDataList.filter(i => i.value != 0).sort((a: EqInputData, b: EqInputData) => a.inputType < b.inputType ? -1 : 1);
     let inputs = orderedInputs.map(i => i.value);
     let results: EqResult[] = [];
+    let finalEquations = this.findLowerRmseEquations(equations);
 
-    equations.forEach(e => {
+    finalEquations.forEach(e => {
       const result: EqResult = e.eq(...inputs);
       results.push(new EqResult(result.result, result.measurementUnit));
-      console.log("Result: ", result.result, result.measurementUnit);
+      console.log("Equação: ", e, "\nResultado: ", result.result, result.measurementUnit);
     });
 
     if (results && results.length > 0) {
@@ -132,45 +147,25 @@ export class AppComponent {
     return valid;
   }
 
+  // Retorna a lista com menor rmse de FC e PWP
+  findLowerRmseEquations(equations: Equation[]): Equation[] {
+    if (!equations || equations.length <= 0) return [];
+    let lowerRMSEEquations = [];
+    let fcEquations = equations.filter(e => e.type === 'fieldCapacity')
+    let pwpEquations = equations.filter(e => e.type === 'permanentWiltingPoint')
 
-}
+    if (fcEquations && fcEquations.length > 0)
+      lowerRMSEEquations.push(fcEquations.reduce((prev, next) => prev.rmse < next.rmse ? prev : next));
 
-class estado {
-}
-
-
-class Vars {
-
-}
-
-class S_T_class {
+    if(pwpEquations && pwpEquations.length > 0)
+      lowerRMSEEquations.push(pwpEquations.reduce((prev, next) => prev.rmse < next.rmse ? prev : next));
 
 
-}
+    console.log("Lower RMSE equations: ", lowerRMSEEquations);
+    return lowerRMSEEquations;
+  }
 
-export class equacaoFC {
-    rmse: number;
-    estado: estado;
-    vars: Vars;
-    kpa: number;
-    S_T_class: S_T_class;
-    autor: string;
 
-    constructor(
-        rmse: number,
-        estado: estado,
-        vars: Vars,
-        kpa: number,
-        S_T_class: S_T_class,
-        autor: string
-    ) {
-        this.rmse = rmse;
-        this.estado = estado;
-        this.vars = vars;
-        this.kpa = kpa;
-        this.S_T_class = S_T_class;
-        this.autor = autor;
-    }
 }
 
 
