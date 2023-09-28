@@ -15,7 +15,8 @@ li{
     display:flex;
     flex-direction: column;
     text-align: center;
-    margin:5px;
+    margin-bottom: 25px;
+    padding: 10px;
 }
 
  input[type=text] {

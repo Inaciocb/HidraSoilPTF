@@ -1146,7 +1146,7 @@ export const EQUATIONS: Set<Equation> = new Set([
 // Plintossolos
 // Vertissolos
 
-
+//.
 // Classe textural (input): 
 //Muito Argilosa
 // Argiloso
