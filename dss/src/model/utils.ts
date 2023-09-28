@@ -2,7 +2,7 @@ import { EqResult } from "./eq-result";
 
 export type Empty = '';
 
-export type MeasurementUnitT = '%' | '(g/g)*100' | 'cm/100cm' | 'cm²/cm²' | 'g/g'
+export type MeasurementUnitT = '%' | '(g/g)*100' | 'cm/100cm' | 'cm³/cm³' | 'g/g'
   | 'g/kg' | 'kg/kg' | 'm²/10' | 'm²/m²' | 'm/m.10' | 'm3/m';
 
 export enum StatesT {
