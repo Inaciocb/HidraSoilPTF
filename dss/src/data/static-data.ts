@@ -189,7 +189,7 @@ export const EQUATIONS: Set<Equation> = new Set([
     [InputsT.clay],
     (clay: number): EqResult => {
       const result = (0.330 * (clay) + 8.3);
-      return new EqResult(result, 'g/kg')
+      return new EqResult(result, 'm²/m²')
     },
     '',
     [StatesT.MS, StatesT.MT, StatesT.GO, StatesT.TO, StatesT.MA, StatesT.PI, StatesT.BA, StatesT.MG],
@@ -913,9 +913,6 @@ export const EQUATIONS: Set<Equation> = new Set([
   ),
 
 
-]);
-
-
 
 
 
@@ -1160,3 +1157,4 @@ export const EQUATIONS: Set<Equation> = new Set([
 // Silte 
 // Areia Fraca
 // Areia
+
