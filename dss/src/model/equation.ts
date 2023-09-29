@@ -14,6 +14,7 @@ export class Equation {
   inputsAccepted: InputsT[];
   rmse: number;
   type: EqType;
+  numKpa!: number;
 
   constructor(
     _texturalClass: string | Empty,
