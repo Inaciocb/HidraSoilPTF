@@ -2,8 +2,8 @@ import { EqResult } from "./eq-result";
 
 export type Empty = '';
 
-export type MeasurementUnitT = '%' | '(g/g)*100' | 'cm/100cm' | 'cm³/cm³' | 'g/g'
-  | 'g/kg' | 'kg/kg' | 'm²/10' | 'm²/m²' | 'm/m.10' | 'm3/m';
+export type MeasurementUnitT = '%' | '(g/g)*100' | 'cm³/100cm³' | 'cm³/cm³' | 'g/g'
+  | 'g/kg' | 'kg/kg' | 'm³/m³*100' | 'm³/m³' | 'm/m.10' | 'm³/m³';
 
 export enum StatesT {
   Agreste = 'Agreste',

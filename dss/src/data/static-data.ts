@@ -15,7 +15,7 @@ export const EQUATIONS: Set<Equation> = new Set([
   //     [InputsT.bulkDensity],                                              // Inputs Accepted
   //     (bd: number): EqResult => {                                         // Equation
   //       const result = (0.46082 - 0.18014 * bd);
-  //       return new EqResult(result, 'cm²/cm²')
+  //       return new EqResult(result, 'cm³/cm³')
   //     },
   //     '',                                                                 // Class
   //     [StatesT.BA],                                                       // States
@@ -59,7 +59,7 @@ export const EQUATIONS: Set<Equation> = new Set([
     [InputsT.sand, InputsT.clay, InputsT.silt, InputsT.bulkDensity, InputsT.totalPorosity],
     (sand: number, clay: number, silt: number, bd: number, tp: number): EqResult => {
       const result = (0.079 * sand + 0.212 * clay + 0.201 * silt + 13.684 * bd + 20.442 * tp);
-      return new EqResult(result, 'cm²/cm²')
+      return new EqResult(result, 'cm³/cm³')
     },
     '',
     [StatesT.MG],
@@ -72,7 +72,7 @@ export const EQUATIONS: Set<Equation> = new Set([
     [InputsT.sand, InputsT.clay, InputsT.silt, InputsT.bulkDensity, InputsT.totalPorosity],
     (sand: number, clay: number, silt: number, bd: number, tp: number): EqResult => {
       const result = (0.079 * sand + 0.212 * clay + 0.201 * silt + 13.684 * bd + 20.442 * tp);
-      return new EqResult(result, 'cm²/cm²')
+      return new EqResult(result, 'cm³/cm³')
     },
     '',
     [StatesT.MG],
@@ -85,7 +85,7 @@ export const EQUATIONS: Set<Equation> = new Set([
     [InputsT.sand, InputsT.clay, InputsT.silt, InputsT.bulkDensity],
     (sand: number, clay: number, silt: number, bd: number): EqResult => {
       const result = (0.119 * sand + 0.410 * clay + 0.396 * silt + 6.242 * bd);
-      return new EqResult(result, 'cm²/cm²')
+      return new EqResult(result, 'cm³/cm³')
     },
     '',
     [StatesT.MG],
@@ -98,7 +98,7 @@ export const EQUATIONS: Set<Equation> = new Set([
     [InputsT.sand, InputsT.clay, InputsT.silt],
     (sand: number, clay: number, silt: number): EqResult => {
       const result = (0.208 * sand + 0.474 * clay + 0.456 * silt);
-      return new EqResult(result, 'cm²/cm²')
+      return new EqResult(result, 'cm³/cm³')
     },
     '',
     [StatesT.MG],
@@ -111,7 +111,7 @@ export const EQUATIONS: Set<Equation> = new Set([
     [InputsT.sand, InputsT.clay],
     (sand: number, clay: number): EqResult => {
       const result = (0.245 * sand + 0.607 * clay);
-      return new EqResult(result, 'cm²/cm²')
+      return new EqResult(result, 'cm³/cm³')
     },
     '',
     [StatesT.MG],
@@ -124,7 +124,7 @@ export const EQUATIONS: Set<Equation> = new Set([
     [InputsT.fineSand, InputsT.clay, InputsT.silt, InputsT.coarseSand],
     (FS: number, clay: number, silt: number, CS: number): EqResult => {
       const result = (0.1821 + 0.00034 * FS/10 + 0.00022 * clay/10 - 0.0347 * CS);
-      return new EqResult(result, 'cm²/cm²')
+      return new EqResult(result, 'cm³/cm³')
     },
     'argissolo',
     [StatesT.PI],
@@ -137,7 +137,7 @@ export const EQUATIONS: Set<Equation> = new Set([
     [InputsT.fineSand, InputsT.clay, InputsT.silt, InputsT.coarseSand],
     (FS: number, clay: number, silt: number, CS: number): EqResult => {
       const result = (0.0507 + 0.0004 * FS/10 + 0.1039 * CS - 0.0007 * silt/10);
-      return new EqResult(result, 'cm²/cm²')
+      return new EqResult(result, 'cm³/cm³')
     },
     'neossolo',
     [StatesT.PI],
@@ -150,7 +150,7 @@ export const EQUATIONS: Set<Equation> = new Set([
     [InputsT.clay, InputsT.silt, InputsT.coarseSand],
     (clay: number, silt: number, CS: number): EqResult => {
       const result = (0.4098 - 0.0002 * clay/10 - 0.0001 * silt/10 - 0.0397 * CS);
-      return new EqResult(result, 'cm²/cm²')
+      return new EqResult(result, 'cm³/cm³')
     },
     '',
     [StatesT.PI],
@@ -163,7 +163,7 @@ export const EQUATIONS: Set<Equation> = new Set([
     [InputsT.sand, InputsT.clay, InputsT.silt],
     (sand: number, clay: number, silt: number): EqResult => {
       const result = (0.645 - 0.00033 * sand/10 - 0.0002 * clay/10 - 0.0003 * silt/10);
-      return new EqResult(result, 'cm²/cm²')
+      return new EqResult(result, 'cm³/cm³')
     },
     '',
     [StatesT.PI],
@@ -189,7 +189,7 @@ export const EQUATIONS: Set<Equation> = new Set([
     [InputsT.clay],
     (clay: number): EqResult => {
       const result = (0.330 * (clay) + 8.3);
-      return new EqResult(result, 'm²/m²')
+      return new EqResult(result, 'm³/m³')
     },
     '',
     [StatesT.MS, StatesT.MT, StatesT.GO, StatesT.TO, StatesT.MA, StatesT.PI, StatesT.BA, StatesT.MG],
@@ -332,7 +332,7 @@ export const EQUATIONS: Set<Equation> = new Set([
     [InputsT.bulkDensity],
     (bd: number): EqResult => {
       const result = (0.46082 - 0.18014 * bd);
-      return new EqResult(result, 'cm²/cm²')
+      return new EqResult(result, 'cm³/cm³')
     },
     '',
     [StatesT.BA],
@@ -458,7 +458,7 @@ export const EQUATIONS: Set<Equation> = new Set([
   ),
 
   new Equation(
-    'argiloso',
+    '',
     [InputsT.silt, InputsT.bulkDensity],
     (silt: number, bd: number): EqResult => {
       const result = (41.3580 - 16.6354 * bd + 0.4106 * silt);
@@ -893,7 +893,7 @@ export const EQUATIONS: Set<Equation> = new Set([
       const result = (0.000328 * sand/10 + 0.00571 * clay/10);
       return new EqResult(result, 'g/kg')
     },
-    'muitoa argiloso',
+    'muito argiloso',
     [StatesT.PE],
     0.27970322303,
     'fieldCapacity'
@@ -912,6 +912,7 @@ export const EQUATIONS: Set<Equation> = new Set([
     'fieldCapacity'
   ),
 
+]);
 
 
 
