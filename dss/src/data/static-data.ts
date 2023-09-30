@@ -182,8 +182,6 @@ export const EQUATIONS: Set<Equation> = new Set([
     'fieldCapacity',
     10,
   ),
-  //isso aí! Mas detalhe, acima os imputs ainda não estão em ordem alfabética, mas a ordem dos inputs deve ser em ordem alfabética
-  //agora eu arrumei, estão na ordem alfabética, atente-se a isso quando for adicionar novas formulas
   new Equation(
     '',
     [InputsT.coarseSand, InputsT.bulkDensity, InputsT.totalPorosity],
@@ -407,7 +405,6 @@ export const EQUATIONS: Set<Equation> = new Set([
     'fieldCapacity',
     33,
   ),
-  //atenção: é importante manter a ordem dos inputs em ordem alfabética!
 
   new Equation(
     '',
@@ -1235,8 +1232,6 @@ export const EQUATIONS: Set<Equation> = new Set([
     33,
   ),
 
-
-
   new Equation(
     '',
     [InputsT.bulkDensity, InputsT.clay, InputsT.sand, InputsT.silt],
@@ -1251,6 +1246,47 @@ export const EQUATIONS: Set<Equation> = new Set([
     33,
   ),
 
+  new Equation(
+    '',
+    [ InputsT.clay, InputsT.sand, InputsT.silt],
+    ( Clay: number, Sand: number, Silt: number): EqResult => {
+      const result = 0.000341 * (Silt/10) + 0.000374 * (Clay/10);
+    return new EqResult(result, 'kg/kg')
+    },
+    'Francoargiloarenoso',
+    [StatesT.PE],
+    0.3055896586,
+    'fieldCapacity',
+    33,
+  ),
+
+  new Equation(
+    '',
+    [ InputsT.bulkDensity, InputsT.fineSand, InputsT.microporosity, InputsT.silt],
+    ( BD: number, FS: number, Micro: number, Silt: number): EqResult => {
+      const result = 0.11305 + 0.02978 * BD + 0.0086 * Micro + 0.0006 * FS/10 + 0.0011 * Silt/10;
+    return new EqResult(result, 'cm³/cm³')
+    },
+    'Gleissolo',
+    [StatesT.BA],
+    0.2462552040,
+    'fieldCapacity',
+    33,
+  ),
+
+  new Equation(
+    '',
+    [InputsT.bulkDensity, InputsT.clay, InputsT.coarseSand, InputsT.densityOfParticle],
+    ( BD: number, Clay: number, CS: number, DP: number): EqResult => {
+      const result = 0.33983 - 0.00037477 * CS - 0.06527 * BD - 0.05612 * DP;
+    return new EqResult(result, 'cm³/cm³')
+    },
+    'Argissolo',
+    [StatesT.PB],
+    0.1959146015,
+    'fieldCapacity',
+    33,
+  ),
 
 ]);
 
@@ -1279,10 +1315,7 @@ export const EQUATIONS: Set<Equation> = new Set([
 // Men2;FCth33_Men2;0.04314 + 0.00762 * Micro - 0.00074 * TP - 0.00058 * FS/10;;cm/cm;BA;;;;0,2462552040
 // Mar;FCth33_Mar;0.47352559 + 0.00017979 * Clay - 0.12025765 * BD;;m/mì;RS;;;;0,0836264034
 // Ol3;FCth33_Ol3;0.000079 * (Sand/10) +0.000444 *(Silt/10) + 0.000484*(Clay/10) ? 0.069234 * BD;Argiloso;kg/kg;PE;;;;0,4361980955
-// Ol5;FCth33_Ol5;#NOME?;;kg/kg;PE;;;;0,2278743835
 // Ol6;FCth33_Ol6;0.000088 * (Sand/10) + 0.000449 * (Silt/10) + 0.000448 * (Clay/10) ? 0.058166 * BD;;kg/kg;PE;;;;0,4144975555
-// Ol8;FCth33_Ol8;#NOME?;;kg/kg;PE;;;;0,2230719771
-// Ol9;FCth33_Ol9;#NOME?;;kg/kg;PE;;;;0,0000000000
 // Ol2;FCth33_Ol2;0.000341 * (Silt/10) + 0.000374 * (Clay/10);Francoargiloarenoso;kg/kg;PE;;;;0,3055896586
 // Men1;FCth33_Men1;0.11305 + 0.02978 * BD + 0.01037 * Micro + 0.00049169 * Clay/10;;m/mì;RS;;;;0,1614988001
 // Sou2;FCth33_Sou2;0.08595 + 0.006102 * Macro;;m/mì;Tab. Costeiros;;;;0,2241769157
