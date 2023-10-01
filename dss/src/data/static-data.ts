@@ -1288,7 +1288,22 @@ export const EQUATIONS: Set<Equation> = new Set([
     33,
   ),
 
+  new Equation(
+    '',
+    [InputsT.clay, InputsT.coarseSand, InputsT.fineSand, InputsT.organicMatter],
+    ( Clay: number, CS: number, FS: number, OM: number): EqResult => {
+      const result = 0.06177 - 0.00041281 * CS - 0.00029075 * FS - 0.00038934 * CS;
+    return new EqResult(result, 'cm³/cm³')
+    },
+    '',
+    [StatesT.PB],
+    0.1959146015,
+    'fieldCapacity',
+    33,
+  ),
+
 ]);
+
 
 
 

@@ -66,6 +66,7 @@ export enum SoilClassT {
 }
 
 export enum InputsT {
+  
   clay = 'clay',
   silt = 'silt' ,
   sand = 'sand' ,
@@ -82,7 +83,6 @@ export enum InputsT {
   claySilt = 'claySilt' ,
   theta6 = 'theta6' ,
   liquidLimits = 'liquidLimits' ,
-  sandClay = 'sandClay' ,
   sIndex = 'sIndex' ,
   phosphor = 'phosphor' ,
   soilPorosity = 'soilPorosity' ,
@@ -94,7 +94,12 @@ export enum InputsT {
   veryFineSand = 'veryFineSand' ,
   theta33 = 'theta33' ,
   mesoporosity = 'mesoporosity' ,
-  ph = 'ph'
+  ph = 'ph',
+  veryCoarseSand = 'veryCoarseSand',
+  agregatesStability = 'agregatesStability',
+  floculationDegree = 'floculationDegree',
+
+
  }
 
 export const MAX_VARIABLES = 7;
