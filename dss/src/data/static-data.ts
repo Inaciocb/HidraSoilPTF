@@ -6,6 +6,10 @@ function log (num: number) {
   return Math.log(num);
 }
 
+function ln (num: number) {
+    return Math.log(num);
+}
+
 // Importante manter os parametros da função que aplica a equação em ordem alfabética de acordo com os nomes na tela inicial!!!!
 // exemplo formula recebe CS -> considerar coarseSand para ordem alfabética
 export const EQUATIONS: Set<Equation> = new Set([
