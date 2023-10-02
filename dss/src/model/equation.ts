@@ -4,6 +4,7 @@ import { EqFunction } from "./eq-result";
 export type EqType = 'fieldCapacity' | 'permanentWiltingPoint';
 
 export class Equation {
+  name!: string
   eq: EqFunction;
   //FIXME: criar um type com todas estas classes
   soilClass: string | Empty;
@@ -17,6 +18,7 @@ export class Equation {
   numKpa!: number;
 
   constructor(
+    _name: string,
     _texturalClass: string | Empty,
     _inputsAccepted: InputsT[],
     _eq: EqFunction,
@@ -26,7 +28,7 @@ export class Equation {
     _type: EqType,
     _numKpa: number,
   ) {
-
+    this.name = _name;
     this.soilClass = _soilClass;
     this.statesAppliesTo = _states;
     this.texturalClass = _texturalClass;

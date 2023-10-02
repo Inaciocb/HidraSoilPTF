@@ -6,11 +6,11 @@ export type MeasurementUnitT = '%' | '(g/g)*100' | 'cm³/100cm³' | 'cm³/cm³' 
   | 'g/kg' | 'kg/kg' | 'm³/m³*100' | 'm³/m³' | 'm²/m²*100' | 'm³/m³'| 'dag/kg';
 
 export enum StatesT {
-  Agreste = 'Agreste',
+  AGRESTE = 'Agreste',
   BA = 'BA',
   BR = 'BR',
   CE = 'CE',
-  Cerrado = 'Cerrado',
+  CERRADO = 'Cerrado',
   ES = 'ES',
   GO = 'GO',
   MG = 'MG',
@@ -21,7 +21,7 @@ export enum StatesT {
   RS = 'RS',
   SC = 'SC',
   SP = 'SP',
-  Tab_Costeiros = 'Tab. Costeiros',
+  TAB_COSTEIROS = 'Tab. Costeiros',
   MS = 'MS',
   PR = 'PR',
   RJ = 'RJ',
@@ -66,7 +66,7 @@ export enum SoilClassT {
 }
 
 export enum InputsT {
-  
+
   clay = 'clay',
   silt = 'silt' ,
   sand = 'sand' ,
@@ -98,7 +98,7 @@ export enum InputsT {
   veryCoarseSand = 'veryCoarseSand',
   agregatesStability = 'agregatesStability',
   floculationDegree = 'floculationDegree',
-
+  estabilidadeDeAgregados = 'estabilidadeDeAgregados'
 
  }
 
