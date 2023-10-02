@@ -1302,6 +1302,531 @@ export const EQUATIONS: Set<Equation> = new Set([
     33,
   ),
 
+
+//[...] resto das FC -------------
+
+
+  new Equation(
+    '',
+    [InputsT.bulkDensity],
+    ( BD: number): EqResult => {
+      const result = 0.16288 - 0.07336 * BD ;
+    return new EqResult(result, 'cm³/cm³')
+    },
+    'Argissolo',
+    [StatesT.PB],
+    0.1959146015,
+    'permanentWiltingPoint',
+    0,
+  ),
+
+  new Equation(
+    '',
+    [InputsT.bulkDensity],
+    ( BD: number): EqResult => {
+      const result = 0.24049 - 0.10555 * BD ;
+    return new EqResult(result, 'cm³/cm³')
+    },
+    '',
+    [StatesT.BA],
+    0.1494699620,
+    'permanentWiltingPoint',
+    0,
+  ),
+
+  new Equation(
+    '',
+    [InputsT.bulkDensity, InputsT.totalPorosity],
+    ( BD: number, TP: number): EqResult => {
+      const result = 0.5624 - 0.1561 * BD - 0.5720 * TP;
+    return new EqResult(result, 'cm³/cm³')
+    },
+    '',
+    [StatesT.BA],
+    0.1878096112,
+    'permanentWiltingPoint',
+    0,
+  ),
+
+  new Equation(
+    '',
+    [InputsT.bulkDensity, InputsT.totalPorosity],
+    ( BD: number, TP: number): EqResult => {
+      const result = 0.2682 - 0.0002 * TP;
+    return new EqResult(result, 'cm³/cm³')
+    },
+    'Plintossolo',
+    [StatesT.PI],
+    0.1371207004,
+    'permanentWiltingPoint',
+    0,
+  ),
+
+  new Equation(
+    '',
+    [InputsT.coarseSand, InputsT.densityOfParticle, InputsT.fineSand, InputsT.agregatesStability],
+    ( CS: number, DP: number, FS: number, SA: number): EqResult => {
+      const result = 0.014722 - 0.0005 * CS * 0.02831 * SA - 0.098 * DP;
+    return new EqResult(result, 'cm³/cm³')
+    },
+    'Planossolo',
+    [StatesT.PB],
+    0.1791776376,
+    'permanentWiltingPoint',
+    0,
+  ),
+
+  new Equation(
+    '',
+    [InputsT.coarseSand, InputsT.densityOfParticle, InputsT.fineSand, InputsT.agregatesStability],
+    ( CS: number, DP: number, SA: number): EqResult => {
+      const result = 0.10070 + 0.00065694 * CS - 0.02232 * SA - 0.03206 * DP;
+    return new EqResult(result, 'cm³/cm³')
+    },
+    'Neossolo',
+    [StatesT.PB],
+    0.1791776376,
+    'permanentWiltingPoint',
+    0,
+  ),
+
+  new Equation(
+    '',
+    [InputsT.silt, InputsT.organicMatter, InputsT.bulkDensity, InputsT.agregatesStability],
+    ( Silt: number, OM: number, BD: number, SA: number): EqResult => {
+      const result = - 0.084 + 0.0001 * Silt + 0.0008 * OM + 0.0464 * BD - 0.026 * SA;
+    return new EqResult(result, 'cm³/cm³')
+    },
+    'Neossolo',
+    [StatesT.PB],
+    0.1791776376,
+    'permanentWiltingPoint',
+    0,
+  ),
+
+  new Equation(
+    '',
+    [InputsT.coarseSand, InputsT.macroporosity],
+    ( CS: number, Macro: number): EqResult => {
+      const result = 0.0591 + 0.00646 * Macro;
+    return new EqResult(result, 'm³/m³')
+    },
+    '',
+    [StatesT.Tab_Costeiros],
+    0.1842954066,
+    'permanentWiltingPoint',
+    0,
+  ),
+
+  new Equation(
+    '',
+    [InputsT.clay, InputsT.microporosity],
+    ( Clay: number, Micro: number): EqResult => {
+      const result = 0.01321 + 0.20505 * Micro;
+    return new EqResult(result, 'cm³/cm³')
+    },
+    'Latossolo',
+    [StatesT.PB],
+    0.1561502535,
+    'permanentWiltingPoint',
+    0,
+  ),
+
+  new Equation(
+    '',
+    [InputsT.clay],
+    ( Clay: number): EqResult => {
+      const result = 0.0003 * (Clay/10) + 0.0118;
+    return new EqResult(result, 'g/g')
+    },
+    '',
+    [StatesT.RS],
+    0.0955344576,
+    'permanentWiltingPoint',
+    0,
+  ),
+
+  new Equation(
+    '',
+    [InputsT.clay],
+    ( Clay: number): EqResult => {
+      const result = 0.0221 + 0.000288 * (Clay/10);
+    return new EqResult(result, 'cm³/cm³')
+    },
+    '',
+    [StatesT.Tab_Costeiros],
+    0.2095398649,
+    'permanentWiltingPoint',
+    0,
+  ),
+
+  new Equation(
+    '',
+    [InputsT.clay],
+    ( Clay: number): EqResult => {
+      const result = 0.1174 - 0.00034 * (Clay/10);
+    return new EqResult(result, 'cm³/cm³')
+    },
+    'Neossolo',
+    [StatesT.PI],
+    0.1371207004,
+    'permanentWiltingPoint',
+    0,
+  ),
+
+  new Equation(
+    '',
+    [InputsT.clay],
+    ( Clay: number): EqResult => {
+      const result = 2.2397 + 1.581 * Clay;
+    return new EqResult(result, '%')
+    },
+    'Argissolo',
+    [StatesT.Tab_Costeiros],
+    0.4611453317,
+    'permanentWiltingPoint',
+    0,
+  ),
+
+  new Equation(
+    '',
+    [InputsT.clay],
+    ( Clay: number): EqResult => {
+      const result = 6.7168 + 0.2281 * Clay;
+    return new EqResult(result, '%')
+    },
+    'Latossolo',
+    [StatesT.Tab_Costeiros],
+    0.0967899737,
+    'permanentWiltingPoint',
+    0,
+  ),
+
+  new Equation(
+    '',
+    [InputsT.clay],
+    ( Clay: number): EqResult => {
+      const result = 8.034 + 1.581 * Clay;
+    return new EqResult(result, '%')
+    },
+    'Latossolo',
+    [StatesT.Tab_Costeiros],
+    0.5095049780,
+    'permanentWiltingPoint',
+    0,
+  ),
+
+  new Equation(
+    '',
+    [InputsT.clay],
+    ( Clay: number): EqResult => {
+      const result = 9.0821 + 0.3781 * Clay;
+    return new EqResult(result, '%')
+    },
+    '',
+    [StatesT.Tab_Costeiros],
+    0.0667456214,
+    'permanentWiltingPoint',
+    0,
+  ),
+
+  new Equation(
+    '',
+    [InputsT.clay],
+    ( Clay: number): EqResult => {
+      const result = 0.379 * Clay ** 0.905;
+    return new EqResult(result, '(g/g)*100')
+    },
+    '',
+    [StatesT.PE],
+    0.2249484821,
+    'permanentWiltingPoint',
+    0,
+  ),
+
+  new Equation(
+    '',
+    [InputsT.clay],
+    ( Clay: number): EqResult => {
+      const result = 0.287 * (Clay/10) + 1.4;
+    return new EqResult(result, 'm³/m³')
+    },
+    '',
+    [StatesT.Cerrado],
+    12.9489861418,
+    'permanentWiltingPoint',
+    0,
+  ),
+
+  new Equation(
+    '',
+    [InputsT.clay],
+    ( Clay: number): EqResult => {
+      const result = 6.35 + 0.284 * Clay*100;
+    return new EqResult(result, 'm³/m³')
+    },
+    '',
+    [StatesT.BR],
+    0.0842399421,
+    'permanentWiltingPoint',
+    0,
+  ),
+
+  new Equation(
+    'Muito Argiloso',
+    [InputsT.clay, InputsT.bulkDensity],
+    ( Clay: number, BD: number): EqResult => {
+      const result = 0.000282 * (Clay/10) + 0.000487 * (Clay/10) - 0.101537 * BD;
+    return new EqResult(result, 'kg/kg')
+    },
+    '',
+    [StatesT.PE],
+    0.4289495541,
+    'permanentWiltingPoint',
+    0,
+  ),
+
+  new Equation(
+    '',
+    [InputsT.clay, InputsT.coarseSand, InputsT.fineSand],
+    ( Clay: number, CS: number, FS: number): EqResult => {
+      const result = 0.236 + 0.044 * Clay - 0.21 * (CS/10);
+    return new EqResult(result, 'kg/kg')
+    },
+    '',
+    [StatesT.RS],
+    0.5240030700,
+    'permanentWiltingPoint',
+    0,
+  ),
+
+  new Equation(
+    '',
+    [InputsT.clay, InputsT.silt],
+    ( Clay: number, Silt: number): EqResult => {
+      const result = 3.83 + 0.272 * Clay*100 + 0.212 * Silt*100;
+    return new EqResult(result, 'm³/m³')
+    },
+    '',
+    [StatesT.BR],
+    0.0665398774,
+    'permanentWiltingPoint',
+    0,
+  ),
+
+  new Equation(
+    '',
+    [InputsT.sand],
+    ( Sand: number): EqResult => {
+      const result = 129.0 - 0.04 ** Sand;
+    return new EqResult(result, 'kg/kg')
+    },
+    '',
+    [StatesT.PE],
+    0.1163700388,
+    'permanentWiltingPoint',
+    0,
+  ),
+
+  new Equation(
+    '',
+    [InputsT.clay],
+    ( Clay: number): EqResult => {
+      const result = 0.272 - 0.000269 * (Clay/10);
+    return new EqResult(result, 'cm³/cm³')
+    },
+    '',
+    [StatesT.Tab_Costeiros],
+    0.2072258389,
+    'permanentWiltingPoint',
+    0,
+  ),
+
+  new Equation(
+    'Francosiltoso',
+    [InputsT.sand],
+    ( Sand: number): EqResult => {
+      const result = 0.0826 + 0.0041 * Sand;
+    return new EqResult(result, 'cm³/cm³')
+    },
+    '',
+    [StatesT.RS],
+    0.1699223621,
+    'permanentWiltingPoint',
+    0,
+  ),
+
+  new Equation(
+    '',
+    [InputsT.sand],
+    ( Sand: number): EqResult => {
+      const result = 0.0826 + 0.0041 * Sand;
+    return new EqResult(result, 'cm³/cm³')
+    },
+    '',
+    [StatesT.RS],
+    0.1699223621,
+    'permanentWiltingPoint',
+    0,
+  ),
+  
+  new Equation(
+    '',
+    [InputsT.sand],
+    ( Sand: number): EqResult => {
+      const result = 26.16995195 - 0.04098682 * Sand * Math.log(Sand);
+    return new EqResult(result, '%')
+    },
+    '',
+    [StatesT.BR],
+    0.0656042362,
+    'permanentWiltingPoint',
+    0,
+  ),
+
+  new Equation(
+    '',
+    [InputsT.clay],
+    ( Clay: number): EqResult => {
+      const result = 0.2708 + 0.3468 * Clay;
+    return new EqResult(result, 'g/kg')
+    },
+    '',
+    [StatesT.PE],
+    0.0909557899,
+    'permanentWiltingPoint',
+    0,
+  ),
+
+  new Equation(
+    '',
+    [InputsT.clay, InputsT.coarseSand, InputsT.fineSand],
+    ( Clay: number, CS: number): EqResult => {
+      const result = 0.070 * CS +0.358 * Clay;
+    return new EqResult(result, 'cm³/100cm³')
+    },
+    '',
+    [StatesT.MG],
+    0.0933832680,
+    'permanentWiltingPoint',
+    0,
+  ),
+
+  new Equation(
+    '',
+    [InputsT.clay, InputsT.coarseSand, InputsT.fineSand, InputsT.silt],
+    ( Clay: number, CS: number, FS: number, Silt: number): EqResult => {
+      const result = 0.054 * CS + 0.300 * Clay + 0.196 * Silt;
+    return new EqResult(result, 'cm³/100cm³')
+    },
+    '',
+    [StatesT.MG],
+    0.0741647645,
+    'permanentWiltingPoint',
+    0,
+  ),
+
+  new Equation(
+    'Francoargiloarenoso',
+    [InputsT.sand, InputsT.silt],
+    ( Sand: number, Silt: number): EqResult => {
+      const result = 0.000032 * Sand/10 + 0.000223 * Silt/10 +0.00062 * Silt/10;
+    return new EqResult(result, 'kg/kg')
+    },
+    '',
+    [StatesT.PE],
+    0.2340755588,
+    'permanentWiltingPoint',
+    0,
+  ),
+
+  new Equation(
+    '',
+    [InputsT.sand, InputsT.silt],
+    ( Sand: number, Silt: number): EqResult => {
+      const result = -0.000007 * Sand/10 + 0.000042 * Silt/10 + 0.000293 * Silt/10;
+    return new EqResult(result, 'kg/kg')
+    },
+    '',
+    [StatesT.PE],
+    0.2363895729,
+    'permanentWiltingPoint',
+    0,
+  ),
+
+  new Equation(
+    '',
+    [InputsT.silt],
+    ( Silt: number): EqResult => {
+      const result = 1.384 * Silt ** 0.654;
+    return new EqResult(result, '(g/g)*100')
+    },
+    '',
+    [StatesT.PE],
+    0.1370128170,
+    'permanentWiltingPoint',
+    0,
+  ),
+
+  new Equation(
+    '',
+    [InputsT.silt, InputsT.clay],
+    ( Silt: number, Clay: number): EqResult => {
+      const result = 0.031 + 0.005 * Silt + 0.003 * Clay;
+    return new EqResult(result, 'cm³/cm³')
+    },
+    '',
+    [StatesT.SC],
+    0.0700041721,
+    'permanentWiltingPoint',
+    0,
+  ),
+
+  new Equation(
+    '',
+    [InputsT.silt, InputsT.clay],
+    ( Silt: number, Clay: number): EqResult => {
+      const result = 0.024 + 0.005 * Silt + 0.003 * Clay;
+    return new EqResult(result, 'cm³/cm³')
+    },
+    '',
+    [StatesT.SC],
+    0.0674138337,
+    'permanentWiltingPoint',
+    0,
+  ),
+
+  new Equation(
+    '',
+    [ InputsT.bulkDensity, InputsT.clay],
+    (BD: number, Clay: number): EqResult => {
+      const result = 0.0812 + 0.000279* (Clay/10) + 0.0000713 * (Clay/10) - 0.0457 * BD;
+    return new EqResult(result, 'cm³/cm³')
+    },
+    '',
+    [StatesT.Tab_Costeiros],
+    0.2149543657,
+    'permanentWiltingPoint',
+    0,
+  ),
+
+  new Equation(
+    '',
+    [InputsT.bulkDensity, InputsT.sand, InputsT.silt],
+    (  BD: number, Sand: number, Silt: number): EqResult => {
+      const result = 0.360 - 0.000279 * (Sand/10) - 0.000208 * (Silt/10) - 0.0457 * BD;
+    return new EqResult(result, 'cm³/cm³')
+    },
+    '',
+    [StatesT.Tab_Costeiros],
+    0.2268569814,
+    'permanentWiltingPoint',
+    0,
+  ),
+
+
+
+
 ]);
 
 
@@ -1313,80 +1838,15 @@ export const EQUATIONS: Set<Equation> = new Set([
 // ;;;;;;;;;
 
 
-
-// DosS13;FCth33_DosS13;26.18555 + 1.84737 * OM  + 0.07352 * Clay - 0.28332 * CS - 0.26753 * FS;;dag/kg;RS;;;;0,0693910198
-// DosS14;FCth33_DosS14;24.88952 + 1.46274 * OM - 0.24526 * CS - 0.23454 * FS;;dag/kg;RS;;;;0,0880179195
-// DosS2;FCth33_DosS2;29.65022 + 1.06092 * OM ? 0.27668 * CS ? 0.31970 * FS;Cambissolo;dag/kg;RS;;;;0,0802912261
-// DosS10;FCth33_DosS10;23.40215 + 1.94753 * OM + 0.10749 * Clay - 0.29745 * CS - 0.22021 * FS;Argissolo;dag/kg;RS;;;;0,0694280081
-// DosS12;FCth33_DosS12;17.8200+5.5292*OM+0.2094*Clay-0.1698*CS-0.2433*FS;Planossolo;dag/kg;RS;;;;0,1341078678
-// DosS1;FCth33_DosS1;17.1565 + 2.5169 * OM ? 0.1554 * CS ? 0.1621 * FS;Argissolo;dag/kg;RS;;;;0,1146542355
-// DosS3;FCth33_DosS3;20.6977 + 1.7475 * OM - 0.2127 * CS - 0.1728 * FS;Argissolo;dag/kg;RS;;;;0,1033046586
-// DosS4;FCth33_DosS4;30.1220 + 1.1781 * OM - 0.3264 * CS - 0.2956 * FS;Argissolo;dag/kg;RS;;;;0,0755677510
-// DosS5;FCth33_DosS5;22.07036 + 2.37679 * OM - 0.21787 * CS - 0.20096 * FS;Neossolo;dag/kg;RS;;;;0,0903774641
-// DosS6;FCth33_DosS6;21.9359 + 3.35081 * OM - 0.22751 * CS - 0.19371 * FS;Planossolo;dag/kg;RS;;;;0,0880415052
-// DosS9;FCth33_DosS9;36.46889 + 2.63862 * OM - 0.44002 * CS - 0.38987 * FS;Cambissolo;dag/kg;RS;;;;0,0755236654
-// DosS11;FCth33_DosS11;39.45134-2.47572*OM-0.33157*CS-0.30641*FS;Neossolo;dag/kg;RS;;;;0,1151884006
-// Pe5;FCth33_Pe5;0.19916 - 0.0004 * CS - 0.0396 * DP;Planossolo;cm/cm;PB;;;;0,1959146015
-// Men2;FCth33_Men2;0.04314 + 0.00762 * Micro - 0.00074 * TP - 0.00058 * FS/10;;cm/cm;BA;;;;0,2462552040
-// Mar;FCth33_Mar;0.47352559 + 0.00017979 * Clay - 0.12025765 * BD;;m/mì;RS;;;;0,0836264034
-// Ol3;FCth33_Ol3;0.000079 * (Sand/10) +0.000444 *(Silt/10) + 0.000484*(Clay/10) ? 0.069234 * BD;Argiloso;kg/kg;PE;;;;0,4361980955
-// Ol6;FCth33_Ol6;0.000088 * (Sand/10) + 0.000449 * (Silt/10) + 0.000448 * (Clay/10) ? 0.058166 * BD;;kg/kg;PE;;;;0,4144975555
-// Ol2;FCth33_Ol2;0.000341 * (Silt/10) + 0.000374 * (Clay/10);Francoargiloarenoso;kg/kg;PE;;;;0,3055896586
-// Men1;FCth33_Men1;0.11305 + 0.02978 * BD + 0.01037 * Micro + 0.00049169 * Clay/10;;m/mì;RS;;;;0,1614988001
-// Sou2;FCth33_Sou2;0.08595 + 0.006102 * Macro;;m/mì;Tab. Costeiros;;;;0,2241769157
-// Ros1;FCth33_Ros1;0.241249 - 0.000117723 * Sand - 0.152483 * Meso - 0.046851 * BD;;cm/cm;Cerrado;;;;0,2251334285
-// Sou1;FCth33_Sou1;0.15839 + 0.00031 * Clay/10 ? 0.00240 * Micro;;cm/cm;Tab. Costeiros;;;;0,1600164831
-// Ros2;FCth33_Ros2;0.057 ? 0.001 * Sand + 0.743 * Micro;;cm/cm;Cerrado;;;;0,0347639949
-// Sil5;FCth33_Sil5;9.3274 + 0.058 OM + 0.1014 * Clay;;%;Tab. Costeiros;;;;0,1795649668
-// Sil1;FCth33_Sil1;5.495 + 0.2152 Clay + 0.8054 * OM;Argissolo;%;Tab. Costeiros;;;;0,1558610004
-// Sil3;FCth33_Sil3;1.854 + 0.2156 * Clay + 0.8054 * OM;Latossolo;%;Tab. Costeiros;;;;0,1886026832
-// Gai;FCth33_Gai;0.208 SOC + 0.600 * Clay + 0.166 * Silt;;m/mì;CE;PI;;;0,1012421926
-// Sil6;FCth33_Sil6;9.7953 - 2.6231 * OM + 0.0891 * Clay;;%;Tab. Costeiros;;;;0,2646868724
-// Pe1;FCth33_Pe1;0.011429 - 0.000066799 * Sand + 0.28462 * Micro + 0.04162 * Macro - 0.02548 * DP;;cm/cm;PB;;;;0,2523874407
-// Soar4;FCth33_Soar4;0.0432 + 0.0019 * Clay + 0.0293 * DP + 0.1952 * TP;Argilo Siltoso;cm/cm;RS;;;;0,0754356136
-// Soar10;FCth33_Soar10;0.0628 - 0.0005 * Sand - 0.00734 * OM + 0.0398 * DP + 0.1515 * TP;;cm/cm;RS;;;;0,1285969560
-// Soar7;FCth33_Soar7;#NOME?;Francoargiloarenoso;cm/cm;RS;;;;22,3925725406
-// Soar5;FCth33_Soar5;0.0746 + 0.4946 * TP;Argiloso;cm/cm;RS;;;;0,0749895992
-// Soar3;FCth33_Soar3;#NOME?;Argilo Arenoso;cm/cm;RS;;;;24,6597103887
-// And;FCth6_And;0.256931 -0.261746 * Meso/10 + 0.000104958 *  Clay/10 -0.0942794 *BD;;cm/cm;PE;;;;0,0000000000
-// Ram1;FCth6_Ram1;0.122 + 0.0004*Clay/10 + 0.0138* P  + 0.0049*CEC;Latossolo;cm/cm;PI;;;;0,2938305860
-// Ram5;FCth6_Ram5;0.645 - 0.00033 * Sand/10 ? 0.0002 * Clay/10 ? 0.0003 * Silt/10;;cm/cm;PI;;;;0,3063308784
-// Ram4;FCth6_Ram4;0.4098 - 0.0002*Clay/10 - 0.0001*Silt/10 - 0.0397*SOC;Plintossolo;cm/cm;PI;;;;0,1227435233
-// Ram2;FCth6_Ram2;0.1821 + 0.00034*FS/10 + 0.00022*Clay/10 ? 0.0347*SOC;Argissolo;cm/cm;PI;;;;0,2265138223
-// Ram3;FCth6_Ram3;0.0507 + 0.0004*FS/10 + 0.1039*SOC ? 0.0007*Silt/10;Neossolo;cm/cm;PI;;;;0,2153711805
-// Av8;FCth6_Av8;0.245*Sand+0.607*Clay;;cm/100cm;MG;;;;0,1033241477
-// Av6;FCth6_Av6;0.119 * Sand + 0.410 * Clay + 0.396 * Silt + 6.242 * BD;;cm/100cm;MG;;;;0,0708615455
-// Av7;FCth6_Av7;0.208*Sand+0.474*Clay+0.456*Silt;;cm/100cm;MG;;;;0,0594818885
-// Av5;FCth6_Av5;#NOME?;;cm/100cm;MG;;;;0,0735840230
-// Pe4;PWP_Pe4;0.16288 - 0.07336 * BD;Argissolo;cm/cm;PB;;;;0,1791776376
-// Dicos2;PWP_Dicos2;0.24049 - 0.10555 * BD;;cm/cm;BA;;;;0,1494699620
-// Dicos1;PWP_Dicos1;0.5624 - 0.1561 * BD- 0.5720 * TP;;cm/cm;BA;;;;0,1878096112
-// Ram4;PWP_Ram4;0.2682 ? 0.0002*TA;Plintossolo;cm/cm;PI;;;;0,1371207004
-// Pe5;PWP_Pe5;0.014722 - 0.0005 * CS * 0.02831 * Estabilidade de Agregado - 0.098 * DP;Planossolo;cm/cm;PB;;;;0,1791776376
-// Pe6;PWP_Pe6;0.10070 + 0.00065694 * VCSand - 0.02232 * Estabilidade de Agregados - 0.03206 * DP;Neossolo;cm/cm;PB;;;;0,1791776376
-// Rei3;PWP_Rei3;82 + 18.9 * Log ((Sand/10)) - 0.14 * Clay/10 + 0.30 * LL;;g/kg;RS;SC;;;0,0000000000
-// Nob;PWP_Nob;#NOME?;;cm/cm;Agreste;;;;0,2072258389
-// Pe7;PWP_Pe7;- 0.084 + 0.0001 * Silt . 0.0008 * OM + 0.0464 * BD - 0.026 * Estabilidade de Agregados;Neossolo;cm/cm;PB;;;;0,1791776376
-// Sou2;PWP_Sou2;0.0591 + 0.00646 * Macro;;m3/m;Tab. Costeiros;;;;0,1842954066
-// Pe2;PWP_Pe2;0.01321 + 0.20505 * Micro;Latossolo;cm/cm;PB;;;;0,1561502535
-// Gue;PWP_Gue;#NOME?;;cm/cm;RS;;;;0,0955344576
-// Soar2;PWP_Soar2;#NOME?;Argilo Arenoso;cm/cm;RS;;;;0,1061768098
-// Kl;PWP_Kl;0.0003 * (Clay/10) + 0.0118;;g/g;RS;;;;0,2087250978
-// NASC3;PWP_NASC3;0.0221 + 0.000288 * (Clay/10);;cm/cm;Tab. Costeiros;;;;0,2095398649
-// Ram3;PWP_Ram3;0.1174 ? 0.00034*Clay/10;Neossolo;cm/cm;PI;;;;0,1371207004
-// Sil2;PWP_Soar11;2.2397 + 1.581 * Clay;Argissolo;%;Tab. Costeiros;;;;0,4611453317
-// Sil3;PWP_Soar12;6.7168 + 0.2281 * Clay;Latossolo;%;Tab. Costeiros;;;;0,0967899737
-// Sil4;PWP_Soar13;8.034 + 1.581 * Clay;Latossolo;%;Tab. Costeiros;;;;0,5095049780
 // Sil6;PWP_Soar15;9.0821 + 0.3781 * Clay;;%;Tab. Costeiros;;;;0,0667456214
 // Al2;PWP_Al2;0.379 * Clay ** 0.905;;(g/g)*100;PE;;;;0,2249484821
 // BAL;PWP_BAL;0.287 * (Clay/10) + 1.4;;m/mì;Cerrado;;;;12,9489861418
 // Vb1;PWP_Vb1;6.35 + 0.284 * Clay*100;;m.m/10ì;BR;;;;0,0842399421
-// Ol4;PWP_Ol4;0.000282 * Silt/10 + 0.000487 * Clay/10 ? 0.101537 * BD;Muito Argiloso;kg/kg;PE;;;;0,4289495541
+// Ol4;PWP_Ol4;0.000282 * Silt/10 + 0.000487 * Clay/10 - 0.101537 * BD;Muito Argiloso;kg/kg;PE;;;;0,4289495541
 // Rei2;PWP_Rei2;0.236 + 0.044 * Clay*100 - 0.21 * (Sand*100);;kg/kg;RS;;;;0,0000000000
-// Mas1;PWP_Mas1;#NOME?;;g/kg;PE;;;;0,0738542629
 // Vb2;PWP_Vb2;3.83 + 0.272 * Clay*100 + 0.212 * Silt*100;;m.m/10ì;BR;;;;0,0665398774
 // Al1;PWP_Al1;129.0 - 0.04 ** Sand;;(g/g)*100;PE;;;;0,1163700388
-// NASC4;PWP_NASC4;0.272 ? 0.000269 * (Sand/10);;cm/cm;Tab. Costeiros;;;;0,2072258389
+// NASC4;PWP_NASC4;0.272 - 0.000269 * (Sand/10);;cm/cm;Tab. Costeiros;;;;0,2072258389
 // Soar9;PWP_Soar8;0.0826 + 0.0041 * Sand;Francosiltoso;cm/cm;RS;;;;0,1699223621
 // Soar15;PWP_Soar15;0.0826 + 0.0041 * Sand;;cm/cm;RS;;;;0,1699223621
 // ASS;PWP_ASS;26.16995195 - 0.04098682 * Sand * ln(Sand);;%;BR;;;;0,0656042362
@@ -1394,16 +1854,16 @@ export const EQUATIONS: Set<Equation> = new Set([
 // Av8;PWP_Av8;0.070 * Sand +0.358 * Clay;;cm/100cm;MG;;;;0,0933832680
 // Av7;PWP_Av7;0.054 * Sand + 0.300 * Clay + 0.196 * Silt;;cm/100cm;MG;;;;0,0741647645
 // Ol2;PWP_Ol2;0.000032 * Sand/10 + 0.000223 * Silt/10 +0.00062 * Clay/10;Francoargiloarenoso;kg/kg;PE;;;;0,2340755588
-// Ol7;PWP_Ol7;#NOME?;;kg/kg;PE;;;;0,2363895729
+// Ol7;PWP_Ol7;-0.000007 * Sand/10 + 0.000042 * Silt/10 + 0.000293 * Clay/10;;kg/kg;PE;;;;0,2363895729
 // Al3;PWP_Al3;1.384 * Silt ** 0.654;;(g/g)*100;PE;;;;0,1370128170
 // Gia2;PWP_Gia2;0.031 + 0.005 * Silt + 0.003 * Clay;;cm/cm;SC;RS;;;0,0700041721
 // Gia3;PWP_Gia3;0.024 + 0.005 * Silt + 0.003 * Clay;;cm/cm;;;;;0,0674138337
 // NASC1;PWP_NASC1;0.0812 + 0.000279* (Clay/10) + 0.0000713 * (Silt/10) ? 0.0457 * BD;;cm/cm;Tab. Costeiros;;;;0,2149543657
-// NASC2;PWP_NASC2;0.360 ? 0.000279 * (Sand/10) ? 0.000208 * (Silt/10) ? 0.0457 * BD;;cm/cm;Tab. Costeiros;;;;0,2268569814
+// NASC2;PWP_NASC2;0.360 - 0.000279 * (Sand/10) ? 0.000208 * (Silt/10) ? 0.0457 * BD;;cm/cm;Tab. Costeiros;;;;0,2268569814
 // Sil1;PWP_Soar10;1.946+ 0.0037 * Clay + 0.2231 * Silt;Argissolo;%;Tab. Costeiros;;;;0,1735768159
 // Al4;PWP_Al4;0.213 * (Silt+Clay) ** 0.990;;(g/g)*100;PE;;;;0,2219929760
 // Ar;PWP_Ar;398.9 * (Silt+Clay) / (1308.1 + Silt+Clay);;%;SP;;;;0,0751875287
-// Ram2;PWP_Ram2;0.0858 + 0.00021*Clay/10 ? 0.0002*Silt/10 + 00001*FS/10;Argissolo;cm/cm;PI;;;;0,1452958137
+// Ram2;PWP_Ram2;0.0858 + 0.00021*Clay/10 - 0.0002*Silt/10 + 00001*FS/10;Argissolo;cm/cm;PI;;;;0,1452958137
 // Fer;PWP_Fer;0.004705 + 0.00299 * Clay + 0.000642 * Silt - 0.000156 * FS;;cm/cm;MG;BA;ES;;0,0819786026
 // Dicos3;PWP_Dicos3;0.17058 - 0.14580 * CS;;dag/kg;BA;;;;0,0413508527
 // DosS7;PWP_DosS7;21.5649 - 0.1932 * CS - 0.2004 * FS;Neossolo;dag/kg;RS;;;;0,0678652482
@@ -1460,6 +1920,53 @@ export const EQUATIONS: Set<Equation> = new Set([
 // Men5;PWP_Men5;#NOME?;;cm/cm;MT;;;;0,2750708052
 // Silv1;PWP_Silv1;0.123 - 0.00108 * Sand - 0.0204 * (Silt/Clay) - 0.00171 * TP + 0.05710 * Micro;;cm/cm;BA;GO;MG;RS;0,1586578627
 // Soar8;PWP_Soar8;0.0996 + 0.2248 * TP;Francoargiloso;cm/cm;RS;;;;0,0764051951
+
+
+// DosS13;FCth33_DosS13;26.18555 + 1.84737 * OM  + 0.07352 * Clay - 0.28332 * CS - 0.26753 * FS;;dag/kg;RS;;;;0,0693910198
+// DosS14;FCth33_DosS14;24.88952 + 1.46274 * OM - 0.24526 * CS - 0.23454 * FS;;dag/kg;RS;;;;0,0880179195
+// DosS2;FCth33_DosS2;29.65022 + 1.06092 * OM ? 0.27668 * CS ? 0.31970 * FS;Cambissolo;dag/kg;RS;;;;0,0802912261
+// DosS10;FCth33_DosS10;23.40215 + 1.94753 * OM + 0.10749 * Clay - 0.29745 * CS - 0.22021 * FS;Argissolo;dag/kg;RS;;;;0,0694280081
+// DosS12;FCth33_DosS12;17.8200+5.5292*OM+0.2094*Clay-0.1698*CS-0.2433*FS;Planossolo;dag/kg;RS;;;;0,1341078678
+// DosS1;FCth33_DosS1;17.1565 + 2.5169 * OM ? 0.1554 * CS ? 0.1621 * FS;Argissolo;dag/kg;RS;;;;0,1146542355
+// DosS3;FCth33_DosS3;20.6977 + 1.7475 * OM - 0.2127 * CS - 0.1728 * FS;Argissolo;dag/kg;RS;;;;0,1033046586
+// DosS4;FCth33_DosS4;30.1220 + 1.1781 * OM - 0.3264 * CS - 0.2956 * FS;Argissolo;dag/kg;RS;;;;0,0755677510
+// DosS5;FCth33_DosS5;22.07036 + 2.37679 * OM - 0.21787 * CS - 0.20096 * FS;Neossolo;dag/kg;RS;;;;0,0903774641
+// DosS6;FCth33_DosS6;21.9359 + 3.35081 * OM - 0.22751 * CS - 0.19371 * FS;Planossolo;dag/kg;RS;;;;0,0880415052
+// DosS9;FCth33_DosS9;36.46889 + 2.63862 * OM - 0.44002 * CS - 0.38987 * FS;Cambissolo;dag/kg;RS;;;;0,0755236654
+// DosS11;FCth33_DosS11;39.45134-2.47572*OM-0.33157*CS-0.30641*FS;Neossolo;dag/kg;RS;;;;0,1151884006
+// Pe5;FCth33_Pe5;0.19916 - 0.0004 * CS - 0.0396 * DP;Planossolo;cm/cm;PB;;;;0,1959146015
+// Men2;FCth33_Men2;0.04314 + 0.00762 * Micro - 0.00074 * TP - 0.00058 * FS/10;;cm/cm;BA;;;;0,2462552040
+// Mar;FCth33_Mar;0.47352559 + 0.00017979 * Clay - 0.12025765 * BD;;m/mì;RS;;;;0,0836264034
+// Ol3;FCth33_Ol3;0.000079 * (Sand/10) +0.000444 *(Silt/10) + 0.000484*(Clay/10) ? 0.069234 * BD;Argiloso;kg/kg;PE;;;;0,4361980955
+// Ol6;FCth33_Ol6;0.000088 * (Sand/10) + 0.000449 * (Silt/10) + 0.000448 * (Clay/10) ? 0.058166 * BD;;kg/kg;PE;;;;0,4144975555
+// Ol2;FCth33_Ol2;0.000341 * (Silt/10) + 0.000374 * (Clay/10);Francoargiloarenoso;kg/kg;PE;;;;0,3055896586
+// Men1;FCth33_Men1;0.11305 + 0.02978 * BD + 0.01037 * Micro + 0.00049169 * Clay/10;;m/mì;RS;;;;0,1614988001
+// Sou2;FCth33_Sou2;0.08595 + 0.006102 * Macro;;m/mì;Tab. Costeiros;;;;0,2241769157
+// Ros1;FCth33_Ros1;0.241249 - 0.000117723 * Sand - 0.152483 * Meso - 0.046851 * BD;;cm/cm;Cerrado;;;;0,2251334285
+// Sou1;FCth33_Sou1;0.15839 + 0.00031 * Clay/10 ? 0.00240 * Micro;;cm/cm;Tab. Costeiros;;;;0,1600164831
+// Ros2;FCth33_Ros2;0.057 ? 0.001 * Sand + 0.743 * Micro;;cm/cm;Cerrado;;;;0,0347639949
+// Sil5;FCth33_Sil5;9.3274 + 0.058 OM + 0.1014 * Clay;;%;Tab. Costeiros;;;;0,1795649668
+// Sil1;FCth33_Sil1;5.495 + 0.2152 Clay + 0.8054 * OM;Argissolo;%;Tab. Costeiros;;;;0,1558610004
+// Sil3;FCth33_Sil3;1.854 + 0.2156 * Clay + 0.8054 * OM;Latossolo;%;Tab. Costeiros;;;;0,1886026832
+// Gai;FCth33_Gai;0.208 SOC + 0.600 * Clay + 0.166 * Silt;;m/mì;CE;PI;;;0,1012421926
+// Sil6;FCth33_Sil6;9.7953 - 2.6231 * OM + 0.0891 * Clay;;%;Tab. Costeiros;;;;0,2646868724
+// Pe1;FCth33_Pe1;0.011429 - 0.000066799 * Sand + 0.28462 * Micro + 0.04162 * Macro - 0.02548 * DP;;cm/cm;PB;;;;0,2523874407
+// Soar4;FCth33_Soar4;0.0432 + 0.0019 * Clay + 0.0293 * DP + 0.1952 * TP;Argilo Siltoso;cm/cm;RS;;;;0,0754356136
+// Soar10;FCth33_Soar10;0.0628 - 0.0005 * Sand - 0.00734 * OM + 0.0398 * DP + 0.1515 * TP;;cm/cm;RS;;;;0,1285969560
+// Soar7;FCth33_Soar7;#NOME?;Francoargiloarenoso;cm/cm;RS;;;;22,3925725406
+// Soar5;FCth33_Soar5;0.0746 + 0.4946 * TP;Argiloso;cm/cm;RS;;;;0,0749895992
+// Soar3;FCth33_Soar3;#NOME?;Argilo Arenoso;cm/cm;RS;;;;24,6597103887
+// And;FCth6_And;0.256931 -0.261746 * Meso/10 + 0.000104958 *  Clay/10 -0.0942794 *BD;;cm/cm;PE;;;;0,0000000000
+// Ram1;FCth6_Ram1;0.122 + 0.0004*Clay/10 + 0.0138* P  + 0.0049*CEC;Latossolo;cm/cm;PI;;;;0,2938305860
+// Ram5;FCth6_Ram5;0.645 - 0.00033 * Sand/10 ? 0.0002 * Clay/10 ? 0.0003 * Silt/10;;cm/cm;PI;;;;0,3063308784
+// Ram4;FCth6_Ram4;0.4098 - 0.0002*Clay/10 - 0.0001*Silt/10 - 0.0397*SOC;Plintossolo;cm/cm;PI;;;;0,1227435233
+// Ram2;FCth6_Ram2;0.1821 + 0.00034*FS/10 + 0.00022*Clay/10 ? 0.0347*SOC;Argissolo;cm/cm;PI;;;;0,2265138223
+// Ram3;FCth6_Ram3;0.0507 + 0.0004*FS/10 + 0.1039*SOC ? 0.0007*Silt/10;Neossolo;cm/cm;PI;;;;0,2153711805
+// Av8;FCth6_Av8;0.245*Sand+0.607*Clay;;cm/100cm;MG;;;;0,1033241477
+// Av6;FCth6_Av6;0.119 * Sand + 0.410 * Clay + 0.396 * Silt + 6.242 * BD;;cm/100cm;MG;;;;0,0708615455
+// Av7;FCth6_Av7;0.208*Sand+0.474*Clay+0.456*Silt;;cm/100cm;MG;;;;0,0594818885
+// Av5;FCth6_Av5;#NOME?;;cm/100cm;MG;;;;0,0735840230
+
 
 
 // Classes de Solo (input):
