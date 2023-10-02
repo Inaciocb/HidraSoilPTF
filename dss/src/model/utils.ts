@@ -3,7 +3,7 @@ import { EqResult } from "./eq-result";
 export type Empty = '';
 
 export type MeasurementUnitT = '%' | '(g/g)*100' | 'cm³/100cm³' | 'cm³/cm³' | 'g/g'
-  | 'g/kg' | 'kg/kg' | 'm³/m³*100' | 'm³/m³' | 'm/m.10' | 'm³/m³';
+  | 'g/kg' | 'kg/kg' | 'm³/m³*100' | 'm³/m³' | 'm²/m²*100' | 'm³/m³'| 'dag/kg';
 
 export enum StatesT {
   Agreste = 'Agreste',
@@ -24,15 +24,15 @@ export enum StatesT {
   Tab_Costeiros = 'Tab. Costeiros',
   MS = 'MS',
   PR = 'PR',
-  RJ = 'RJ',  
-  RN = 'RN', 
-  AM = 'AM', 
-  AP = 'AP', 
-  AC = 'AC', 
-  RO = 'RO', 
-  RR = 'RR', 
-  TO = 'TO', 
-  AL = 'AL', 
+  RJ = 'RJ',
+  RN = 'RN',
+  AM = 'AM',
+  AP = 'AP',
+  AC = 'AC',
+  RO = 'RO',
+  RR = 'RR',
+  TO = 'TO',
+  AL = 'AL',
   MA = 'MA',
   SE = 'SE',
 
@@ -66,6 +66,7 @@ export enum SoilClassT {
 }
 
 export enum InputsT {
+  
   clay = 'clay',
   silt = 'silt' ,
   sand = 'sand' ,
@@ -82,7 +83,6 @@ export enum InputsT {
   claySilt = 'claySilt' ,
   theta6 = 'theta6' ,
   liquidLimits = 'liquidLimits' ,
-  sandClay = 'sandClay' ,
   sIndex = 'sIndex' ,
   phosphor = 'phosphor' ,
   soilPorosity = 'soilPorosity' ,
@@ -94,7 +94,12 @@ export enum InputsT {
   veryFineSand = 'veryFineSand' ,
   theta33 = 'theta33' ,
   mesoporosity = 'mesoporosity' ,
-  ph = 'ph'
+  ph = 'ph',
+  veryCoarseSand = 'veryCoarseSand',
+  agregatesStability = 'agregatesStability',
+  floculationDegree = 'floculationDegree',
+
+
  }
 
 export const MAX_VARIABLES = 7;
@@ -120,8 +125,15 @@ export const STATES: Set<string> = new Set(
 
 
 
-  export function resultsToString(results: EqResult[]): string {
+  export function resultsToString(results: EqResult[], warnings: string[]): string {
     let str = "<p>"
+    if (warnings && warnings.length > 0) {
+      warnings.forEach(w => {
+        str = str.concat(w, "</br>")
+      })
+      str = str.concat("</br> </br>")
+    }
+
     results.forEach(r => {
       str = str.concat(r.toString(), "</br>")
     })
