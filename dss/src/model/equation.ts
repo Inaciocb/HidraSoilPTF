@@ -23,7 +23,8 @@ export class Equation {
     _soilClass: string | Empty,
     _states: StatesT[],
     _rmse: number,
-    _type: EqType
+    _type: EqType,
+    _numKpa: number,
   ) {
 
     this.soilClass = _soilClass;
@@ -33,5 +34,6 @@ export class Equation {
     this.inputsAccepted = _inputsAccepted;
     this.rmse = _rmse;
     this.type = _type;
+    this.numKpa = _numKpa;
   }
 }
