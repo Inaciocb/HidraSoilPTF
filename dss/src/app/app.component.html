@@ -1,47 +1,13 @@
-<!-- "Clay (%) ", "Silt (%)", "Sand (%)","Bulk density (g/cm³)", "Organic matter (%)", "total porosity (cm³/cm³)",
-    "Coarse Sand", "Fine Sand (%)", "Microporosity (cm³/cm³)", "Density of particle (g/cm³)", "Soil organic carbon",
-    "Flex point of swrc", "Macroporosity (cm³/cm³)", "Clay + silt (%)", "Theta 6 (kPa)",
-    "Liquid Limits (g/kg)", "Sand/clay (%)", "S index", "Phosphor (cmolc/kg)", "Soil porosity cm³/cm³", 
-    "Plastic limits (g/kg)", "Sum of bases (cmolc/kg)", "CEC (cmolc/kg)", "Ss (m³/g)", "Medium sand (%)", 
-    "Very fine sand (%)", "Theta 33 (kPa)", "Mesoporosity (cm³/cm³)", "Ph"
- -->
 
 <div class="formulario">
     <form [formGroup]="form">
 
-
-         <label for="estados">Selecione o estado *:</label>
-
-        <select name="ewstados" id="estados" formControlName="state">
-            <option value="RS">RS</option>
-            <option value="SC">SC</option>
-            <option value="PR">PR</option>
-            <option value="SP">SP</option>
-            <option value="RJ">RJ</option>
-            <option value="MG">MG</option>
-            <option value="ES">ES</option>
-            <option value="MS">MS</option>
-            <option value="MT">MT</option>
-            <option value="GO">GO</option>
-            <option value="DF">DF</option>
-            <option value="BA">BA</option>
-            <option value="SE">SE</option>
-            <option value="AL">AL</option>
-            <option value="PE">PE</option>
-            <option value="PB">PB</option>
-            <option value="RN">RN</option>
-            <option value="CE">CE</option>
-            <option value="PI">PI</option>
-            <option value="MA">MA</option>
-            <option value="TO">TO</option>
-            <option value="PA">PA</option>
-            <option value="AP">AP</option>
-            <option value="RR">RR</option>
-            <option value="AM">AM</option>
-            <option value="AC">AC</option>
-
-
-        </select>
+        <div class="p-5" style="margin-top: 10px;">
+          <label for="states">Selecione o estado/bioma *: </label>
+          <select name="states" formControlName="state" id="states">
+            <option [value]="state" *ngFor="let state of states">{{ state }}</option>
+          </select>
+        </div>
 
         <div class="p-5" style="margin-top: 10px;">
           <label for="state_raw">Classe do solo: </label>
@@ -65,80 +31,80 @@
         <ul class="lista">
             <div class="container1">
                 <li>
-                    <label for="silt">silt(%)</label>
-                    <input type="number" placeholder="silt" formControlName="silt">
+                    <label for="Silt">Silt(%)</label>
+                    <input type="number" placeholder="Silt" formControlName="silt">
                 </li>
 
                 <li>
-                    <label for ="sand">sand(%)</label>
-                    <input type="number" placeholder="sand" formControlName="sand">
-
-                </li>
-
-                <li>
-                    <label for="clay">clay(%)</label>
-                    <input type="number" placeholder="clay" formControlName="clay">
-                </li>
-
-                <li>
-
-                    <label for="bulkDensity">bulkDensity (g/cm³)</label>
-                    <input type="number" placeholder="bulkDensity" formControlName="bulkDensity">
+                    <label for ="Sand">Sand(%)</label>
+                    <input type="number" placeholder="Sand" formControlName="sand">
 
                 </li>
 
                 <li>
-
-                    <label for="organicMatter">organicMatter(%)</label>
-                    <input type="number" placeholder="organicMatter" formControlName="organicMatter">
+                    <label for="Clay">Clay(%)</label>
+                    <input type="number" placeholder="Clay" formControlName="clay">
                 </li>
 
                 <li>
 
-                    <label for="totalPorosity">totalPorosity(cm³/cm³)</label>
-                    <input type="number" placeholder="totalPorosity" formControlName="totalPorosity">
+                    <label for="Bulk Density">Bulk Density (g/cm³)</label>
+                    <input type="number" placeholder="Bulk Density" formControlName="bulkDensity">
 
                 </li>
 
                 <li>
 
-                    <label for="coarseSand">coarseSand(%)</label>
-                    <input type="number" placeholder="coarseSand" formControlName="coarseSand">
+                    <label for="Organic Matter">Organic Matter(%)</label>
+                    <input type="number" placeholder="Organic Matter" formControlName="organicMatter">
+                </li>
+
+                <li>
+
+                    <label for="Total Porosity">Total Porosity(cm³/cm³)</label>
+                    <input type="number" placeholder="Total Porosity" formControlName="totalPorosity">
 
                 </li>
 
                 <li>
 
-                    <label for="fineSand">fineSand(%)</label>
-                    <input type="number" placeholder="fineSand" formControlName="fineSand">
+                    <label for="Coarse Sand">Coarse Sand(%)</label>
+                    <input type="number" placeholder="Coarse Sand" formControlName="coarseSand">
 
                 </li>
 
                 <li>
 
-                    <label for="microporosity">microporosity(cm³/cm³)</label>
-                    <input type="number" placeholder="microporosity" formControlName="microporosity">
+                    <label for="Fine Sand">Fine Sand(%)</label>
+                    <input type="number" placeholder="Fine Sand" formControlName="fineSand">
 
                 </li>
 
                 <li>
 
-                    <label for="densityOfParticle">densityOfParticle(g/cm³)</label>
-                    <input type="number" placeholder="densityOfParticle" formControlName="densityOfParticle">
+                    <label for="Microporosity">Microporosity(cm³/cm³)</label>
+                    <input type="number" placeholder="Microporosity" formControlName="microporosity">
 
                 </li>
 
                 <li>
 
-                    <label for="soilOrganicCarbon">soilOrganicCarbon</label>
-                    <input type="number" placeholder="soilOrganicCarbon" formControlName="soilOrganicCarbon">
+                    <label for="Density of Particle">Density of Particle(g/cm³)</label>
+                    <input type="number" placeholder="Density of Particle" formControlName="densityOfParticle">
 
                 </li>
 
                 <li>
 
-                    <label for="flexPointOfSwrc">flexPointOfSwrc</label>
-                    <input type="number" placeholder="flexPointOfSwrc" formControlName="flexPointOfSwrc">
+                    <label for="Soil Organic Carbon">Soil Organic Carbon</label>
+                    <input type="number" placeholder="Soil Organic Carbon" formControlName="soilOrganicCarbon">
+
+                </li>
+
+                <li>
+
+                    <label for="Flex Point Of Swrc">Flex Point Of Swrc</label>
+                    <input type="number" placeholder="Flex Point Of Swrc" formControlName="flexPointOfSwrc">
 
                 </li>
 
@@ -152,7 +118,7 @@
                 <li>
 
                     <label for="claySilt">Clay + Silt (%)</label>
-                    <input type="number" placeholder="claySilt" formControlName="claySilt">
+                    <input type="number" placeholder="clay Silt" formControlName="claySilt">
 
                 </li>
 
@@ -165,20 +131,14 @@
 
                 <li>
 
-                    <label for="liquidLimits">liquidLimits(g/kg)</label>
-                    <input type="number" placeholder="liquidLimits" formControlName="liquidLimits">
+                    <label for="Liquid Limits">Liquid Limits(g/kg)</label>
+                    <input type="number" placeholder="Liquid Limits" formControlName="liquidLimits">
 
                 </li>
 
             </div>
 
            <div class="container2">
-                 <li>
-
-                <label for="sandClay">sandClay(%)</label>
-                <input type="number" placeholder="sandClay" formControlName="sandClay">
-
-            </li>
 
             <li>
 
@@ -189,29 +149,22 @@
 
             <li>
 
-                <label for="phosphor">phosphor(cmolc/kg)</label>
-                <input type="number" placeholder="phosphor" formControlName="phosphor">
+                <label for="Phosphor">Phosphor(cmolc/kg)</label>
+                <input type="number" placeholder="Phosphor" formControlName="phosphor">
 
             </li>
 
             <li>
 
-                <label for="soilPorosity">soilPorosity(cm³/cm³)</label>
-                <input type="number" placeholder="soilPorosity" formControlName="soilPorosity">
+                <label for="Plastic Limits">Plastic Limits(g/kg)</label>
+                <input type="number" placeholder="Plastic Limits" formControlName="plasticLimits">
 
             </li>
 
             <li>
 
-                <label for="plasticLimits">plasticLimits(g/kg)</label>
-                <input type="number" placeholder="plasticLimits" formControlName="plasticLimits">
-
-            </li>
-
-            <li>
-
-                <label for="sumOfBases">sumOfBases(cmolc/kg)</label>
-                <input type="number" placeholder="sumOfBases" formControlName="sumOfBases">
+                <label for="sumOfBases">sum Of Bases(cmolc/kg)</label>
+                <input type="number" placeholder="sum Of Bases" formControlName="sumOfBases">
 
             </li>
 
@@ -224,22 +177,22 @@
 
             <li>
 
-                <label for="ss">ss</label>
-                <input type="number" placeholder="ss" formControlName="ss">
+                <label for="Specific Surface">Specific Surface</label>
+                <input type="number" placeholder="Specific Surface" formControlName="ss">
 
             </li>
 
             <li>
 
-                <label for="mediumSand">mediumSand(%)</label>
-                <input type="number" placeholder="mediumSand" formControlName="mediumSand">
+                <label for="Medium Sand">Medium Sand(%)</label>
+                <input type="number" placeholder="Medium Sand" formControlName="mediumSand">
 
             </li>
 
             <li>
 
-                <label for="veryFineSand">veryFineSand(%)</label>
-                <input type="number" placeholder="veryFineSand" formControlName="veryFineSand">
+                <label for="Very Fine Sand">Very Fine Sand(%)</label>
+                <input type="number" placeholder="Very Fine Sand" formControlName="veryFineSand">
 
             </li>
 
@@ -252,16 +205,14 @@
 
             <li>
 
-                <label for="mesoporosity">mesoporosity(cm³/cm³)</label>
+                <label for="mesoporosity">Mesoporosity(cm³/cm³)</label>
                 <input type="number" placeholder="mesoporosity" formControlName="mesoporosity">
 
             </li>
 
             <li>
-
-                <label for="ph">ph</label>
-                <input type="number" placeholder="ph" formControlName="ph">
-
+                <label for="pH">pH</label>
+                <input type="number" placeholder="pH" formControlName="ph">
             </li>
            </div>
         </ul>
