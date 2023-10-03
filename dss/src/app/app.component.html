@@ -114,13 +114,8 @@
                     <input type="number" placeholder="macroporosity" formControlName="macroporosity">
 
                 </li>
-
-                <li>
-
-                    <label for="claySilt">Clay + Silt (%)</label>
-                    <input type="number" placeholder="clay Silt" formControlName="claySilt">
-
-                </li>
+            </div>
+           <div class="container2">
 
                 <li>
 
@@ -136,9 +131,7 @@
 
                 </li>
 
-            </div>
 
-           <div class="container2">
 
             <li>
 
@@ -154,12 +147,6 @@
 
             </li>
 
-            <li>
-
-                <label for="Plastic Limits">Plastic Limits(g/kg)</label>
-                <input type="number" placeholder="Plastic Limits" formControlName="plasticLimits">
-
-            </li>
 
             <li>
 
@@ -215,9 +202,12 @@
                 <input type="number" placeholder="pH" formControlName="ph">
             </li>
            </div>
+
+
+
         </ul>
 
-        <button type="submit" (click)="onSubmit()">Enviar</button>
+        <button class ="botao" type="submit" (click)="onSubmit()">Calcular</button>
 
       </form>
 
