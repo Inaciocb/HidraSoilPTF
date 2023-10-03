@@ -140,9 +140,8 @@ export const STATES: Set<string> = new Set(
       })
       str = str.concat("</br> </br>")
     }
-
     results.forEach(r => {
-      str = str.concat(r.toString(), "</br>")
+      str = str.concat("<b>", r.toString(), "</b>", "</br>")
     })
     return str + "<p>";
   }

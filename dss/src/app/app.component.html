@@ -1,213 +1,200 @@
 
 <div class="formulario">
-    <form [formGroup]="form">
+    <form class="form" [formGroup]="form">
 
-        <div class="p-5" style="margin-top: 10px;">
+        <div class="p-2" style="margin-top: 10px;">
           <label for="states">Selecione o estado/bioma *: </label>
-          <select name="states" formControlName="state" id="states">
+          <select style="margin-left: 10px !important;" name="states" formControlName="state" id="states">
             <option [value]="state" *ngFor="let state of states">{{ state }}</option>
           </select>
         </div>
 
-        <div class="p-5" style="margin-top: 10px;">
+        <div class="p-2">
           <label for="state_raw">Classe do solo: </label>
-          <select name="state_raw" formControlName="selectSoilClass" id="soilSelect">
+          <select style="margin-left: 16px !important; width: 10vw;" name="state_raw" formControlName="selectSoilClass" id="soilSelect">
             <option [value]="" selected></option>
             <option [value]="sc" *ngFor="let sc of soilClasses">{{ sc }}</option>
           </select>
         </div>
 
 
-        <div class="p-5" style="margin-top: 10px;">
+        <div class="p-2">
           <label for="textural">Classe Textural: </label>
-          <select name="textural" formControlName="selectTexturalClass">
+          <select style="margin-left: 10px !important; width: 10vw;" name="textural" formControlName="selectTexturalClass">
             <option [value]="" selected></option>
             <option [value]="tc" *ngFor="let tc of texturalClasses">{{ tc }}</option>
           </select>
         </div>
 
+        <!-- main container -->
+        <div class="d-flex justify-content-around flex-row mt-5">
+          <div>
+            <ul class="lista">
+              <div class="container1">
+                  <li>
+                      <label for="Silt">Silt(%)</label>
+                      <input type="number" style="border-radius: 5px; padding: 5px;" placeholder="Silt" formControlName="silt">
+                  </li>
 
+                  <li>
+                      <label for ="Sand">Sand(%)</label>
+                      <input type="number" style="border-radius: 5px; padding: 5px;" placeholder="Sand" formControlName="sand">
+                  </li>
 
-        <ul class="lista">
-            <div class="container1">
+                  <li>
+                      <label for="Clay">Clay(%)</label>
+                      <input type="number" style="border-radius: 5px; padding: 5px;" placeholder="Clay" formControlName="clay">
+                  </li>
+
+                  <li>
+                      <label for="Bulk Density">Bulk Density (g/cm³)</label>
+                      <input type="number" style="border-radius: 5px; padding: 5px;" placeholder="Bulk Density" formControlName="bulkDensity">
+
+                  </li>
+
+                  <li>
+                      <label for="Organic Matter">Organic Matter(%)</label>
+                      <input type="number" style="border-radius: 5px; padding: 5px;" placeholder="Organic Matter" formControlName="organicMatter">
+                  </li>
+
+                  <li>
+                      <label for="Total Porosity">Total Porosity(cm³/cm³)</label>
+                      <input type="number" style="border-radius: 5px; padding: 5px;" placeholder="Total Porosity" formControlName="totalPorosity">
+                  </li>
+
+                  <li>
+                      <label for="Coarse Sand">Coarse Sand(%)</label>
+                      <input type="number" style="border-radius: 5px; padding: 5px;" placeholder="Coarse Sand" formControlName="coarseSand">
+                  </li>
+
+                  <li>
+                      <label for="Fine Sand">Fine Sand(%)</label>
+                      <input type="number" style="border-radius: 5px; padding: 5px;" placeholder="Fine Sand" formControlName="fineSand">
+                  </li>
+
+                  <li>
+                      <label for="Microporosity">Microporosity(cm³/cm³)</label>
+                      <input type="number" style="border-radius: 5px; padding: 5px;" placeholder="Microporosity" formControlName="microporosity">
+                  </li>
+              </div>
+
+              <div class="container2">
                 <li>
-                    <label for="Silt">Silt(%)</label>
-                    <input type="number" placeholder="Silt" formControlName="silt">
+                    <label for="sIndex">sIndex</label>
+                    <input type="number" style="border-radius: 5px; padding: 5px;" placeholder="sIndex" formControlName="sIndex">
+
+                </li>
+                <li>
+                    <label for="Phosphor">Phosphor(cmolc/kg)</label>
+                    <input type="number" style="border-radius: 5px; padding: 5px;" placeholder="Phosphor" formControlName="phosphor">
                 </li>
 
                 <li>
-                    <label for ="Sand">Sand(%)</label>
-                    <input type="number" placeholder="Sand" formControlName="sand">
-
+                    <label for="Plastic Limits">Plastic Limits(g/kg)</label>
+                    <input type="number" style="border-radius: 5px; padding: 5px;" placeholder="Plastic Limits" formControlName="plasticLimits">
                 </li>
 
                 <li>
-                    <label for="Clay">Clay(%)</label>
-                    <input type="number" placeholder="Clay" formControlName="clay">
+                    <label for="sumOfBases">sum Of Bases(cmolc/kg)</label>
+                    <input type="number" style="border-radius: 5px; padding: 5px;" placeholder="sum Of Bases" formControlName="sumOfBases">
                 </li>
 
                 <li>
-
-                    <label for="Bulk Density">Bulk Density (g/cm³)</label>
-                    <input type="number" placeholder="Bulk Density" formControlName="bulkDensity">
-
+                    <label for="cec">cec(cmolc/kg)</label>
+                    <input type="number" style="border-radius: 5px; padding: 5px;" placeholder="cec" formControlName="cec">
                 </li>
 
                 <li>
-
-                    <label for="Organic Matter">Organic Matter(%)</label>
-                    <input type="number" placeholder="Organic Matter" formControlName="organicMatter">
+                    <label for="Specific Surface">Specific Surface</label>
+                    <input type="number" style="border-radius: 5px; padding: 5px;" placeholder="Specific Surface" formControlName="ss">
                 </li>
 
                 <li>
-
-                    <label for="Total Porosity">Total Porosity(cm³/cm³)</label>
-                    <input type="number" placeholder="Total Porosity" formControlName="totalPorosity">
-
+                    <label for="Medium Sand">Medium Sand(%)</label>
+                    <input type="number" style="border-radius: 5px; padding: 5px;" placeholder="Medium Sand" formControlName="mediumSand">
                 </li>
 
                 <li>
-
-                    <label for="Coarse Sand">Coarse Sand(%)</label>
-                    <input type="number" placeholder="Coarse Sand" formControlName="coarseSand">
-
+                    <label for="Very Fine Sand">Very Fine Sand(%)</label>
+                    <input type="number" style="border-radius: 5px; padding: 5px;" placeholder="Very Fine Sand" formControlName="veryFineSand">
                 </li>
 
                 <li>
-
-                    <label for="Fine Sand">Fine Sand(%)</label>
-                    <input type="number" placeholder="Fine Sand" formControlName="fineSand">
-
+                    <label for="theta33">theta33(kPa)</label>
+                    <input type="number" style="border-radius: 5px; padding: 5px;" placeholder="theta33" formControlName="theta33">
                 </li>
 
+                <button class="btn btn-primary mt-5" type="submit" (click)="onSubmit()">Enviar</button>
+              </div>
+
+
+              <div class="container2">
                 <li>
-
-                    <label for="Microporosity">Microporosity(cm³/cm³)</label>
-                    <input type="number" placeholder="Microporosity" formControlName="microporosity">
-
-                </li>
-
-                <li>
-
-                    <label for="Density of Particle">Density of Particle(g/cm³)</label>
-                    <input type="number" placeholder="Density of Particle" formControlName="densityOfParticle">
-
-                </li>
-
-                <li>
-
-                    <label for="Soil Organic Carbon">Soil Organic Carbon</label>
-                    <input type="number" placeholder="Soil Organic Carbon" formControlName="soilOrganicCarbon">
-
-                </li>
-
-                <li>
-
                     <label for="Flex Point Of Swrc">Flex Point Of Swrc</label>
-                    <input type="number" placeholder="Flex Point Of Swrc" formControlName="flexPointOfSwrc">
-
+                    <input type="number" style="border-radius: 5px; padding: 5px;" placeholder="Flex Point Of Swrc" formControlName="flexPointOfSwrc">
                 </li>
 
                 <li>
-
                     <label for="macroporosity">Macroporosity(cm³/cm³)</label>
-                    <input type="number" placeholder="macroporosity" formControlName="macroporosity">
-
+                    <input type="number" style="border-radius: 5px; padding: 5px;" placeholder="macroporosity" formControlName="macroporosity">
                 </li>
-            </div>
-           <div class="container2">
 
                 <li>
+                    <label for="claySilt">Clay + Silt (%)</label>
+                    <input type="number" style="border-radius: 5px; padding: 5px;" placeholder="clay Silt" formControlName="claySilt">
+                </li>
 
+                <li>
                     <label for="theta6">theta6 (kPa)</label>
-                    <input type="number" placeholder="theta6" formControlName="theta6">
-
+                    <input type="number" style="border-radius: 5px; padding: 5px;" placeholder="theta6" formControlName="theta6">
                 </li>
 
                 <li>
-
                     <label for="Liquid Limits">Liquid Limits(g/kg)</label>
-                    <input type="number" placeholder="Liquid Limits" formControlName="liquidLimits">
-
+                    <input type="number" style="border-radius: 5px; padding: 5px;" placeholder="Liquid Limits" formControlName="liquidLimits">
+                </li>
+                <li>
+                  <label for="Density of Particle">Density of Particle(g/cm³)</label>
+                  <input type="number" style="border-radius: 5px; padding: 5px;" placeholder="Density of Particle" formControlName="densityOfParticle">
                 </li>
 
+                <li>
+                    <label for="Soil Organic Carbon">Soil Organic Carbon</label>
+                    <input type="number" style="border-radius: 5px; padding: 5px;" placeholder="Soil Organic Carbon" formControlName="soilOrganicCarbon">
+                </li>
+                <li>
+                  <label for="mesoporosity">Mesoporosity(cm³/cm³)</label>
+                  <input type="number" style="border-radius: 5px; padding: 5px;" placeholder="mesoporosity" formControlName="mesoporosity">
+                </li>
+
+                <li>
+                    <label for="pH">pH</label>
+                    <input type="number" style="border-radius: 5px; padding: 5px;" placeholder="pH" formControlName="ph">
+                </li>
+              </div>
+            </ul>
+          </div>
+          <!-- resultados -->
+          <ng-container *ngIf="this.hasResult()">
+            <div style="height: 50vh; width: 30vw; padding: 20px; margin-top: 8vh; background-color: #fcdb82; border-radius: .7vh;">
+              <h4>Resultados</h4>
+              <h6 id="capCampo" class="mt-5">
+                <div class="d-flex flex-row">
+                  <span class="text-muted">Capacidade de Campo:</span>&nbsp;<b> {{ finalResult.value?.capacidadeDeCampo }} </b>
+                </div>
+                <div class="d-flex flex-row mt-4">
+                  <span class="text-muted">Ponto de Murcha Permanente:</span>&nbsp;<b> {{ finalResult.value?.pontoDeMurcha }} </b>
+                </div>
+              </h6>
+              <!-- warnings -->
+              <div>
+
+              </div>
+            </div>
+          </ng-container>
 
 
-            <li>
-
-                <label for="sIndex">sIndex</label>
-                <input type="number" placeholder="sIndex" formControlName="sIndex">
-
-            </li>
-
-            <li>
-
-                <label for="Phosphor">Phosphor(cmolc/kg)</label>
-                <input type="number" placeholder="Phosphor" formControlName="phosphor">
-
-            </li>
-
-
-            <li>
-
-                <label for="sumOfBases">sum Of Bases(cmolc/kg)</label>
-                <input type="number" placeholder="sum Of Bases" formControlName="sumOfBases">
-
-            </li>
-
-            <li>
-
-                <label for="cec">cec(cmolc/kg)</label>
-                <input type="number" placeholder="cec" formControlName="cec">
-
-            </li>
-
-            <li>
-
-                <label for="Specific Surface">Specific Surface</label>
-                <input type="number" placeholder="Specific Surface" formControlName="ss">
-
-            </li>
-
-            <li>
-
-                <label for="Medium Sand">Medium Sand(%)</label>
-                <input type="number" placeholder="Medium Sand" formControlName="mediumSand">
-
-            </li>
-
-            <li>
-
-                <label for="Very Fine Sand">Very Fine Sand(%)</label>
-                <input type="number" placeholder="Very Fine Sand" formControlName="veryFineSand">
-
-            </li>
-
-            <li>
-
-                <label for="theta33">theta33(kPa)</label>
-                <input type="number" placeholder="theta33" formControlName="theta33">
-
-            </li>
-
-            <li>
-
-                <label for="mesoporosity">Mesoporosity(cm³/cm³)</label>
-                <input type="number" placeholder="mesoporosity" formControlName="mesoporosity">
-
-            </li>
-
-            <li>
-                <label for="pH">pH</label>
-                <input type="number" placeholder="pH" formControlName="ph">
-            </li>
-           </div>
-
-
-
-        </ul>
-
-        <button class ="botao" type="submit" (click)="onSubmit()">Calcular</button>
+        </div>
 
       </form>
 
