@@ -52,17 +52,24 @@ export enum TexturalClassT {
   Arenoso_Franco = 'Arenoso Franco',
   Francoargiloar = 'Francoargiloar',
 
+
 }
 
 export enum SoilClassT {
   Argissolo = 'Argissolo',
   Cambissolo = 'Cambissolo',
+  Chernossolo = 'Chernossolo',
+  Espodossolo = 'Espodossolo',
+  Gleissolo = 'Gleissolo',
+  Luvissolo = 'Luvissolo',
+  Nitossolos = 'Nitossolos',
+  Organossolo = 'Organossolo',
   Planossolo = 'Planossolo',
   Plintossolo = 'Plintossolo',
   Latossolo = 'Latossolo',
-  Latossolo_Amarelo = 'Latossolo Amarelo',
   Neossolo = 'Neossolo',
-  Neossolo_Quartzarnico = 'Neossolo Quartzarnico',
+  Vertissolo = 'Vertissolo',
+
 }
 
 export enum InputsT {
