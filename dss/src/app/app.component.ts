@@ -9,6 +9,11 @@ import Swal from 'sweetalert2';
 
 type NullableString = string | null | undefined;
 
+type FinalResult = {
+  capacidadeDeCampo: string;
+  pontoDeMurcha: string;
+}
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -25,6 +30,9 @@ export class AppComponent {
   states = Object.values(StatesT);
   filteredEquations: Equation[] = [];
   warnings: string[] = [];
+
+  finalResult = new FormControl({} as FinalResult);
+
 
   form = new FormGroup({
     state: new FormControl('RS'),
@@ -137,11 +145,13 @@ export class AppComponent {
       results.push(r);
       console.log("Equação: ", e, "\nResultado: ", result.result, result.measurementUnit);
     });
-
     // results = results.filter(r => !isNaN(r.result)); // remove NaN
 
     if (results && results.length > 0) {
-      Swal.fire({title:'Resultado(s)', html: resultsToString(results, this.warnings), icon: 'success' });
+      let capacidade = results.filter(r => r.eqType === 'fieldCapacity').map(r => '' + r.result + r.measurementUnit)[0];
+      let pontoDeMurcha = results.filter(r => r.eqType === 'permanentWiltingPoint').map(r => '' + r.result + r.measurementUnit)[0];
+      this.finalResult.setValue({capacidadeDeCampo: capacidade, pontoDeMurcha: pontoDeMurcha});
+      // Swal.fire({title:'Resultado(s)', html: resultsToString(results, this.warnings), icon: 'success' });
     } else {
       Swal.fire('Atenção', 'Nenhuma equação foi encontrada, tente modificar os filtros', 'warning');
     }
@@ -174,6 +184,10 @@ export class AppComponent {
 
     console.log("Lower RMSE equations: ", lowerRMSEEquations);
     return lowerRMSEEquations;
+  }
+
+  hasResult(): boolean {
+    return this.finalResult.value?.capacidadeDeCampo != null || this.finalResult.value?.pontoDeMurcha != null;
   }
 
 

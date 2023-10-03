@@ -2,7 +2,7 @@
     display: flex;
     justify-content: center;
     list-style: none;
-    padding: 0;
+    padding: 10px;
 }
 
 .container1, .container2 {
@@ -24,9 +24,9 @@ li{
     border-radius: 8px;
     margin-bottom: 8px;
     margin-left: 5px;
-    width: 100%; 
+    width: 100%;
     transition:  0.5s;
-} 
+}
 
 input[type=text]:focus {
     transition:  0.5s;
