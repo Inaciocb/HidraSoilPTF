@@ -45,3 +45,6 @@ input[type=text]:focus {
     background-color: rgb(135, 162, 186);
     transition:  0.5s;
 }
+img{
+    margin: 20px;
+}
