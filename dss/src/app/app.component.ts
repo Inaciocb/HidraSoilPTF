@@ -64,6 +64,7 @@ export class AppComponent {
     ss: new FormControl(''),
     mediumSand: new FormControl(''),
     veryFineSand: new FormControl(''),
+    veryCoarseSand: new FormControl(''),
     theta33: new FormControl(''),
     mesoporosity: new FormControl(''),
     ph: new FormControl(''),
@@ -148,8 +149,8 @@ export class AppComponent {
     // results = results.filter(r => !isNaN(r.result)); // remove NaN
 
     if (results && results.length > 0) {
-      let capacidade = results.filter(r => r.eqType === 'fieldCapacity').map(r => '' + r.result + r.measurementUnit)[0];
-      let pontoDeMurcha = results.filter(r => r.eqType === 'permanentWiltingPoint').map(r => '' + r.result + r.measurementUnit)[0];
+      let capacidade = results.filter(r => r.eqType === 'fieldCapacity').map(r => '' + r.result.toFixed(3) + r.measurementUnit)[0];
+      let pontoDeMurcha = results.filter(r => r.eqType === 'permanentWiltingPoint').map(r => '' + r.result.toFixed(3) + r.measurementUnit)[0];
       this.finalResult.setValue({capacidadeDeCampo: capacidade, pontoDeMurcha: pontoDeMurcha});
       // Swal.fire({title:'Resultado(s)', html: resultsToString(results, this.warnings), icon: 'success' });
     } else {
