@@ -6,14 +6,14 @@
 
           <div class="p-2" style="margin-top: 10px;">
             <label for="states">Selecione o estado/bioma *: </label>
-            <select style="margin-left: 10px !important;" name="states" formControlName="state" id="states">
+            <select class="select-state" name="states" formControlName="state" id="states">
               <option [value]="state" *ngFor="let state of states">{{ state }}</option>
             </select>
           </div>
 
           <div class="p-2">
             <label for="state_raw">Classe do solo: </label>
-            <select style="margin-left: 16px !important; width: 10vw;" name="state_raw" formControlName="selectSoilClass" id="soilSelect">
+            <select class="select-soil" name="state_raw" formControlName="selectSoilClass" id="soilSelect">
               <option [value]="" selected></option>
               <option [value]="sc" *ngFor="let sc of soilClasses">{{ sc }}</option>
             </select>
@@ -22,7 +22,7 @@
 
           <div class="p-2">
             <label for="textural">Classe Textural: </label>
-            <select style="margin-left: 10px !important; width: 10vw;" name="textural" formControlName="selectTexturalClass">
+            <select class="select-textural" style="margin-left: 10px !important; width: 10vw;" name="textural" formControlName="selectTexturalClass">
               <option [value]="" selected></option>
               <option [value]="tc" *ngFor="let tc of texturalClasses">{{ tc }}</option>
             </select>
@@ -125,7 +125,7 @@
                     <input type="number" style="border-radius: 5px; padding: 5px;" placeholder="pH" formControlName="ph">
                 </li>
 
-                  <button class="btn btn-primary mt-5" type="submit"  (click)="onSubmit ()">Calcular</button>
+                  <button class="btn btn-primary mt-5 btn-submit-desktop" type="submit"  (click)="onSubmit ()">Calcular</button>
                 </div>
 
 
@@ -171,6 +171,8 @@
 
                 </div>
               </ul>
+
+              <button class="btn btn-primary mt-3 btn-submit-mobile" type="submit"  (click)="onSubmit ()">Calcular</button>
             </div>
 
 
@@ -196,13 +198,14 @@
           </div>
         </form>
         <div class="logos " style="width: 95vw; height: 350px; ">
-          <div class="d-flex justify-content-around">
-            <img src="assets/images/CS-UFSM.png" alt="logo" style="width:13%; aspect-ratio: 3/2; object-fit: contain;">
-            <img src="assets/images/UFSM.png" alt="logo" style="width:13%; aspect-ratio: 3/2; object-fit: contain;">
-            <img src="assets/images/logoSBG.png" alt="logo" style="width:13%; aspect-ratio: 3/2; object-fit: contain;">
+          <div class="logo-inside">
+            <img src="assets/images/CS-UFSM.png" alt="logo" class="logo-img">
+            <img src="assets/images/UFSM.png" alt="logo" class="logo-img">
+            <img src="assets/images/logoSBG.png" alt="logo" class="logo-img">
+            <img src="assets/images/LOGOBRUNA_1.png" alt="logo" class="logo-img-2-mobile">
           </div>
-          <div style="position: absolute; top: 5%; right: -22%;" [ngStyle]="this.hasResult() ? {'right': '-20.8%'} : {'right': '-30%'}">
-            <img src="assets/images/LOGOBRUNA_1.png" alt="logo" style="width:14%; aspect-ratio: 2/1; object-fit: contain;">
+          <div class="logo-img-2-div" [ngClass]="this.hasResult() ? 'logo-img-2-div-hasResult' : 'logo-img-2-div-hasNoResult'">
+            <img src="assets/images/LOGOBRUNA_1.png" alt="logo" class="logo-img-2-desktop">
           </div>
       </div>
 
