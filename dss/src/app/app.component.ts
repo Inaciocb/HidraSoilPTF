@@ -144,8 +144,12 @@ export class AppComponent {
       let r = new EqResult(result.result, result.measurementUnit);
       r.eqType = e.type;
       results.push(r);
-      console.log("Equação: ", e, "\nResultado: ", result.result, result.measurementUnit);
+      console.table({Nome: e.name, Tipo: e.type, KPA: e.numKpa, RMSE: e.rmse,
+        Classe_Solo: e.soilClass, Classe_Textural: e.texturalClass,
+        Estados: [...e.statesAppliesTo], Inputs: [...e.inputsAccepted]});
+      console.log("Resultado: ", result.result + result.measurementUnit);
     });
+    console.log("----------------------------------------------------")
     // results = results.filter(r => !isNaN(r.result)); // remove NaN
 
     if (results && results.length > 0) {
@@ -183,7 +187,7 @@ export class AppComponent {
       lowerRMSEEquations.push(pwpEquations.reduce((prev, next) => prev.rmse < next.rmse ? prev : next));
 
 
-    console.log("Lower RMSE equations: ", lowerRMSEEquations);
+    //console.log("Lower RMSE equations: ", lowerRMSEEquations);
     return lowerRMSEEquations;
   }
 
