@@ -1,7 +1,9 @@
 <div class="parent" >
   <div class="formulario">
-  
-          
+
+        <!-- main container -->
+        <form class="child form" [formGroup]="form">
+
           <div class="p-2" style="margin-top: 10px;">
             <label for="states">Selecione o estado/bioma *: </label>
             <select style="margin-left: 10px !important;" name="states" formControlName="state" id="states">
@@ -26,8 +28,6 @@
             </select>
           </div>
 
-          <!-- main container -->
-      <form class="child form" [formGroup]="form">
           <div class="d-flex justify-content-around ">
             <div>
               <ul class="lista">
@@ -195,8 +195,8 @@
           </div>
         </form>
 </div>
- <div class="logos">
-      <img src="assets/images/CS-UFSM.png" alt="logo" style="width:10%;">
-      <img src="assets/images/UFSM.png" alt="logo" style="width:10%;">
-      <img src="assets/images/logoSBG.png" alt="logo" style="width:10%;">
-  </div>
+<div class="logos">
+    <img src="assets/images/CS-UFSM.png" alt="logo" style="width:10%;">
+    <img src="assets/images/UFSM.png" alt="logo" style="width:10%;">
+    <img src="assets/images/logoSBG.png" alt="logo" style="width:10%;">
+</div>
