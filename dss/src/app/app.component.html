@@ -1,4 +1,4 @@
-<div class="parent" >
+<div class="parent" style="overflow-x: hidden;" >
   <div class="formulario">
 
         <!-- main container -->
@@ -125,7 +125,7 @@
                     <input type="number" style="border-radius: 5px; padding: 5px;" placeholder="pH" formControlName="ph">
                 </li>
 
-                  <button class="btn btn-primary mt-5" type="submit"  (click)="onSubmit ()">Enviar</button>
+                  <button class="btn btn-primary mt-5" type="submit"  (click)="onSubmit ()">Calcular</button>
                 </div>
 
 
@@ -174,18 +174,19 @@
             </div>
 
 
+
             <!-- resultados -->
-            <ng-container *ngIf="this.hasResult ()">
-              <div style="height: 50vh; width: 30vw; padding: 20px; margin-top: 8vh; background-color: #fcdb82; border-radius: .7vh;">
-                <h4>Resultados</h4>
-                <h6 id="capCampo" class="mt-5">
+            <ng-container *ngIf="this.hasResult()">
+              <div style="height: 50vh; width: 30vw; padding: 20px; margin-top: 8vh; background-color: #f0ddd3; border-radius: .7vh;">
+                <h4 style="margin-left: 37.5%">Resultados</h4>
+                <h5 id="capCampo" style="margin-top: 12%">
                   <div class="d-flex flex-row">
                     <span class="text-muted">Capacidade de Campo:</span>&nbsp;<b> {{ finalResult.value?.capacidadeDeCampo ? finalResult.value?.capacidadeDeCampo : 'Não encontrado'}} </b>
                   </div>
                   <div class="d-flex flex-row mt-4">
                     <span class="text-muted">Ponto de Murcha Permanente:</span>&nbsp;<b> {{ finalResult.value?.pontoDeMurcha ? finalResult.value?.pontoDeMurcha : 'Não encontrado' }} </b>
                   </div>
-                </h6>
+                </h5>
                 <!-- warnings -->
                 <div>
 
@@ -194,9 +195,15 @@
             </ng-container>
           </div>
         </form>
-</div>
-<div class="logos">
-    <img src="assets/images/CS-UFSM.png" alt="logo" style="width:10%;">
-    <img src="assets/images/UFSM.png" alt="logo" style="width:10%;">
-    <img src="assets/images/logoSBG.png" alt="logo" style="width:10%;">
+        <div class="logos " style="width: 95vw; height: 350px; ">
+          <div class="d-flex justify-content-around">
+            <img src="assets/images/CS-UFSM.png" alt="logo" style="width:13%; aspect-ratio: 3/2; object-fit: contain;">
+            <img src="assets/images/UFSM.png" alt="logo" style="width:13%; aspect-ratio: 3/2; object-fit: contain;">
+            <img src="assets/images/logoSBG.png" alt="logo" style="width:13%; aspect-ratio: 3/2; object-fit: contain;">
+          </div>
+          <div style="position: absolute; top: 5%; right: -22%;" [ngStyle]="this.hasResult() ? {'right': '-20.8%'} : {'right': '-30%'}">
+            <img src="assets/images/LOGOBRUNA_1.png" alt="logo" style="width:14%; aspect-ratio: 2/1; object-fit: contain;">
+          </div>
+      </div>
+
 </div>
