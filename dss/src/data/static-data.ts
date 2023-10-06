@@ -88,7 +88,7 @@ export const EQUATIONS: Set<Equation> = new Set([
 
  new Equation("CO3", "Argiloso", [InputsT.silt, ], (silt: number, ): EqResult => {  return new EqResult( 42.6737 - 363.9401 / silt, "%")}, "", [StatesT.MG,], 0, "fieldCapacity", 0),
 
- new Equation("CO4", "Francoargiloar", [InputsT.silt, ], (silt: number, ): EqResult => {  return new EqResult( 24.8766 + 2347.3300 / silt, "%")}, "", [StatesT.MG,], 0, "fieldCapacity", 0),
+ new Equation("CO4", "Francoargiloar", [InputsT.silt, ], (silt: number, ): EqResult => {  return new EqResult(( 24.8766 + 2347.3300 / silt)/1000, "%")}, "", [StatesT.MG,], 0, "fieldCapacity", 0),
 
  new Equation("Pe7", "", [InputsT.silt, ], (silt: number, ): EqResult => {  return new EqResult( 0.0152 + 0.0001 * silt, "cm³/cm³")}, "", [StatesT.PB,], 0.293830586, "fieldCapacity", 0),
 
@@ -102,9 +102,9 @@ export const EQUATIONS: Set<Equation> = new Set([
 
  new Equation("NASC4", "", [InputsT.sand, ], (sand: number, ): EqResult => {  return new EqResult( 0.378 - 0.000351 * (sand/10), "cm³/cm³")}, "", [StatesT.TAB_COSTEIROS,], 0.291335406, "fieldCapacity", 0),
 
- new Equation("Ar", "", [InputsT.clay, InputsT.silt, ], (clay: number, silt: number, ): EqResult => {  return new EqResult( 3.1 - 0.629 * silt+clay - 0.0034 * silt+clay ** 2, "%")}, "", [StatesT.SP,], 2.403595673, "fieldCapacity", 0),
+ new Equation("Ar", "", [InputsT.clay, InputsT.silt, ], (clay: number, silt: number, ): EqResult => {  return new EqResult( (3.1 - 0.629 * silt+clay - 0.0034 * silt+clay ** 2)/100, "%")}, "", [StatesT.SP,], 2.403595673, "fieldCapacity", 0),
 
- new Equation("Mas1", "", [InputsT.clay, InputsT.silt, InputsT.theta33, ], (clay: number, silt: number, th33: number, ): EqResult => {  return new EqResult(  -1.5691 + 0.4289 * (silt + clay), "g/kg")}, "", [StatesT.PE,], 0.102982822, "fieldCapacity", 0),
+ new Equation("Mas1", "", [InputsT.clay, InputsT.silt, InputsT.theta33, ], (clay: number, silt: number, th33: number, ): EqResult => {  return new EqResult(  (-1.5691 + 0.4289 * (silt + clay))*100, "g/kg")}, "", [StatesT.PE,], 0.102982822, "fieldCapacity", 0),
 
  new Equation("DosS8", "", [InputsT.clay, InputsT.coarseSand, InputsT.fineSand, ], (clay: number, cs: number, fs: number, ): EqResult => {  return new EqResult( 18.15868 + 0.21328 * clay - 0.23668 * cs - 0.16258 * fs, "dag/kg")}, "Argissolo", [StatesT.RS,], 0.088513323, "fieldCapacity", 0),
 
@@ -244,7 +244,7 @@ export const EQUATIONS: Set<Equation> = new Set([
 
  new Equation("Ol4", "Muito Argiloso", [InputsT.clay, InputsT.silt, InputsT.bulkDensity, ], (bd: number, clay: number, silt: number, ): EqResult => {  return new EqResult( 0.000282 * silt/10 + 0.000487 * clay/10 - 0.101537 * bd, "kg/kg")}, "", [StatesT.PE,], 0.428949554, "permanentWiltingPoint", 0),
 
- new Equation("Rei2", "", [InputsT.clay, InputsT.sand, ], (clay: number, sand: number, ): EqResult => {  return new EqResult( 0.236 + 0.044 * clay*100 - 0.21 * (sand*100), "kg/kg")}, "", [StatesT.RS,], 0, "permanentWiltingPoint", 0),
+ new Equation("Rei2", "", [InputsT.clay, InputsT.sand, ], (clay: number, sand: number, ): EqResult => {  return new EqResult( (0.236 + 0.044 * clay*100 - 0.21 * (sand*100))/1000, "kg/kg")}, "", [StatesT.RS,], 0, "permanentWiltingPoint", 0),
 
  new Equation("Vb2", "", [InputsT.clay, InputsT.silt, ], (clay: number, silt: number, ): EqResult => {  return new EqResult( 3.83 + 0.272 * clay*100 + 0.212 * silt*100, "%")}, "", [StatesT.BR,], 0.066539877, "permanentWiltingPoint", 0),
 

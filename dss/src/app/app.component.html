@@ -81,7 +81,7 @@
 
                 <div class="container2">
                   <li>
-                      <label for="sIndex">Índice</label>
+                      <label for="sIndex">Índice S</label>
                       <input type="number" style="border-radius: 5px; padding: 5px;" placeholder="Índice" formControlName="sIndex">
 
                   </li>
@@ -116,11 +116,6 @@
                   </li>
 
                   <li>
-                      <label for="theta33">theta33 (kPa)</label>
-                      <input type="number" style="border-radius: 5px; padding: 5px;" placeholder="theta33 (kPa)" formControlName="theta33">
-                  </li>
-
-                  <li>
                     <label for="pH">pH</label>
                     <input type="number" style="border-radius: 5px; padding: 5px;" placeholder="pH" formControlName="ph">
                 </li>
@@ -144,16 +139,12 @@
                       <label for="macroporosity">Macroporosidade (cm³/cm³)</label>
                       <input type="number" style="border-radius: 5px; padding: 5px;" placeholder="Macroporosidade (cm³/cm³)" formControlName="macroporosity">
                   </li>
-
-                  <li>
-                      <label for="theta6">theta6 (kPa)</label>
-                      <input type="number" style="border-radius: 5px; padding: 5px;" placeholder="theta6 (kPa)" formControlName="theta6">
-                  </li>
-
+                
                   <li>
                       <label for="Liquid Limits">Limite de liquidez (g/kg)</label>
                       <input type="number" style="border-radius: 5px; padding: 5px;" placeholder="Limite de liquidez (g/kg)" formControlName="liquidLimits">
                   </li>
+
                   <li>
                     <label for="Density of Particle">Densidade de partícula (g/cm³)</label>
                     <input type="number" style="border-radius: 5px; padding: 5px;" placeholder="Densidade de partícula (g/cm³)" formControlName="densityOfParticle">
@@ -183,7 +174,7 @@
                 <h4 style="margin-left: 37.5%">Resultados</h4>
                 <h5 id="capCampo" style="margin-top: 12%">
                   <div class="d-flex flex-row">
-                    <span class="text-muted">Capacidade de Campo:</span>&nbsp;<b> {{ finalResult.value?.capacidadeDeCampo ? finalResult.value?.capacidadeDeCampo : 'Não encontrado'}} </b>
+                    <span class="text-muted">Capacidade de Campo:</span>&nbsp;<b> {{ finalResult.value?.capacidadeDeCampo ? finalResult.value?.cstatesacidadeDeCampo : 'Não encontrado'}} </b>
                   </div>
                   <div class="d-flex flex-row mt-4">
                     <span class="text-muted">Ponto de Murcha Permanente:</span>&nbsp;<b> {{ finalResult.value?.pontoDeMurcha ? finalResult.value?.pontoDeMurcha : 'Não encontrado' }} </b>

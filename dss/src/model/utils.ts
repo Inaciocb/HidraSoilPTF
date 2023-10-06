@@ -27,7 +27,7 @@ export enum StatesT {
   RJ = 'RJ',
   RN = 'RN',
   AM = 'AM',
-  AP = 'AP',
+  AP = 'PA',
   AC = 'AC',
   RO = 'RO',
   RR = 'RR',
@@ -40,18 +40,18 @@ export enum StatesT {
 
 // FIXME: esta errado qual é textural e qual é de solo
 export enum TexturalClassT {
+  
   Argiloso = 'Argiloso',
-  Muito_Argiloso = 'Muito Argiloso',
-  Argilo_Siltoso = 'Argilo Siltoso',
-  Argilo_Arenoso = 'Argilo Arenoso',
-  Francoargiloso = 'Francoargiloso',
-  Franco_Arenoso = 'Franco Arenoso',
-  Francosiltoso = 'Francosiltoso',
-  Francoargiloarenoso = 'Francoargiloarenoso',
-  Francoarenoso = 'Francoarenoso',
-  Arenoso_Franco = 'Arenoso Franco',
-  Francoargiloar = 'Francoargiloar',
-
+  Arigilo_arenoso = 'Argilo-arenoso',
+  Argilo_siltoso = 'Argilo-siltoso',
+  Franco_argilo_arenoso = 'Franco-argilo-arenoso',
+  Franco_argilo_siltoso = 'Franco-argilo-siltoso',
+  Franco_arenoso = 'Franco-arenoso',
+  Franco = 'Franco',
+  Franco_siltoso = 'Franco-siltoso',
+  Silte = 'Silte',
+  Areia_fraca = 'Areia fraca',
+  Areia = 'Areia',
 
 }
 
