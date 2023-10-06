@@ -13,7 +13,7 @@ function ln (num: number) {
 // Importante manter os parametros da função que aplica a equação em ordem alfabética de acordo com os nomes na tela inicial!!!!
 // exemplo formula recebe CS -> considerar coarseSand para ordem alfabética
 export const EQUATIONS: Set<Equation> = new Set([
- 
+
  new Equation("Dicos2", "", [InputsT.bulkDensity, ], (bd: number, ): EqResult => {  return new EqResult( 0.46082 - 0.18014 * bd, "cm³/cm³")}, "", [StatesT.BA,], 0.13530126, "fieldCapacity", 0),
 
  new Equation("Rei3", "", [InputsT.sand, InputsT.coarseSand, InputsT.liquidLimits, ], (cs: number, ll: number, sand: number, ): EqResult => {  return new EqResult( 169 + 17.1 * log ((sand/10)) - 17.5 * log ((cs/10)) + 0.53 * ll, "g/kg")}, "", [StatesT.RS,StatesT.SC,], 0.030885503, "fieldCapacity", 0),
@@ -24,7 +24,7 @@ export const EQUATIONS: Set<Equation> = new Set([
 
  new Equation("Vb1", "", [InputsT.clay, ], (clay: number, ): EqResult => {  return new EqResult( 13.96 + 0.387 * clay*100, "%")}, "", [StatesT.BR,], 0.091896481, "fieldCapacity", 0),
 
- new Equation("Rei2", "", [InputsT.clay, InputsT.silt, ], (clay: number, silt: number, ): EqResult => {  return new EqResult( 0.037 + 90.38 * (clay + silt)* 100, "kg/kg")}, "", [StatesT.RS,], 0.030885503, "fieldCapacity", 0),
+ new Equation("Rei2", "", [InputsT.clay, InputsT.silt, ], (clay: number, silt: number, ): EqResult => {  return new EqResult( 0.037 + 90.38 * (clay * 100 + silt * 100), "kg/kg")}, "", [StatesT.RS,], 0.030885503, "fieldCapacity", 0),
 
  new Equation("ASS", "", [InputsT.sand, ], (sand: number, ): EqResult => {  return new EqResult( 39.07988535 - 0.04098682 * (sand)**1.455456594, "%")}, "", [StatesT.BR,], 0.071931887, "fieldCapacity", 0),
 

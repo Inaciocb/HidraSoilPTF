@@ -72,11 +72,6 @@
                         <label for="Fine Sand">Areia fina (%)</label>
                         <input type="number" style="border-radius: 5px; padding: 5px;" placeholder="Areia fina (%)" formControlName="fineSand">
                     </li>
-
-                    <li>
-                        <label for="Microporosity">Microporosidade (cm³/cm³)</label>
-                        <input type="number" style="border-radius: 5px; padding: 5px;" placeholder="Microporosidade (cm³/cm³)" formControlName="microporosity">
-                    </li>
                 </div>
 
                 <div class="container2">
@@ -139,7 +134,7 @@
                       <label for="macroporosity">Macroporosidade (cm³/cm³)</label>
                       <input type="number" style="border-radius: 5px; padding: 5px;" placeholder="Macroporosidade (cm³/cm³)" formControlName="macroporosity">
                   </li>
-                
+
                   <li>
                       <label for="Liquid Limits">Limite de liquidez (g/kg)</label>
                       <input type="number" style="border-radius: 5px; padding: 5px;" placeholder="Limite de liquidez (g/kg)" formControlName="liquidLimits">
@@ -160,6 +155,10 @@
                   </li>
 
 
+                  <li>
+                    <label for="Microporosity">Microporosidade (cm³/cm³)</label>
+                    <input type="number" style="border-radius: 5px; padding: 5px;" placeholder="Microporosidade (cm³/cm³)" formControlName="microporosity">
+                  </li>
                 </div>
               </ul>
 
@@ -168,26 +167,49 @@
 
 
 
-            <!-- resultados -->
+            <!-- resultados desktop -->
             <ng-container *ngIf="this.hasResult()">
-              <div style="height: 50vh; width: 30vw; padding: 20px; margin-top: 8vh; background-color: #f0ddd3; border-radius: .7vh;">
+              <div class="resultados-desktop">
                 <h4 style="margin-left: 37.5%">Resultados</h4>
                 <h5 id="capCampo" style="margin-top: 12%">
                   <div class="d-flex flex-row">
-                    <span class="text-muted">Capacidade de Campo:</span>&nbsp;<b> {{ finalResult.value?.capacidadeDeCampo ? finalResult.value?.cstatesacidadeDeCampo : 'Não encontrado'}} </b>
+                    <span class="text-muted">Capacidade de Campo:</span>&nbsp;<b> {{ finalResult.value?.capacidadeDeCampo ? finalResult.value?.capacidadeDeCampo : 'Não encontrado'}} </b>
                   </div>
                   <div class="d-flex flex-row mt-4">
                     <span class="text-muted">Ponto de Murcha Permanente:</span>&nbsp;<b> {{ finalResult.value?.pontoDeMurcha ? finalResult.value?.pontoDeMurcha : 'Não encontrado' }} </b>
                   </div>
                 </h5>
                 <!-- warnings -->
-                <div>
-
-                </div>
+                <div> </div>
               </div>
             </ng-container>
           </div>
         </form>
+
+        <!-- resultados mobile-->
+        <ng-container *ngIf="this.hasResult()">
+          <div class="resultados-mobile">
+            <h4 style="margin-left: 35%">Resultados</h4>
+            <h5 id="capCampo" style="margin-top: 12%">
+              <div class="d-flex flex-row justify-content-center">
+                <span class="text-muted">Capacidade de Campo:</span>
+              </div>
+              <div class="d-flex flex-row justify-content-center mt-2">
+                <b> {{ finalResult.value?.capacidadeDeCampo ? finalResult.value?.capacidadeDeCampo : 'Não encontrado'}} </b>
+              </div>
+
+              <div class="d-flex flex-row justify-content-center mt-4">
+                <span class="text-muted">Ponto de Murcha Permanente:</span>
+              </div>
+              <div class="d-flex flex-row justify-content-center mt-2">
+                <b> {{ finalResult.value?.pontoDeMurcha ? finalResult.value?.pontoDeMurcha : 'Não encontrado' }} </b>
+              </div>
+
+            </h5>
+            <!-- warnings -->
+            <div> </div>
+          </div>
+        </ng-container>
         <div class="logos " style="width: 95vw; height: 350px; ">
           <div class="logo-inside">
             <img src="assets/images/CS-UFSM.png" alt="logo" class="logo-img">

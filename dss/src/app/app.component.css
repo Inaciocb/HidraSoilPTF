@@ -95,6 +95,13 @@ img{
 .logo-img-2-div-hasResult { right: -20.8%; }
 .logo-img-2-div-hasNoResult { right: -30%; }
 
+.resultados-desktop {
+  display: block;
+  height: 50vh; width: 30vw; padding: 20px; margin-top: 8vh; background-color: #f0ddd3; border-radius: .7vh;
+}
+
+.resultados-mobile { display: none; }
+
 @media only screen and (max-width: 850px) {
   .lista {
     margin-top: 1.5%;
@@ -133,6 +140,8 @@ img{
     display: flex;
     direction: row;
     justify-content: center;
+    margin-top: 12%;
+    margin-bottom: 5%;
   }
   .logo-inside {
     display: flex;
@@ -158,6 +167,15 @@ img{
   .logo-img-2-div-hasNoResult {  display: none; }
   .logo-img-2-div {
     display: none;
+  }
+
+  .resultados-desktop {
+    display: none;
+  }
+
+  .resultados-mobile {
+    display: block;
+    height: 50vh; margin-left: 2.5%; width: 95%; padding: 20px; margin-top: 8vh; background-color: #f0ddd3; border-radius: .7vh;
   }
 
 }
