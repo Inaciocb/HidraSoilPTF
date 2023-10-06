@@ -80,7 +80,7 @@ img{
 }
 
 .logo-img-2-desktop {
-  width:14%;
+  width: 25%;
   aspect-ratio: 2/1;
   object-fit: contain;
 }
@@ -92,8 +92,8 @@ img{
 .logo-img-2-div {
   position: absolute; top: 5%; right: -22%;
 }
-.logo-img-2-div-hasResult { right: -20.8%; }
-.logo-img-2-div-hasNoResult { right: -30%; }
+.logo-img-2-div-hasResult { right: -17.8%; }
+.logo-img-2-div-hasNoResult { right: -29%; }
 
 .resultados-desktop {
   display: block;
