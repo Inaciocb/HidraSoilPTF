@@ -95,6 +95,12 @@ export class AppComponent {
     if (this.form.get('state')?.value?.toLocaleLowerCase() == 'tab. costeiros') {
       this.form.get('state')?.setValue('TAB_COSTEIROS');
     }
+    if (this.form.get('state')?.value?.toLocaleLowerCase() == 'agreste') {
+      this.form.get('state')?.setValue('AGRESTE');
+    }
+    if (this.form.get('state')?.value?.toLocaleLowerCase() == 'cerrado') {
+      this.form.get('state')?.setValue('CERRADO');
+    }
     let state: StatesT = StatesT[this.form.get('state')?.value as keyof typeof StatesT];
     // aplica o filtro
     this.filteredEquations =  this.equationService.findUsableEquations(
