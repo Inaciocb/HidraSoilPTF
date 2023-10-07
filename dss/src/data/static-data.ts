@@ -34,11 +34,11 @@ export const EQUATIONS: Set<Equation> = new Set([
 
  new Equation("Fer", "", [InputsT.clay, InputsT.silt, InputsT.fineSand, ], (clay: number, fs: number, silt: number, ): EqResult => {  return new EqResult( 0.00807 + 0.004291 * clay + 0.003186 * silt + 0.000506 * fs, "kg/kg")}, "", [StatesT.MG,StatesT.BA,StatesT.ES,], 0.082125727, "fieldCapacity", 0),
 
- new Equation("Dicos4", "", [InputsT.bulkDensity, InputsT.totalPorosity, InputsT.coarseSand, InputsT.phosphor, ], (bd: number, cs: number, p: number, tp: number, ): EqResult => {  return new EqResult( 1.42937 - 0.28125 * cs - 0.46640 * bd - 1.00496 * tp, "cm³/cm³")}, "", [StatesT.BA,], 0.079419082, "fieldCapacity", 0),
+ new Equation("Dicos4", "", [InputsT.bulkDensity, InputsT.totalPorosity, InputsT.coarseSand, ], (bd: number, cs: number,  tp: number, ): EqResult => {  return new EqResult( 1.42937 - 0.28125 * cs - 0.46640 * bd - 1.00496 * tp, "cm³/cm³")}, "", [StatesT.BA,], 0.079419082, "fieldCapacity", 0),
 
- new Equation("Dicos5", "", [InputsT.bulkDensity, InputsT.totalPorosity, InputsT.coarseSand, InputsT.phosphor, ], (bd: number, cs: number, p: number, tp: number, ): EqResult => {  return new EqResult( 2.84267 - 0.026601 * cs - 0.97267 * bd - 2.40257 * tp, "cm³/cm³")}, "", [StatesT.BA,], 0.074528906, "fieldCapacity", 0),
+ new Equation("Dicos5", "", [InputsT.bulkDensity, InputsT.totalPorosity, InputsT.coarseSand, ], (bd: number, cs: number, tp: number, ): EqResult => {  return new EqResult( 2.84267 - 0.026601 * cs - 0.97267 * bd - 2.40257 * tp, "cm³/cm³")}, "", [StatesT.BA,], 0.074528906, "fieldCapacity", 0),
 
- new Equation("Dicos1", "", [InputsT.bulkDensity, InputsT.totalPorosity, InputsT.coarseSand, InputsT.phosphor, ], (bd: number, cs: number, p: number, tp: number, ): EqResult => {  return new EqResult( 0.86625 - 0.01727 * cs - 0.21859 * bd- 0.85690 * tp, "cm³/cm³")}, "", [StatesT.BA,], 0.565503582, "fieldCapacity", 0),
+ new Equation("Dicos1", "", [InputsT.bulkDensity, InputsT.totalPorosity, InputsT.coarseSand, ], (bd: number, cs: number,  tp: number, ): EqResult => {  return new EqResult( 0.86625 - 0.01727 * cs - 0.21859 * bd- 0.85690 * tp, "cm³/cm³")}, "", [StatesT.BA,], 0.565503582, "fieldCapacity", 0),
 
  new Equation("Dicos3", "", [InputsT.bulkDensity, InputsT.coarseSand, ], (bd: number, cs: number, ): EqResult => {  return new EqResult( 0.59324 - 0.14310 * cs + 0.18177 * bd, "cm³/cm³")}, "", [StatesT.BA,], 0.357343101, "fieldCapacity", 0),
 
@@ -52,17 +52,17 @@ export const EQUATIONS: Set<Equation> = new Set([
 
  new Equation("CO1", "Argiloso", [InputsT.silt, InputsT.bulkDensity, ], (bd: number, silt: number, ): EqResult => {  return new EqResult( 41.3580-16.6354*bd+0.4106*silt, "%")}, "", [StatesT.MG,], 0.148291032, "fieldCapacity", 0),
 
- new Equation("Soar8", "Francoargiloso", [InputsT.bulkDensity, InputsT.totalPorosity, InputsT.densityOfParticle, InputsT.phosphor, ], (bd: number, dp: number, p: number, tp: number, ): EqResult => {  return new EqResult( 2.1696 - 1.4883 * bd + 0.6744 * dp - 3.3203 * tp, "cm³/cm³")}, "", [StatesT.RS,], 0.236297199, "fieldCapacity", 0),
+ new Equation("Soar8", "Francoargiloso", [InputsT.bulkDensity, InputsT.totalPorosity, InputsT.densityOfParticle ], (bd: number, dp: number, tp: number, ): EqResult => {  return new EqResult( 2.1696 - 1.4883 * bd + 0.6744 * dp - 3.3203 * tp, "cm³/cm³")}, "", [StatesT.RS,], 0.236297199, "fieldCapacity", 0),
 
- new Equation("Nob", "", [InputsT.clay, InputsT.phosphor, InputsT.ph, ], (clay: number, p: number, ph: number, ): EqResult => {  return new EqResult( 0.263 + (0.000621 * clay) -(0.0372 * ph), "cm³/cm³")}, "", [StatesT.AGRESTE,], 0.291335406, "fieldCapacity", 0),
+ new Equation("Nob", "", [InputsT.clay, InputsT.ph, ], (clay: number, ph: number, ): EqResult => {  return new EqResult( 0.263 + (0.000621 * clay) -(0.0372 * ph), "cm³/cm³")}, "", [StatesT.AGRESTE,], 0.291335406, "fieldCapacity", 0),
 
  new Equation("Pe2", "", [InputsT.microporosity, ], (micro: number, ): EqResult => {  return new EqResult( 0.01812 + 0.26123 * micro, "cm³/cm³")}, "Latossolo Amarelo", [StatesT.PB,], 0.195914602, "fieldCapacity", 0),
 
- new Equation("Soar1", "Franco Arenoso", [InputsT.densityOfParticle, InputsT.phosphor, InputsT.theta33, ], (dp: number, p: number, th33: number, ): EqResult => {  return new EqResult(  -1.6757 + 0.7199 * dp, "cm³/cm³")}, "", [StatesT.RS,], 0.202424285, "fieldCapacity", 0),
+ new Equation("Soar1", "Franco Arenoso", [InputsT.densityOfParticle, InputsT.theta33, ], (dp: number, th33: number, ): EqResult => {  return new EqResult(  -1.6757 + 0.7199 * dp, "cm³/cm³")}, "", [StatesT.RS,], 0.202424285, "fieldCapacity", 0),
 
- new Equation("Soar9", "Francosiltoso", [InputsT.totalPorosity, InputsT.densityOfParticle, InputsT.phosphor, InputsT.theta33, ], (dp: number, p: number, th33: number, tp: number, ): EqResult => {  return new EqResult(   -0.6191 + 0.1983 * dp + 0.1799 * tp, "cm³/cm³")}, "", [StatesT.RS,], 0.326595577, "fieldCapacity", 0),
+ new Equation("Soar9", "Francosiltoso", [InputsT.totalPorosity, InputsT.densityOfParticle], (dp: number, tp: number, ): EqResult => {  return new EqResult(   -0.6191 + 0.1983 * dp + 0.1799 * tp, "cm³/cm³")}, "", [StatesT.RS,], 0.326595577, "fieldCapacity", 0),
 
- new Equation("Soar15", "", [InputsT.totalPorosity, InputsT.densityOfParticle, InputsT.phosphor, ], (dp: number, p: number, tp: number, ): EqResult => {  return new EqResult( 0.6191 + 0.1983 * dp + 0.8079 * tp, "cm³/cm³")}, "", [StatesT.RS,], 1.232244387, "fieldCapacity", 0),
+ new Equation("Soar15", "", [InputsT.totalPorosity, InputsT.densityOfParticle ], (dp: number, tp: number, ): EqResult => {  return new EqResult( 0.6191 + 0.1983 * dp + 0.8079 * tp, "cm³/cm³")}, "", [StatesT.RS,], 1.232244387, "fieldCapacity", 0),
 
  new Equation("Al2", "", [InputsT.clay, ], (clay: number, ): EqResult => {  return new EqResult( 0.004 * clay ** 2 - 0.312 * clay + 3.289, "cm³/cm³")}, "", [StatesT.PE,], 0.310028095, "fieldCapacity", 0),
 
@@ -116,7 +116,7 @@ export const EQUATIONS: Set<Equation> = new Set([
 
  new Equation("Men4", "", [InputsT.silt, InputsT.bulkDensity, InputsT.fineSand, InputsT.microporosity, ], (bd: number, fs: number, micro: number, silt: number, ): EqResult => {  return new EqResult( 0.1232 + 0.0408 * bd + 0.0086 * micro + 0.0006 * fs/10 + 0.0011 * silt/10, "cm³/cm³")}, "", [StatesT.GO,], 0.135421345, "fieldCapacity", 0),
 
- new Equation("Pe4", "", [InputsT.bulkDensity, InputsT.coarseSand, InputsT.densityOfParticle, InputsT.phosphor, ], (bd: number, cs: number, dp: number, p: number, ): EqResult => {  return new EqResult( 0.33983 - 0.00037477 * cs - 0.06527 * bd - 0.05612 * dp, "cm³/cm³")}, "Argissolo", [StatesT.PB,], 0.195914602, "fieldCapacity", 0),
+ new Equation("Pe4", "", [InputsT.bulkDensity, InputsT.coarseSand, InputsT.densityOfParticle ], (bd: number, cs: number, dp: number ): EqResult => {  return new EqResult( 0.33983 - 0.00037477 * cs - 0.06527 * bd - 0.05612 * dp, "cm³/cm³")}, "Argissolo", [StatesT.PB,], 0.195914602, "fieldCapacity", 0),
 
  new Equation("DosS13", "", [InputsT.clay, InputsT.organicMatter, InputsT.coarseSand, InputsT.fineSand, ], (clay: number, cs: number, fs: number, om: number, ): EqResult => {  return new EqResult( 26.18555 + 1.84737 * om  + 0.07352 * clay - 0.28332 * cs - 0.26753 * fs, "dag/kg")}, "", [StatesT.RS,], 0.06939102, "fieldCapacity", 0),
 
@@ -142,9 +142,9 @@ export const EQUATIONS: Set<Equation> = new Set([
 
  new Equation("DosS11", "", [InputsT.organicMatter, InputsT.coarseSand, InputsT.fineSand, ], (cs: number, fs: number, om: number, ): EqResult => {  return new EqResult( 39.45134-2.47572*om-0.33157*cs-0.30641*fs, "dag/kg")}, "Neossolo", [StatesT.RS,], 0.115188401, "fieldCapacity", 0),
 
- new Equation("Pe5", "", [InputsT.coarseSand, InputsT.densityOfParticle, InputsT.phosphor, ], (cs: number, dp: number, p: number, ): EqResult => {  return new EqResult( 0.19916 - 0.0004 * cs - 0.0396 * dp, "cm³/cm³")}, "Planossolo", [StatesT.PB,], 0.195914602, "fieldCapacity", 0),
+ new Equation("Pe5", "", [InputsT.coarseSand, InputsT.densityOfParticle ], (cs: number, dp: number ): EqResult => {  return new EqResult( 0.19916 - 0.0004 * cs - 0.0396 * dp, "cm³/cm³")}, "Planossolo", [StatesT.PB,], 0.195914602, "fieldCapacity", 0),
 
- new Equation("Men2", "", [InputsT.totalPorosity, InputsT.fineSand, InputsT.microporosity, InputsT.phosphor, ], (fs: number, micro: number, p: number, tp: number, ): EqResult => {  return new EqResult( 0.04314 + 0.00762 * micro - 0.00074 * tp - 0.00058 * fs/10, "cm³/cm³")}, "", [StatesT.BA,], 0.246255204, "fieldCapacity", 0),
+ new Equation("Men2", "", [InputsT.totalPorosity, InputsT.fineSand, InputsT.microporosity ], (fs: number, micro: number, p: number, tp: number, ): EqResult => {  return new EqResult( 0.04314 + 0.00762 * micro - 0.00074 * tp - 0.00058 * fs/10, "cm³/cm³")}, "", [StatesT.BA,], 0.246255204, "fieldCapacity", 0),
 
  new Equation("Men3", "", [InputsT.clay, InputsT.bulkDensity, InputsT.theta33, ], (bd: number, clay: number, th33: number, ): EqResult => {  return new EqResult(-0.0386 + 0.0088 * bd + 0.00067 * clay, "cm³/cm³")}, "", [StatesT.MG,], 0.331378941, "fieldCapacity", 0),
 
@@ -176,13 +176,13 @@ export const EQUATIONS: Set<Equation> = new Set([
 
  new Equation("Sil6", "", [InputsT.clay, InputsT.organicMatter, ], (clay: number, om: number, ): EqResult => {  return new EqResult( 9.7953 - 2.6231 * om + 0.0891 * clay, "%")}, "", [StatesT.TAB_COSTEIROS,], 0.264686872, "fieldCapacity", 0),
 
- new Equation("Pe1", "", [InputsT.sand, InputsT.microporosity, InputsT.densityOfParticle, InputsT.macroporosity, InputsT.phosphor, ], (dp: number, macro: number, micro: number, p: number, sand: number, ): EqResult => {  return new EqResult( 0.011429 - 0.000066799 * sand + 0.28462 * micro + 0.04162 * macro - 0.02548 * dp, "cm³/cm³")}, "", [StatesT.PB,], 0.252387441, "fieldCapacity", 0),
+ new Equation("Pe1", "", [InputsT.sand, InputsT.microporosity, InputsT.densityOfParticle, InputsT.macroporosity ], (dp: number, macro: number, micro: number, sand: number, ): EqResult => {  return new EqResult( 0.011429 - 0.000066799 * sand + 0.28462 * micro + 0.04162 * macro - 0.02548 * dp, "cm³/cm³")}, "", [StatesT.PB,], 0.252387441, "fieldCapacity", 0),
 
- new Equation("Soar4", "Argilo Siltoso", [InputsT.clay, InputsT.totalPorosity, InputsT.densityOfParticle, InputsT.phosphor, ], (clay: number, dp: number, p: number, tp: number, ): EqResult => {  return new EqResult( 0.0432 + 0.0019 * clay + 0.0293 * dp + 0.1952 * tp, "cm³/cm³")}, "", [StatesT.RS,], 0.075435614, "fieldCapacity", 0),
+ new Equation("Soar4", "Argilo Siltoso", [InputsT.clay, InputsT.totalPorosity, InputsT.densityOfParticle ], (clay: number, dp: number,  tp: number, ): EqResult => {  return new EqResult( 0.0432 + 0.0019 * clay + 0.0293 * dp + 0.1952 * tp, "cm³/cm³")}, "", [StatesT.RS,], 0.075435614, "fieldCapacity", 0),
 
- new Equation("Soar10", "", [InputsT.sand, InputsT.organicMatter, InputsT.totalPorosity, InputsT.densityOfParticle, InputsT.phosphor, ], (dp: number, om: number, p: number, sand: number, tp: number, ): EqResult => {  return new EqResult( 0.0628 - 0.0005 * sand - 0.00734 * om + 0.0398 * dp + 0.1515 * tp, "cm³/cm³")}, "", [StatesT.RS,], 0.128596956, "fieldCapacity", 0),
+ new Equation("Soar10", "", [InputsT.sand, InputsT.organicMatter, InputsT.totalPorosity, InputsT.densityOfParticle], (dp: number, om: number,  sand: number, tp: number, ): EqResult => {  return new EqResult( 0.0628 - 0.0005 * sand - 0.00734 * om + 0.0398 * dp + 0.1515 * tp, "cm³/cm³")}, "", [StatesT.RS,], 0.128596956, "fieldCapacity", 0),
 
- new Equation("Soar5", "Argiloso", [InputsT.totalPorosity, InputsT.phosphor, ], (p: number, tp: number, ): EqResult => {  return new EqResult( 0.0746 + 0.4946 * tp, "cm³/cm³")}, "", [StatesT.RS,], 0.074989599, "fieldCapacity", 0),
+ new Equation("Soar5", "Argiloso", [InputsT.totalPorosity], ( tp: number, ): EqResult => {  return new EqResult( 0.0746 + 0.4946 * tp, "cm³/cm³")}, "", [StatesT.RS,], 0.074989599, "fieldCapacity", 0),
 
  new Equation("And", "", [InputsT.clay, InputsT.bulkDensity, InputsT.mesoporosity, ], (bd: number, clay: number, meso: number, ): EqResult => {  return new EqResult( 0.256931 -0.261746 * meso/10 + 0.000104958 *  clay/10 -0.0942794 *bd, "cm³/cm³")}, "", [StatesT.PE,], 0, "fieldCapacity", 0),
 
@@ -206,11 +206,11 @@ export const EQUATIONS: Set<Equation> = new Set([
 
  new Equation("Dicos2", "", [InputsT.bulkDensity, ], (bd: number, ): EqResult => {  return new EqResult( 0.24049 - 0.10555 * bd, "cm³/cm³")}, "", [StatesT.BA,], 0.149469962, "permanentWiltingPoint", 0),
 
- new Equation("Dicos1", "", [InputsT.bulkDensity, InputsT.totalPorosity, InputsT.phosphor, ], (bd: number, p: number, tp: number, ): EqResult => {  return new EqResult( 0.5624 - 0.1561 * bd- 0.5720 * tp, "cm³/cm³")}, "", [StatesT.BA,], 0.187809611, "permanentWiltingPoint", 0),
+ new Equation("Dicos1", "", [InputsT.bulkDensity, InputsT.totalPorosity], (bd: number, tp: number, ): EqResult => {  return new EqResult( 0.5624 - 0.1561 * bd- 0.5720 * tp, "cm³/cm³")}, "", [StatesT.BA,], 0.187809611, "permanentWiltingPoint", 0),
 
 //  new Equation("Ram4", "", [], (): EqResult => {  return new EqResult( 0.2682 - 0.0002*ta, "cm³/cm³")}, "Plintossolo", [StatesT.PI,], 0.1371207, "permanentWiltingPoint", 0),
 
- new Equation("Pe5", "", [InputsT.coarseSand, InputsT.densityOfParticle, InputsT.phosphor, InputsT.estabilidadeDeAgregados ], (cs: number, dp: number, ea: number ): EqResult => {  return new EqResult( 0.014722 - 0.0005 * cs * 0.02831 * ea - 0.098 * dp, "cm³/cm³")}, "Planossolo", [StatesT.PB,], 0.179177638, "permanentWiltingPoint", 0),
+ new Equation("Pe5", "", [InputsT.coarseSand, InputsT.densityOfParticle, InputsT.estabilidadeDeAgregados ], (cs: number, dp: number, ea: number ): EqResult => {  return new EqResult( 0.014722 - 0.0005 * cs * 0.02831 * ea - 0.098 * dp, "cm³/cm³")}, "Planossolo", [StatesT.PB,], 0.179177638, "permanentWiltingPoint", 0),
 
  new Equation("Pe6", "", [InputsT.coarseSand, InputsT.densityOfParticle, InputsT.veryCoarseSand, InputsT.estabilidadeDeAgregados, ], ( dp: number, ea: number, vcsand: number, ): EqResult => {  return new EqResult( 0.10070 + 0.00065694 * vcsand - 0.02232 * ea - 0.03206 * dp, "cm³/cm³")}, "Neossolo", [StatesT.PB,], 0.179177638, "permanentWiltingPoint", 0),
 
@@ -298,13 +298,13 @@ export const EQUATIONS: Set<Equation> = new Set([
 
  new Equation("Pe3", "", [InputsT.bulkDensity, InputsT.coarseSand, ], (bd: number, cs: number, ): EqResult => {  return new EqResult( 0.19817 - 0.00007741 * cs - 0.09215 * bd, "cm³/cm³")}, "Argissolo", [StatesT.PB,], 0.149620431, "permanentWiltingPoint", 0),
 
- new Equation("Dicos4", "", [InputsT.bulkDensity, InputsT.totalPorosity, InputsT.coarseSand, InputsT.phosphor, ], (bd: number, cs: number, p: number, tp: number, ): EqResult => {  return new EqResult( 1.24529 - 0.21743 * cs - 0.43746 * bd - 0.99032 * tp, "cm³/cm³")}, "", [StatesT.BA,], 0.061706575, "permanentWiltingPoint", 0),
+ new Equation("Dicos4", "", [InputsT.bulkDensity, InputsT.totalPorosity, InputsT.coarseSand ], (bd: number, cs: number, tp: number, ): EqResult => {  return new EqResult( 1.24529 - 0.21743 * cs - 0.43746 * bd - 0.99032 * tp, "cm³/cm³")}, "", [StatesT.BA,], 0.061706575, "permanentWiltingPoint", 0),
 
- new Equation("Dicos5", "", [InputsT.bulkDensity, InputsT.totalPorosity, InputsT.coarseSand, InputsT.phosphor, ], (bd: number, cs: number, p: number, tp: number, ): EqResult => {  return new EqResult( 1.30028 - 0.20449 * cs - 0.40620 * bd - 1.12476 * tp, "cm³/cm³")}, "", [StatesT.BA,], 0.057659328, "permanentWiltingPoint", 0),
+ new Equation("Dicos5", "", [InputsT.bulkDensity, InputsT.totalPorosity, InputsT.coarseSand ], (bd: number, cs: number, tp: number, ): EqResult => {  return new EqResult( 1.30028 - 0.20449 * cs - 0.40620 * bd - 1.12476 * tp, "cm³/cm³")}, "", [StatesT.BA,], 0.057659328, "permanentWiltingPoint", 0),
 
  new Equation("Men3", "", [InputsT.bulkDensity, InputsT.coarseSand, InputsT.fineSand, InputsT.microporosity, ], (bd: number, cs: number, fs: number, micro: number, ): EqResult => {  return new EqResult( 0.0468 + 0.0848 * bd + 0.0030 * micro - 0.0022 * cs/10 - 0.0020 * fs/10, "cm³/cm³")}, "", [StatesT.MG,], 0.121144211, "permanentWiltingPoint", 0),
 
- new Equation("Men4", "", [InputsT.clay, InputsT.silt, InputsT.sand, InputsT.fineSand, InputsT.densityOfParticle, InputsT.macroporosity, InputsT.phosphor, ], (clay: number, dp: number, fs: number, macro: number, p: number, sand: number, silt: number, ): EqResult => {  return new EqResult( 0.0048 + 0.0525 * dp - 0.0020 * macro + 0.0099 * sand/10 + 0.0016 * fs + 0.0016 * silt/10 + 0.0091 * clay/10, "cm³/cm³")}, "", [StatesT.GO,], 0.091380004, "permanentWiltingPoint", 0),
+ new Equation("Men4", "", [InputsT.clay, InputsT.silt, InputsT.sand, InputsT.fineSand, InputsT.densityOfParticle, InputsT.macroporosity], (clay: number, dp: number, fs: number, macro: number, sand: number, silt: number, ): EqResult => {  return new EqResult( 0.0048 + 0.0525 * dp - 0.0020 * macro + 0.0099 * sand/10 + 0.0016 * fs + 0.0016 * silt/10 + 0.0091 * clay/10, "cm³/cm³")}, "", [StatesT.GO,], 0.091380004, "permanentWiltingPoint", 0),
 
  new Equation("DosS12", "", [InputsT.clay, InputsT.organicMatter, InputsT.fineSand, ], (clay: number, fs: number, om: number, ): EqResult => {  return new EqResult( 0.82593+5.38527*om+0.29199*clay-0.16418*fs, "dag/kg")}, "Planossolo", [StatesT.RS,], 0.113792258, "permanentWiltingPoint", 0),
 
@@ -350,11 +350,11 @@ export const EQUATIONS: Set<Equation> = new Set([
 
  new Equation("Mar", "", [InputsT.clay, InputsT.silt, InputsT.bulkDensity, InputsT.organicMatter, ], (bd: number, clay: number, om: number, silt: number, ): EqResult => {  return new EqResult( 0.08487488 + 0.00097697 * om +  0.00042973 * clay - 0.0002316 * silt + 0.16789394 * bd, "m³/m³")}, "", [StatesT.RS,], 0.156539921, "permanentWiltingPoint", 0),
 
- new Equation("Soar10", "", [InputsT.clay, InputsT.bulkDensity, InputsT.totalPorosity, InputsT.phosphor, ], (bd: number, clay: number, p: number, tp: number, ): EqResult => {  return new EqResult( 0.1531 * clay + 0.0072 * bd + 0.0240 *tp, "cm³/cm³")}, "", [StatesT.RS,], 0.061622792, "permanentWiltingPoint", 0),
+ new Equation("Soar10", "", [InputsT.clay, InputsT.bulkDensity, InputsT.totalPorosity], (bd: number, clay: number, tp: number, ): EqResult => {  return new EqResult( 0.1531 * clay + 0.0072 * bd + 0.0240 *tp, "cm³/cm³")}, "", [StatesT.RS,], 0.061622792, "permanentWiltingPoint", 0),
 
  new Equation("Silv2", "", [InputsT.clay, InputsT.silt, InputsT.sand, InputsT.bulkDensity, ], (bd: number, clay: number, sand: number, silt: number, ): EqResult => {  return new EqResult( 0.246 - 0.00174 * sand + 0.000069 * silt - 0.0402 * (silt/clay) + 0.0190 * bd, "cm³/cm³")}, "", [StatesT.BA,StatesT.GO,StatesT.MG,StatesT.RS,], 0, "permanentWiltingPoint", 0),
 
- new Equation("Ros2", "", [InputsT.clay, InputsT.sand, InputsT.bulkDensity, InputsT.totalPorosity, InputsT.phosphor, InputsT.soilOrganicCarbon, ], (bd: number, clay: number, p: number, sand: number, soc: number, tp: number, ): EqResult => {  return new EqResult( 0.568 - 0.003 * sand - 0.001 * clay - 0.281 * tp - 0.069 * bd + 0.005 * soc, "cm³/cm³")}, "", [StatesT.CERRADO,], 0.069488481, "permanentWiltingPoint", 0),
+ new Equation("Ros2", "", [InputsT.clay, InputsT.sand, InputsT.bulkDensity, InputsT.totalPorosity, InputsT.soilOrganicCarbon, ], (bd: number, clay: number, sand: number, soc: number, tp: number, ): EqResult => {  return new EqResult( 0.568 - 0.003 * sand - 0.001 * clay - 0.281 * tp - 0.069 * bd + 0.005 * soc, "cm³/cm³")}, "", [StatesT.CERRADO,], 0.069488481, "permanentWiltingPoint", 0),
 
  new Equation("Sou1", "", [InputsT.clay, InputsT.microporosity, ], (clay: number, micro: number, ): EqResult => {  return new EqResult( 0.15839 + 0.00031 * (clay/10) - 0.00240 * micro, "m³/m³")}, "", [StatesT.TAB_COSTEIROS,], 0.104198799, "permanentWiltingPoint", 0),
 
@@ -368,18 +368,18 @@ export const EQUATIONS: Set<Equation> = new Set([
 
  new Equation("Rei5", "", [InputsT.clay, InputsT.sand, InputsT.organicMatter, ], (clay: number, om: number, sand: number, ): EqResult => {  return new EqResult( 140 + 12.7 * log ((om/10)) + 0.065 * clay/10 - 0.28 * sand/10, "g/kg")}, "", [StatesT.RS,StatesT.SC,], 0.115869417, "permanentWiltingPoint", 0),
 
- new Equation("Soar1", "Arenoso Franco", [InputsT.sand, InputsT.densityOfParticle, InputsT.phosphor, ], (dp: number, p: number, sand: number, ): EqResult => {  return new EqResult( -2.8034 + 0.0127 * sand * 0.7130 * dp, "cm³/cm³")}, "", [StatesT.RS,], 0.746459363, "permanentWiltingPoint", 0),
+ new Equation("Soar1", "Arenoso Franco", [InputsT.sand, InputsT.densityOfParticle,  ], (dp: number, sand: number, ): EqResult => {  return new EqResult( -2.8034 + 0.0127 * sand * 0.7130 * dp, "cm³/cm³")}, "", [StatesT.RS,], 0.746459363, "permanentWiltingPoint", 0),
 
- new Equation("Soar3", "Argilo Siltoso", [InputsT.sand, InputsT.densityOfParticle, InputsT.phosphor, ], (dp: number, p: number, sand: number, ): EqResult => {  return new EqResult( -0.8519 - 0.0284 * sand * 0.5231 * dp, "cm³/cm³")}, "", [StatesT.RS,], 0.010569412, "permanentWiltingPoint", 0),
+ new Equation("Soar3", "Argilo Siltoso", [InputsT.sand, InputsT.densityOfParticle ], (dp: number, sand: number, ): EqResult => {  return new EqResult( -0.8519 - 0.0284 * sand * 0.5231 * dp, "cm³/cm³")}, "", [StatesT.RS,], 0.010569412, "permanentWiltingPoint", 0),
 
- new Equation("Pe1", "", [InputsT.sand, InputsT.microporosity, InputsT.densityOfParticle, InputsT.phosphor, ], (dp: number, micro: number, p: number, sand: number, ): EqResult => {  return new EqResult( 0.09715 - 0.00048 * sand + 0.22538 * micro - 0.02314 * dp, "cm³/cm³")}, "", [StatesT.PB,], 0.12922551, "permanentWiltingPoint", 0),
+ new Equation("Pe1", "", [InputsT.sand, InputsT.microporosity, InputsT.densityOfParticle], (dp: number, micro: number, sand: number, ): EqResult => {  return new EqResult( 0.09715 - 0.00048 * sand + 0.22538 * micro - 0.02314 * dp, "cm³/cm³")}, "", [StatesT.PB,], 0.12922551, "permanentWiltingPoint", 0),
 
- new Equation("Soar7", "Francoargiloarenoso", [InputsT.silt, InputsT.organicMatter, InputsT.totalPorosity, InputsT.densityOfParticle, InputsT.phosphor, ], (dp: number, om: number, p: number, silt: number, tp: number, ): EqResult => {  return new EqResult( 0.1571 - 0.0048 * silt - 3.8154 * om - 0.0437 * dp * 0.4512 * tp, "cm³/cm³")}, "", [StatesT.RS,], 0, "permanentWiltingPoint", 0),
+ new Equation("Soar7", "Francoargiloarenoso", [InputsT.silt, InputsT.organicMatter, InputsT.totalPorosity, InputsT.densityOfParticle], (dp: number, om: number, silt: number, tp: number, ): EqResult => {  return new EqResult( 0.1571 - 0.0048 * silt - 3.8154 * om - 0.0437 * dp * 0.4512 * tp, "cm³/cm³")}, "", [StatesT.RS,], 0, "permanentWiltingPoint", 0),
 
- new Equation("Soar4", "Argiloso", [InputsT.silt, InputsT.sand, InputsT.totalPorosity, InputsT.phosphor, ], (p: number, sand: number, silt: number, tp: number, ): EqResult => {  return new EqResult( 0.1818 - 0.0022 * silt - 0.0010 * sand +  0.0279 * tp, "cm³/cm³")}, "", [StatesT.RS,], 0.141458826, "permanentWiltingPoint", 0),
+ new Equation("Soar4", "Argiloso", [InputsT.silt, InputsT.sand, InputsT.totalPorosity ], (sand: number, silt: number, tp: number, ): EqResult => {  return new EqResult( 0.1818 - 0.0022 * silt - 0.0010 * sand +  0.0279 * tp, "cm³/cm³")}, "", [StatesT.RS,], 0.141458826, "permanentWiltingPoint", 0),
 
  new Equation("Silv1", "", [InputsT.clay, InputsT.silt, InputsT.sand, InputsT.totalPorosity, InputsT.microporosity, ], (clay: number, micro: number, sand: number, silt: number, tp: number, ): EqResult => {  return new EqResult( 0.123 - 0.00108 * sand - 0.0204 * (silt/clay) - 0.00171 * tp + 0.05710 * micro, "cm³/cm³")}, "", [StatesT.BA,StatesT.GO,StatesT.MG,StatesT.RS,], 0.158657863, "permanentWiltingPoint", 0),
 
- new Equation("Soar8", "Francoargiloso", [InputsT.totalPorosity, InputsT.phosphor, ], (p: number, tp: number, ): EqResult => {  return new EqResult( 0.0996 + 0.2248 * tp, "cm³/cm³")}, "", [StatesT.RS,], 0.076405195, "permanentWiltingPoint", 0),
+ new Equation("Soar8", "Francoargiloso", [InputsT.totalPorosity ], (tp: number, ): EqResult => {  return new EqResult( 0.0996 + 0.2248 * tp, "cm³/cm³")}, "", [StatesT.RS,], 0.076405195, "permanentWiltingPoint", 0),
 ]);
 
