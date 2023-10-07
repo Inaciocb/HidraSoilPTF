@@ -12,7 +12,7 @@ export class EquationService {
   // Estados (sempre um) -> Classe textural e classe de solo é apenas uma
   findUsableEquations(inputs: InputsT[], state: StatesT, soilClass: NullableString,
     texturalClass: NullableString, applyToAllStates: boolean): Equation[] {
-    console.log("Procurando Equações compativeis, inputs: ", inputs, " state: ", state);
+    // console.log("Procurando Equações compativeis, inputs: ", inputs, " state: ", state);
     return Array.from(EQUATIONS).filter(eq => {
       let inputsIsAccepted = false;
       let stateIsAccepted = false;

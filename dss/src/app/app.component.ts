@@ -100,7 +100,6 @@ export class AppComponent {
       this.form.get('selectTexturalClass')?.value,
       false
     );
-    console.log(this.filteredEquations);
 
     if (!this.filteredEquations || this.filteredEquations.length <= 0) {
       this.warnings.push("Não foram encontradas equações para o estado " + this.form.get('state')?.value?.toString() )
@@ -119,7 +118,6 @@ export class AppComponent {
   // Realiza o calculo e mostra resultados
   getEquationResults(equations: Equation[]) {
     let finalEquations = this.findLowerRmseEquations(equations);
-    console.log("final eq ", finalEquations);
     let results: EqResult[] = [];
 
     // deve conter 1 eq de capacidade e 1 de ponto de murcha
@@ -198,7 +196,6 @@ export class AppComponent {
   }
 
   calculate(e: Equation): EqResult {
-    console.log("calculating", e);
     const inputs = this.inputDataList.filter(i => e.inputsAccepted.includes(i.inputType));
     const sortedInputs = inputs.filter(i => i.value != 0).sort((a: EqInputData, b: EqInputData) => a.inputType.toString() < b.inputType.toString() ? -1 : 1).map(i => i.value);
     return e.eq(...sortedInputs);

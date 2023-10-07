@@ -80,7 +80,7 @@ export const EQUATIONS: Set<Equation> = new Set([
 
  new Equation("NASC3", "", [InputsT.clay, ], (clay: number, ): EqResult => {  return new EqResult( 0.0525 + 0.000373 * (clay/10), "cm³/cm³")}, "", [StatesT.TAB_COSTEIROS,], 0.24168548, "fieldCapacity", 0),
 
- new Equation("Silv1", "", [InputsT.clay, InputsT.sand, InputsT.totalPorosity, InputsT.microporosity, InputsT.phosphor, ], (clay: number, micro: number, p: number, sand: number, tp: number, ): EqResult => {  return new EqResult( 0.073 + 0.000415 * clay - 0.0060 * (sand/clay) - 0.00215 * tp + 0.00973 * micro, "cm³/cm³")}, "", [StatesT.BA,StatesT.GO,StatesT.MG,StatesT.RS,], 0.303890141, "fieldCapacity", 0),
+ new Equation("Silv1", "", [InputsT.clay, InputsT.sand, InputsT.totalPorosity, InputsT.microporosity, ], (clay: number, micro: number, sand: number, tp: number, ): EqResult => {  return new EqResult( 0.073 + 0.000415 * clay - 0.0060 * (sand/clay) - 0.00215 * tp + 0.00973 * micro, "cm³/cm³")}, "", [StatesT.BA,StatesT.GO,StatesT.MG,StatesT.RS,], 0.303890141, "fieldCapacity", 0),
 
  new Equation("Ol7", "", [InputsT.clay, InputsT.silt, InputsT.sand, ], (clay: number, sand: number, silt: number, ): EqResult => {  return new EqResult( -0.000019 * (sand/10) + 0.000106 * (silt/10) + 0.000594*(clay/10), "kg/kg")}, "", [StatesT.PE,], 0.30536282, "fieldCapacity", 0),
 
@@ -378,7 +378,7 @@ export const EQUATIONS: Set<Equation> = new Set([
 
  new Equation("Soar4", "Argiloso", [InputsT.silt, InputsT.sand, InputsT.totalPorosity, InputsT.phosphor, ], (p: number, sand: number, silt: number, tp: number, ): EqResult => {  return new EqResult( 0.1818 - 0.0022 * silt - 0.0010 * sand +  0.0279 * tp, "cm³/cm³")}, "", [StatesT.RS,], 0.141458826, "permanentWiltingPoint", 0),
 
- new Equation("Silv1", "", [InputsT.clay, InputsT.silt, InputsT.sand, InputsT.totalPorosity, InputsT.microporosity, InputsT.phosphor, ], (clay: number, micro: number, p: number, sand: number, silt: number, tp: number, ): EqResult => {  return new EqResult( 0.123 - 0.00108 * sand - 0.0204 * (silt/clay) - 0.00171 * tp + 0.05710 * micro, "cm³/cm³")}, "", [StatesT.BA,StatesT.GO,StatesT.MG,StatesT.RS,], 0.158657863, "permanentWiltingPoint", 0),
+ new Equation("Silv1", "", [InputsT.clay, InputsT.silt, InputsT.sand, InputsT.totalPorosity, InputsT.microporosity, ], (clay: number, micro: number, sand: number, silt: number, tp: number, ): EqResult => {  return new EqResult( 0.123 - 0.00108 * sand - 0.0204 * (silt/clay) - 0.00171 * tp + 0.05710 * micro, "cm³/cm³")}, "", [StatesT.BA,StatesT.GO,StatesT.MG,StatesT.RS,], 0.158657863, "permanentWiltingPoint", 0),
 
  new Equation("Soar8", "Francoargiloso", [InputsT.totalPorosity, InputsT.phosphor, ], (p: number, tp: number, ): EqResult => {  return new EqResult( 0.0996 + 0.2248 * tp, "cm³/cm³")}, "", [StatesT.RS,], 0.076405195, "permanentWiltingPoint", 0),
 ]);
