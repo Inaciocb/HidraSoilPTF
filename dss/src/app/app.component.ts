@@ -38,9 +38,9 @@ export class AppComponent {
     state: new FormControl('RS'),
     selectSoilClass: new FormControl(''),
     selectTexturalClass: new FormControl(''),
-    clay: new FormControl(''),
-    silt: new FormControl(''),
-    sand: new FormControl(''),
+    clay: new FormControl('' as number | 'clay'),
+    silt: new FormControl('' as number | 'silt'),
+    sand: new FormControl('' as number | 'sand'),
     bulkDensity: new FormControl(''),
     organicMatter: new FormControl(''),
     totalPorosity: new FormControl(''),
@@ -91,6 +91,7 @@ export class AppComponent {
 
   handleEquations(): void {
     this.setInputData();
+    console.log(this.inputDataList);
       let state: StatesT = StatesT[this.form.get('state')?.value as keyof typeof StatesT];
       // aplica o filtro
       this.filteredEquations =  this.equationService.findUsableEquations(
@@ -102,7 +103,7 @@ export class AppComponent {
       );
 
       if (!this.filteredEquations || this.filteredEquations.length <= 0) {
-        this.warnings.push("Aviso: Não foram encontradas equações para o estado " + this.form.get('state')?.value?.toString() )
+        this.warnings.push("Não foram encontradas equações para o estado " + this.form.get('state')?.value?.toString() )
         this.filteredEquations = this.equationService.findUsableEquations(
           this.inputTypes,
           state,
@@ -119,7 +120,7 @@ export class AppComponent {
     Object.entries(this.form.controls).forEach(k => {
       let inputData = new EqInputData();
       const isInputNumber = k[0] !== 'state' && k[0] !== 'selectTexturalClass' && k[0] !== 'selectSoilClass';
-      if (k[1].value != "" && isInputNumber) {
+      if (k[1].value != "" && isInputNumber && Number(k[1].value) != 0) {
         let inputType: InputsT = (InputsT[k[0] as keyof typeof InputsT]);
         inputData.inputType = inputType;
         inputData.value = Number(k[1].value);
@@ -156,7 +157,7 @@ export class AppComponent {
       let capacidade = results.filter(r => r.eqType === 'fieldCapacity').map(r => '' + r.result.toFixed(3) + r.measurementUnit)[0];
       let pontoDeMurcha = results.filter(r => r.eqType === 'permanentWiltingPoint').map(r => '' + r.result.toFixed(3) + r.measurementUnit)[0];
       this.finalResult.setValue({capacidadeDeCampo: capacidade, pontoDeMurcha: pontoDeMurcha});
-      // Swal.fire({title:'Resultado(s)', html: resultsToString(results, this.warnings), icon: 'success' });
+      if (this.warnings && this.warnings.length > 0) Swal.fire({title:'Atenção', html: this.warnings, icon: 'warning' });
     } else {
       Swal.fire('Atenção', 'Nenhuma equação foi encontrada, tente modificar os filtros', 'warning');
     }

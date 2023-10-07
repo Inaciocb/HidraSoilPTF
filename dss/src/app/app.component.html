@@ -195,14 +195,18 @@
                 <span class="text-muted">Capacidade de Campo:</span>
               </div>
               <div class="d-flex flex-row justify-content-center mt-2">
-                <b> {{ finalResult.value?.capacidadeDeCampo ? finalResult.value?.capacidadeDeCampo : 'Não encontrado'}} </b>
+                <b> {{ finalResult.value?.capacidadeDeCampo ?
+                  (finalResult.value?.capacidadeDeCampo?.toLocaleLowerCase()?.includes("nan") ? "Valor Inválido" : finalResult.value?.capacidadeDeCampo)
+                  : 'Não encontrado'}} </b>
               </div>
 
               <div class="d-flex flex-row justify-content-center mt-4">
                 <span class="text-muted">Ponto de Murcha Permanente:</span>
               </div>
               <div class="d-flex flex-row justify-content-center mt-2">
-                <b> {{ finalResult.value?.pontoDeMurcha ? finalResult.value?.pontoDeMurcha : 'Não encontrado' }} </b>
+                <b> {{ finalResult.value?.pontoDeMurcha ?
+                  (finalResult.value?.pontoDeMurcha?.toLocaleLowerCase()?.includes("nan") ? "Valor Inválido" : finalResult.value?.pontoDeMurcha)
+                  : 'Não encontrado' }} </b>
               </div>
 
             </h5>
