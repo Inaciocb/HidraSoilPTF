@@ -90,7 +90,7 @@ export class AppComponent {
   }
 
   handleEquations(): void {
-    console.log(this.inputDataList);
+    this.setInputData();
     let state: StatesT = StatesT[this.form.get('state')?.value as keyof typeof StatesT];
     // aplica o filtro
     this.filteredEquations =  this.equationService.findUsableEquations(
@@ -100,6 +100,7 @@ export class AppComponent {
       this.form.get('selectTexturalClass')?.value,
       false
     );
+    console.log(this.filteredEquations);
 
     if (!this.filteredEquations || this.filteredEquations.length <= 0) {
       this.warnings.push("Não foram encontradas equações para o estado " + this.form.get('state')?.value?.toString() )
@@ -112,39 +113,18 @@ export class AppComponent {
       //   true
       // );
     }
-    this.calcEquations(this.filteredEquations);
-  }
-
-  // popula as variaveis inputDataList e usedInputTypes
-  setInputData(inputsTypes: InputsT[]): void {
-    Object.entries(this.form.controls).forEach(k => {
-      let inputData = new EqInputData();
-      const isInputNumber = k[0] !== 'state' && k[0] !== 'selectTexturalClass' && k[0] !== 'selectSoilClass';
-      if (k[1].value != "" && isInputNumber && Number(k[1].value) != 0) {
-        let inputType: InputsT = (InputsT[k[0] as keyof typeof InputsT]);
-        inputData.inputType = inputType;
-        inputData.value = Number(k[1].value);
-        this.inputTypes.push(inputType);
-      }
-      if (inputData.inputType != undefined) {
-        this.inputDataList.push(inputData);
-      }
-    });
-
+    this.getEquationResults(this.filteredEquations);
   }
 
   // Realiza o calculo e mostra resultados
-  calcEquations(equations: Equation[]) {
+  getEquationResults(equations: Equation[]) {
     let finalEquations = this.findLowerRmseEquations(equations);
-    //TODO, vai precisar ter uma lista de input para pwd e outra para capacidade.
-    //this.setInputData(equations);
-    let orderedInputs = this.inputDataList.filter(i => i.value != 0).sort((a: EqInputData, b: EqInputData) => a.inputType.toString() < b.inputType.toString() ? -1 : 1);
-    let inputs = orderedInputs.map(i => i.value);
+    console.log("final eq ", finalEquations);
     let results: EqResult[] = [];
 
-
+    // deve conter 1 eq de capacidade e 1 de ponto de murcha
     finalEquations.forEach(e => {
-      const result: EqResult = e.eq(...inputs);
+      const result: EqResult = this.calculate(e);
       let r = new EqResult(result.result, result.measurementUnit);
       r.eqType = e.type;
       results.push(r);
@@ -164,6 +144,24 @@ export class AppComponent {
     } else {
       Swal.fire('Atenção', 'Nenhuma equação foi encontrada, tente modificar os filtros', 'warning');
     }
+
+  }
+
+  // popula as variaveis inputDataList e usedInputTypes
+  setInputData(): void {
+    Object.entries(this.form.controls).forEach(k => {
+      let inputData = new EqInputData();
+      const isInputNumber = k[0] !== 'state' && k[0] !== 'selectTexturalClass' && k[0] !== 'selectSoilClass';
+      if (k[1].value != "" && isInputNumber && Number(k[1].value) != 0) {
+        let inputType: InputsT = (InputsT[k[0] as keyof typeof InputsT]);
+        inputData.inputType = inputType;
+        inputData.value = Number(k[1].value);
+        this.inputTypes.push(inputType);
+      }
+      if (inputData.inputType != undefined) {
+        this.inputDataList.push(inputData);
+      }
+    });
 
   }
 
@@ -197,6 +195,13 @@ export class AppComponent {
 
   hasResult(): boolean {
     return this.finalResult.value?.capacidadeDeCampo != null || this.finalResult.value?.pontoDeMurcha != null;
+  }
+
+  calculate(e: Equation): EqResult {
+    console.log("calculating", e);
+    const inputs = this.inputDataList.filter(i => e.inputsAccepted.includes(i.inputType));
+    const sortedInputs = inputs.filter(i => i.value != 0).sort((a: EqInputData, b: EqInputData) => a.inputType.toString() < b.inputType.toString() ? -1 : 1).map(i => i.value);
+    return e.eq(...sortedInputs);
   }
 
 
