@@ -41,33 +41,33 @@ export class AppComponent {
     clay: new FormControl('' as number | 'clay'),
     silt: new FormControl('' as number | 'silt'),
     sand: new FormControl('' as number | 'sand'),
-    bulkDensity: new FormControl(''),
-    organicMatter: new FormControl(''),
-    totalPorosity: new FormControl(''),
-    coarseSand: new FormControl(''),
-    fineSand: new FormControl(''),
-    microporosity: new FormControl(''),
-    densityOfParticle: new FormControl(''),
-    soilOrganicCarbon: new FormControl(''),
-    flexPointOfSwrc: new FormControl(''),
-    macroporosity: new FormControl(''),
-    claySilt: new FormControl(''),
-    theta6: new FormControl(''),
-    liquidLimits: new FormControl(''),
-    sandClay: new FormControl(''),
-    sIndex: new FormControl(''),
-    phosphor: new FormControl(''),
-    soilPorosity: new FormControl(''),
-    plasticLimits: new FormControl(''),
-    sumOfBases: new FormControl(''),
-    cec: new FormControl(''),
-    ss: new FormControl(''),
-    mediumSand: new FormControl(''),
-    veryFineSand: new FormControl(''),
-    veryCoarseSand: new FormControl(''),
-    theta33: new FormControl(''),
-    mesoporosity: new FormControl(''),
-    ph: new FormControl(''),
+    bulkDensity: new FormControl('' as number | 'bulkDensity'),
+    organicMatter: new FormControl('' as number | 'organicMatter'),
+    totalPorosity: new FormControl('' as number | 'totalPorosity'),
+    coarseSand: new FormControl('' as number | 'coarseSand'),
+    fineSand: new FormControl('' as number | 'fineSand'),
+    microporosity: new FormControl('' as number | 'microporosity'),
+    densityOfParticle: new FormControl('' as number | 'densityOfParticle'),
+    soilOrganicCarbon: new FormControl('' as number | 'soilOrganicCarbon'),
+    flexPointOfSwrc: new FormControl('' as number | 'flexPointOfSwrc'),
+    macroporosity: new FormControl('' as number | 'macroporosity'),
+    claySilt: new FormControl('' as number | 'claySilt'),
+    theta6: new FormControl('' as number | 'theta6'),
+    liquidLimits: new FormControl('' as number | 'liquidLimits'),
+    sandClay: new FormControl('' as number | 'sandClay'),
+    sIndex: new FormControl('' as number | 'sIndex'),
+    phosphor: new FormControl('' as number | 'phosphor'),
+    soilPorosity: new FormControl('' as number | 'soilPorosity'),
+    plasticLimits: new FormControl('' as number | 'plasticLimits'),
+    sumOfBases: new FormControl('' as number | 'sumOfBases'),
+    cec: new FormControl('' as number | 'cec'),
+    ss: new FormControl('' as number | 'ss'),
+    mediumSand: new FormControl('' as number | 'mediumSand'),
+    veryFineSand: new FormControl('' as number | 'veryFineSand'),
+    veryCoarseSand: new FormControl('' as number | 'veryCoarseSand'),
+    theta33: new FormControl('' as number | 'theta33'),
+    mesoporosity: new FormControl('' as number | 'mesoporosity'),
+    ph: new FormControl('' as number | 'ph'),
   });
 
   constructor(private equationService: EquationService) { }
@@ -90,33 +90,33 @@ export class AppComponent {
   }
 
   handleEquations(): void {
-    this.setInputData();
     console.log(this.inputDataList);
-      let state: StatesT = StatesT[this.form.get('state')?.value as keyof typeof StatesT];
-      // aplica o filtro
-      this.filteredEquations =  this.equationService.findUsableEquations(
-        this.inputTypes,
-        state,
-        this.form.get('selectSoilClass')?.value,
-        this.form.get('selectTexturalClass')?.value,
-        false
-      );
+    let state: StatesT = StatesT[this.form.get('state')?.value as keyof typeof StatesT];
+    // aplica o filtro
+    this.filteredEquations =  this.equationService.findUsableEquations(
+      this.inputTypes,
+      state,
+      this.form.get('selectSoilClass')?.value,
+      this.form.get('selectTexturalClass')?.value,
+      false
+    );
 
-      if (!this.filteredEquations || this.filteredEquations.length <= 0) {
-        this.warnings.push("Não foram encontradas equações para o estado " + this.form.get('state')?.value?.toString() )
-        this.filteredEquations = this.equationService.findUsableEquations(
-          this.inputTypes,
-          state,
-          this.form.get('selectSoilClass')?.value,
-          this.form.get('selectTexturalClass')?.value,
-          true
-        );
-      }
-      this.calcEquations(this.filteredEquations);
+    if (!this.filteredEquations || this.filteredEquations.length <= 0) {
+      this.warnings.push("Não foram encontradas equações para o estado " + this.form.get('state')?.value?.toString() )
+      // Busca para qualquer estado
+      // this.filteredEquations = this.equationService.findUsableEquations(
+      //   this.inputTypes,
+      //   state,
+      //   this.form.get('selectSoilClass')?.value,
+      //   this.form.get('selectTexturalClass')?.value,
+      //   true
+      // );
+    }
+    this.calcEquations(this.filteredEquations);
   }
 
   // popula as variaveis inputDataList e usedInputTypes
-  setInputData(): void {
+  setInputData(inputsTypes: InputsT[]): void {
     Object.entries(this.form.controls).forEach(k => {
       let inputData = new EqInputData();
       const isInputNumber = k[0] !== 'state' && k[0] !== 'selectTexturalClass' && k[0] !== 'selectSoilClass';
@@ -135,10 +135,13 @@ export class AppComponent {
 
   // Realiza o calculo e mostra resultados
   calcEquations(equations: Equation[]) {
-    let orderedInputs = this.inputDataList.filter(i => i.value != 0).sort((a: EqInputData, b: EqInputData) => a.inputType < b.inputType ? -1 : 1);
+    let finalEquations = this.findLowerRmseEquations(equations);
+    //TODO, vai precisar ter uma lista de input para pwd e outra para capacidade.
+    //this.setInputData(equations);
+    let orderedInputs = this.inputDataList.filter(i => i.value != 0).sort((a: EqInputData, b: EqInputData) => a.inputType.toString() < b.inputType.toString() ? -1 : 1);
     let inputs = orderedInputs.map(i => i.value);
     let results: EqResult[] = [];
-    let finalEquations = this.findLowerRmseEquations(equations);
+
 
     finalEquations.forEach(e => {
       const result: EqResult = e.eq(...inputs);
