@@ -91,6 +91,10 @@ export class AppComponent {
 
   handleEquations(): void {
     this.setInputData();
+    //enum Tab. Costeiros
+    if (this.form.get('state')?.value?.toLocaleLowerCase() == 'tab. costeiros') {
+      this.form.get('state')?.setValue('TAB_COSTEIROS');
+    }
     let state: StatesT = StatesT[this.form.get('state')?.value as keyof typeof StatesT];
     // aplica o filtro
     this.filteredEquations =  this.equationService.findUsableEquations(
